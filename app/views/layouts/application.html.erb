@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <meta name="algolia-app-id" content="<%= ENV["ALGOLIA_APP_ID"] %>">
+    <meta name="algolia-search-only-api-key" content="<%= ENV["ALGOLIA_SEARCH_ONLY_API_KEY"] %>">
+
     <title>Counterargument</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>

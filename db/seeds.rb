@@ -1,7 +1,8 @@
 require "faker"
 
-User.destroy_all
 Argument.destroy_all
+User.destroy_all
+
 
 emails = %w[nawel@email.com patrick@email.com nooshin@email.com tatiana@email.com JasonBigHands@email.com spud@email.com jadam@email.com brick@email.com trumane@email.com jst@email.com]
 
@@ -19,6 +20,6 @@ end
       # votes: (0..1000).to_a.sample,
       user: User.all.sample
     )
-    argument.argument_id = 1
+
     argument.save
   end
