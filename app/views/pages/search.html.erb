@@ -1,0 +1,9 @@
+<input type="text" name="search" id="search"/>
+
+<h1>This is the results list page</h1>
+
+<ul>
+  <% @arguments.each do |argument| %>
+    <li><%= argument.content %></li>
+  <% end %>
+</ul>
