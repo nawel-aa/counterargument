@@ -1,0 +1,28 @@
+<p><%= link_to "Back", "/" %></p>
+<div class="container">
+  <div class="col-12 col-md-8 d-flex justify-content-center">
+    <h1 class="title"><%= @argument_show.content %></h1>
+  </div>
+</div>
+
+<%  Argument.find_each do |a| %>
+  <% if a.argument_id == @argument_show.id %>
+    <%= link_to argument_path(a) do %>
+      <div class="container">
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2><%= a.content %></h2>
+            <p><%= a.source %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="col-12 col-md-8 d-flex justify-content-start" id="Answer">
+  <h1>Add an Answer</h1>
+</div>
+<div class="col-12 col-md-8 d-flex justify-content-start">
+  <%= render '/arguments/form', arg: @argument_show %>
+</div>
