@@ -7,7 +7,6 @@ class ArgumentsController < ApplicationController
   end
 
   def create
-    # raise
     @argument = Argument.new(argument_params)
     @argument.user = current_user
     authorize @argument
@@ -41,6 +40,6 @@ class ArgumentsController < ApplicationController
   private
 
   def argument_params
-    params.require(:argument).permit(:content, :source, :argument_id)
+    params.require(:argument).permit(:content, :source, :argument_id, :hidden)
   end
 end
