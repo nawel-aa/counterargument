@@ -1,4 +1,11 @@
 class Argument < ApplicationRecord
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attributes :content
+  end
+
   belongs_to :user
 
   has_many :parent, class_name: 'Argument'
