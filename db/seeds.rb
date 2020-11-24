@@ -15,7 +15,7 @@ end
 
   10.times do
     argument = Argument.new(
-      content: Faker::Quote,
+      content: Faker::Quote.yoda,
       source: Faker::Internet.url,
       # votes: (0..1000).to_a.sample,
       user: User.all.sample

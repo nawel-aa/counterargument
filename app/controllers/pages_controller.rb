@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @arguments = policy_scope(Argument).order(created_at: :desc)
   end
-  
+
   def search
     @arguments = policy_scope(Argument).order(created_at: :desc)
   end

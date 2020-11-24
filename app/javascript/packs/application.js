@@ -24,7 +24,7 @@ require("channels")
 // External imports
 import "bootstrap";
 
-import { algoliaSearch } from "../plugins/algoliaSearch.js";
+import { algoliaSearch } from "../plugins/init_algolia_search.js";
 
 algoliaSearch();
 
@@ -34,4 +34,6 @@ algoliaSearch();
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
 });
+
