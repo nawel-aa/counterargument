@@ -1,12 +1,30 @@
-.container {
+.card-product-infos a {
   text-decoration: none;
   color: black;
 }
 
 .title {
-  margin: 8px 0;
+  margin: 8px 0 -4px 0;
+}
+
+.nickname {
+  opacity: .6;
+  font-style: italic;
 }
 
 #Answer {
   margin-top: 16px;
+}
+
+.votes {
+  display: flex;
+  p {
+    margin-right: 16px;
+    background-color: #E0EBF6;
+    border-radius: 16px;
+    padding: 4px 8px;
+  }
+  i {
+    color: #FBAF40;
+  }
 }

@@ -1,28 +1,41 @@
-<p><%= link_to "Back", "/" %></p>
+<p><%= link_to "Back", :back %></p>
 <div class="container">
-  <div class="col-12 col-md-8 d-flex justify-content-center">
+  <div class="col-12 col-md-8 justify-content-center">
     <h1 class="title"><%= @argument_show.content %></h1>
+    <p class="nickname"><%= @argument_show.user.nickname unless @argument_show.hidden %></p>
   </div>
 </div>
 
 <%  Argument.find_each do |a| %>
   <% if a.argument_id == @argument_show.id %>
-    <%= link_to argument_path(a) do %>
       <div class="container">
         <div class="card-product">
           <div class="card-product-infos">
-            <h2><%= a.content %></h2>
-            <p><%= a.source %></p>
+            <h2><%= link_to a.content, argument_path(a) %></h2>
+            <p>source: <%= link_to a.source, argument_path(a) %></p>
+            <% unless a.hidden %>
+              <p>user: <%= link_to a.user.nickname, argument_path(a) %></p>
+            <% end %>
+            <div class="votes">
+              <%= link_to argument_votes_path(a, category: "source", origin: @argument_show), method: :post do %>
+                <div><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: a.id, category: "source").count %></p></div>
+              <% end %>
+              <%= link_to argument_votes_path(a, category: "funny", origin: @argument_show), method: :post do %>
+                <div><p><i class="far fa-laugh-beam"></i> <%= Vote.where(argument_id: a.id, category: "funny").count %></p></div>
+              <% end %>
+              <%= link_to argument_votes_path(a, category: "concise", origin: @argument_show), method: :post do %>
+                <div><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: a.id, category: "concise").count %></p></div>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
   <% end %>
 <% end %>
 
-<div class="col-12 col-md-8 d-flex justify-content-start" id="Answer">
+<div class="col-12 col-md-8 d-flex justify-content-center" id="Answer">
   <h1>Add an Answer</h1>
 </div>
-<div class="col-12 col-md-8 d-flex justify-content-start">
+<div class="col-12 col-md-8 d-flex justify-content-center">
   <%= render '/arguments/form', arg: @argument_show %>
 </div>
