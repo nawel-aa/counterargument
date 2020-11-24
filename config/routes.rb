@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :arguments, only: [ :index ]
+    end
+  end
+
   root to: 'pages#home'
   get '/search', to: 'pages#search'
-  
+
   resources :arguments, except: %i[destroy index] do
     resources :votes, only: :create
   end
-
 
   get '/profile', to: 'profiles#show'
   get '/profile/edit', to: 'profiles#edit', as: "user"
