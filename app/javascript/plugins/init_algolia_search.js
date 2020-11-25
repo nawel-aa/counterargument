@@ -11,16 +11,39 @@ const algoliaSearch = () => {
     const client = algoliasearch(appId, searchOnlyApiKey);
     const index = client.initIndex('Argument');
 
-    inputField.addEventListener("input", () => {
+    inputField.addEventListener("keyup", () => {
+
+    const cardContainer = document.querySelector('#searchSuggestions');
       index.search(inputField.value).then((content) => {
+        if (inputField.value.length === 0) {
+          cardContainer.innerHTML = ""
+          return
+        }
+    const statements = content.hits
 
-        // const list = document.querySelector('#text');
-        // parsing the json to create the displayed html ---> display = JSON.parse(#text)
-        // assigning of inner html to step 2
+    cardContainer.innerHTML = ""
 
-        console.log(content);
-        // handle results however you like...
 
+    statements.forEach((statement, index) => {
+
+         if (index < 5){
+          const content = statement.content.slice(0, 10) + "...";
+          const suggestion = `<li data-id=${statement.objectID} class=suggestion>${content}</li>`
+          cardContainer.insertAdjacentHTML("beforeEnd", suggestion);
+
+          }
+    // asking the card conatiner what to put into the container and where
+    const suggestions = document.querySelectorAll(".suggestion")
+
+          // looping through the suggestions and adding event listenign so once press enter in takes to the new page
+          suggestions.forEach((suggestion) => {
+          suggestion.addEventListener("click", (event) => {
+          window.location=window.location.origin + "/search?statement_id=" + suggestion.dataset.id
+            })
+          });
+
+
+        })
       })
     });
   }
