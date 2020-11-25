@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_211225) do
+ActiveRecord::Schema.define(version: 2020_11_25_190114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 2020_11_24_211225) do
     t.boolean "hidden"
     t.index ["argument_id"], name: "index_arguments_on_argument_id"
     t.index ["user_id"], name: "index_arguments_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id", null: false
+    t.boolean "read", default: false
+    t.bigint "argument_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["argument_id"], name: "index_notifications_on_argument_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -68,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_211225) do
 
   add_foreign_key "arguments", "arguments"
   add_foreign_key "arguments", "users"
+  add_foreign_key "notifications", "arguments"
+  add_foreign_key "notifications", "users"
   add_foreign_key "tags_arguments", "arguments"
   add_foreign_key "tags_arguments", "tags"
   add_foreign_key "votes", "arguments"
