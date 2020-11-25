@@ -10,20 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_190114) do
+ActiveRecord::Schema.define(version: 2020_11_25_220624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "argument_parent_child_relationships", force: :cascade do |t|
+    t.bigint "child_id", null: false
+    t.bigint "parent_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_argument_parent_child_relationships_on_child_id"
+    t.index ["parent_id"], name: "index_argument_parent_child_relationships_on_parent_id"
+  end
 
   create_table "arguments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "content"
     t.string "source"
-    t.bigint "argument_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "hidden"
-    t.index ["argument_id"], name: "index_arguments_on_argument_id"
     t.index ["user_id"], name: "index_arguments_on_user_id"
   end
 
@@ -77,7 +84,8 @@ ActiveRecord::Schema.define(version: 2020_11_25_190114) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
-  add_foreign_key "arguments", "arguments"
+  add_foreign_key "argument_parent_child_relationships", "arguments", column: "child_id"
+  add_foreign_key "argument_parent_child_relationships", "arguments", column: "parent_id"
   add_foreign_key "arguments", "users"
   add_foreign_key "notifications", "arguments"
   add_foreign_key "notifications", "users"

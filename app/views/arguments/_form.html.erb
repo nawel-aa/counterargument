@@ -2,6 +2,6 @@
   <%= f.input :content %>
   <%= f.input :source %>
   <%= f.input :hidden, label: "Hide your username from this argument?" %>
-  <%= f.hidden_field :argument_id, value: arg.id %>
+  <%= f.hidden_field :parent_id, value: arg.id %>
   <%= f.button :submit, value: "Add Argument", class: "btn btn-primary btn-lg w-100" %>
 <% end %>

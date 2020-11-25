@@ -7,23 +7,22 @@ class ArgumentsController < ApplicationController
   end
 
   def create
-    @argument = Argument.new(argument_params)
+    @argument = Argument.new(content: argument_params[:content], source: argument_params[:source], hidden: argument_params[:hidden])
     @argument.user = current_user
     authorize @argument
 
-    parent_id = params[:argument][:argument_id]
-
-    add_parent(parent_id) if parent_id
+    parent = Argument.find(argument_params[:parent_id]) if argument_params[:parent_id]
 
     if @argument.save
-      if parent_id
-        create_notification(parent_id)
-        redirect_to argument_path(Argument.find(parent_id))
+      if parent
+        ArgumentParentChildRelationship.create(parent: parent, child: @argument)
+        create_notification(parent)
+        redirect_to argument_path(parent)
       else
         redirect_to argument_path(@argument)
       end
     else
-      @argument_show = Argument.find(params[:argument][:argument_id])
+      @argument_show = parent
       render "/arguments/show"
     end
   end
@@ -46,17 +45,12 @@ class ArgumentsController < ApplicationController
   private
 
   def argument_params
-    params.require(:argument).permit(:content, :source, :argument_id, :hidden)
+    params.require(:argument).permit(:content, :source, :hidden, :parent_id)
   end
 
-  def add_parent(parent_id)
-    parent = Argument.find(parent_id)
-    @argument.parents << parent
-  end
-
-  def create_notification(parent_id)
+  def create_notification(parent)
     notification = Notification.new
-    argument_countered = Argument.find(parent_id)
+    argument_countered = parent
     notification.argument = argument_countered
     notification.message = "#{current_user.nickname} submitted a new counterargument to \"#{argument_countered.content}\""
     notification.user = argument_countered.user

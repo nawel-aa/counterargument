@@ -10,10 +10,20 @@ class Argument < ApplicationRecord
 
   belongs_to :user
 
-  has_many :parents, class_name: 'Argument'
-  has_many :children, class_name: 'Argument'
+  # Gets all the relationships where you are the parent
+  has_many :relationships_as_a_parent, class_name: 'ArgumentParentChildRelationship', foreign_key: :parent_id
+
+  # Gets all the relationships where you are the child
+  has_many :relationships_as_a_child, class_name: 'ArgumentParentChildRelationship', foreign_key: :child_id
+
+  # Taking all the relationships where you are the child, getting the parent and calling it parents
+  has_many :parents, through: :relationships_as_a_child, source: :parent
+  # Taking all the relationships where you are the child, getting the parent and calling it children
+  has_many :children, through: :relationships_as_a_parent, source: :child
+
   has_many :tags, through: :tags_argument
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :content, presence: true
 end
