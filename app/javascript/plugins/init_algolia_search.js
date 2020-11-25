@@ -14,13 +14,14 @@ const algoliaSearch = () => {
     inputField.addEventListener("input", () => {
       index.search(inputField.value).then((content) => {
 
-        // const list = document.querySelector('#text');
-        // parsing the json to create the displayed html ---> display = JSON.parse(#text)
-        // assigning of inner html to step 2
+        const cardContainer = document.querySelector('#search-result');
+        // debugger
+        const statements = content.hits
+        statements.forEach((statement) => {
 
-        console.log(content);
-        // handle results however you like...
-
+        // asking the card conatiner what to put into the container and where
+        cardContainer.insertAdjacentHTML("beforeEnd", statement.content)
+        })
       })
     });
   }

@@ -1,9 +1,32 @@
-<input type="text" name="search" id="search"/>
 
-<h1>This is the results list page</h1>
+<div class="container">
+  <div class="row justify-content-center">
 
-<ul>
-  <% @arguments.each do |argument| %>
-    <li><%= argument.content %></li>
-  <% end %>
-</ul>
+      <h1>Results list page</h1>
+
+      <input type="text" name="search" id="search"/>
+
+      <select class="select2" content="text">
+        <optgroup label="politics">
+          <option value="Vote">Vote</option>
+          <option value="BLM">BLM</option>
+        </optgroup>
+
+        <optgroup label="Health">
+          <option value="Covid">Covid Vaccine</option>
+        </optgroup>
+
+        <optgroup label="Environment">
+          <option value="Global Warming">Global Warming</option>
+        </optgroup>
+      </select>
+
+
+        <ul id='search-result'>
+          <% @arguments.each do |argument| %>
+            <li><%= argument.content %></li>
+          <% end %>
+        </ul>
+
+ </div>
+</div>

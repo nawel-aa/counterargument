@@ -28,6 +28,10 @@ import { algoliaSearch } from "../plugins/init_algolia_search.js";
 
 algoliaSearch();
 
+import { initSelect2 } from "../plugins/init_select2";
+
+initSelect2();
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
