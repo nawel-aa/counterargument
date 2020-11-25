@@ -16,11 +16,16 @@ const algoliaSearch = () => {
 
         const cardContainer = document.querySelector('#search-result');
         // debugger
+        console.log(content)
+
         const statements = content.hits
+
         statements.forEach((statement) => {
+         cardContainer.innerHTML = statement.content
 
         // asking the card conatiner what to put into the container and where
-        cardContainer.insertAdjacentHTML("beforeEnd", statement.content)
+
+        //insertAdjacentHTML
         })
       })
     });
