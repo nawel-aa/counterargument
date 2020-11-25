@@ -1,6 +1,10 @@
 class ArgumentsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show]
 
+  def index
+    @arguments = Argument.all
+  end
+
   def new
     @argument = Argument.new
     authorize @argument
@@ -26,6 +30,7 @@ class ArgumentsController < ApplicationController
     @argument = Argument.new
     @argument_show = Argument.find(params[:id])
     authorize @argument_show
+    # @results = index.search(params[:query])[0]
   end
 
   def edit

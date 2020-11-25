@@ -8,7 +8,7 @@
 
 <%  Argument.find_each do |a| %>
   <% if a.argument_id == @argument_show.id %>
-      <div class="container">
+      <div class="container" id="arg-<%= a.id %>">
         <div class="card-product">
           <div class="card-product-infos">
             <h2><%= link_to a.content, argument_path(a) %></h2>
@@ -17,13 +17,13 @@
               <p>user: <%= link_to a.user.nickname, argument_path(a) %></p>
             <% end %>
             <div class="votes">
-              <%= link_to argument_votes_path(a, category: "source", origin: @argument_show), method: :post do %>
+              <%= link_to argument_votes_path(a, category: "source", origin: @argument_show), remote: true, method: :post do %>
                 <div><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: a.id, category: "source").count %></p></div>
               <% end %>
-              <%= link_to argument_votes_path(a, category: "funny", origin: @argument_show), method: :post do %>
+              <%= link_to argument_votes_path(a, category: "funny", origin: @argument_show), remote: true, method: :post do %>
                 <div><p><i class="far fa-laugh-beam"></i> <%= Vote.where(argument_id: a.id, category: "funny").count %></p></div>
               <% end %>
-              <%= link_to argument_votes_path(a, category: "concise", origin: @argument_show), method: :post do %>
+              <%= link_to argument_votes_path(a, category: "concise", origin: @argument_show), remote: true, method: :post do %>
                 <div><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: a.id, category: "concise").count %></p></div>
               <% end %>
             </div>
@@ -34,7 +34,25 @@
 <% end %>
 
 <div class="col-12 col-md-8 d-flex justify-content-center" id="Answer">
-  <h1>Add an Answer</h1>
+  <h1>Counter this argument</h1>
+</div>
+<div class="col-12 col-md-8 d-flex justify-content-center">
+  <%= simple_form_for :search, remote: true, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search" id="search" />
+    <%# <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button> %>
+  </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="card-product">
+    <div class="card-product-infos" id="search_results">
+      <h2>Test content</h2>
+      <p>Test user.nickname</p>
+    </div>
+  </div>
 </div>
 <div class="col-12 col-md-8 d-flex justify-content-center">
   <%= render '/arguments/form', arg: @argument_show %>

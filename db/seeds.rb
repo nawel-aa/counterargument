@@ -1,5 +1,10 @@
 require "faker"
 
+Argument.all.each do |a|
+  a.argument_id = nil
+  a.save
+end
+Vote.destroy_all
 Argument.destroy_all
 User.destroy_all
 
@@ -13,13 +18,13 @@ emails.each do |email|
   user.save!
 end
 
-  10.times do
-    argument = Argument.new(
-      content: Faker::Quote.yoda,
-      source: Faker::Internet.url,
-      # votes: (0..1000).to_a.sample,
-      user: User.all.sample
-    )
+10.times do
+  argument = Argument.new(
+    content: Faker::Quote.yoda,
+    source: Faker::Internet.url,
+    # votes: (0..1000).to_a.sample,
+    user: User.all.sample
+  )
 
-    argument.save
-  end
+  argument.save
+end
