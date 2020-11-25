@@ -1,4 +1,66 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Always have the last word.</h1>
 
-<input type="text" name="search" id="search"/>
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search" id="search"/>
+    <%# <button name="button" type="submit" class="btn btn-flat"> %>
+      <%# <i class="fas fa-search"></i> Search %>
+    <%# </button> %>
+  </div>
+  <% end %>
+
+<div><h2>Trending Arguments</h2></div>
+
+<div class="container">
+  <div class="card">
+      <div class="card-title">
+        <h2 class="card-title">Card title</h2>
+      </div>
+      <div class="tags">
+        <p class="card-text">Argument counter and tags</p>
+      </div>
+  </div>
+  <div class="card">
+      <div class="card-title">
+        <h2 class="card-title">Card title</h2>
+      </div>
+      <div class="tags">
+        <p class="card-text">Argument counter and tags</p>
+      </div>
+  </div>  <div class="card">
+      <div class="card-title">
+        <h2 class="card-title">Card title</h2>
+      </div>
+      <div class="tags">
+        <p class="card-text">Argument counter and tags</p>
+      </div>
+  </div>
+</div>
+<div>--------------------------------------------------</div>
+<h2>Hot Topics</h2>
+
+<div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Politics
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Global Warming
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Covid-19
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Religion
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
+    #BLM
+  </div>
+
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+    Vaccination
+  </div>
+</div>
