@@ -23,10 +23,18 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { initSidenavOnClick } from '../components/sidenav.js';
-import { algoliaSearch } from "../plugins/init_algolia_search.js";
 
+import { initSidenavOnClick } from '../components/sidenav.js';
+
+import "controllers";
+
+
+import { algoliaSearch } from "../plugins/init_algolia_search.js";
 algoliaSearch();
+
+import { initSelect2 } from "../plugins/init_select2";
+
+initSelect2();
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,6 +42,22 @@ algoliaSearch();
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
   initSidenavOnClick();
+
+  // responsiveSearch();
+
 });
+
+// const responsiveSearch = () => {
+//   addEventListener("keyup", event => {
+//     const input = document.getElementById("search").value;
+//     console.log(input);
+//     // query select card container of the suggestion
+//     // send search term to Algolia API
+//     // loop through how many searches we want to display
+//     // create a new html element (this is the suggestion) - creating string, putting inside a div (interpolate)
+//     // 
+//   });
+// };
 

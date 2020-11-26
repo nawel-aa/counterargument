@@ -6,6 +6,6 @@ class VotePolicy < ApplicationPolicy
   end
 
   def create?
-    record.argument.user != user
+    user != nil && record.argument.user != user
   end
 end
