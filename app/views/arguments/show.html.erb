@@ -7,7 +7,7 @@
 </div>
 
 <% @argument_show.children.each do |counterargument| %>
-  <div class="container" id="arg-<%= a.id %>">
+  <div class="container" id="arg-<%= counterargument.id %>">
     <div class="card-product">
       <div class="card-product-infos">
         <h2><%= link_to counterargument.content, argument_path(counterargument) %></h2>
