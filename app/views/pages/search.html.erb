@@ -1,15 +1,14 @@
 
 <div class="container">
-  <div class="row justify-content-center">
-
-    <h1>Results list page</h1>
-
-    <div id="searchSuggestions"></div>
-      <ul id='search-result'>
+  <h1>Results list page</h1>
+    <% if @arguments %>
+      <ul>
         <% @arguments.each do |argument| %>
           <li><%= argument.content %></li>
         <% end %>
       </ul>
-
- </div>
+    <% else %>
+      <p>No results for "<%= params[:search] %>".</p>
+      <%= link_to  "Add an argument", new_argument_path %>
+    <% end %>
 </div>
