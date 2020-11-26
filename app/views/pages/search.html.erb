@@ -1,12 +1,29 @@
 
 <div class="container">
   <h1>Results list page</h1>
+
+  <%# If results %>
     <% if @arguments %>
+      <% if @selected_tag %>
+        <p><strong>Selection: </strong><%= @selected_tag.name %></p>
+      <% end %>
       <ul>
         <% @arguments.each do |argument| %>
-          <li><%= argument.content %></li>
+          <li><%= link_to argument.content, argument_path(argument) %></li>
         <% end %>
       </ul>
+
+    <%# Filters %>
+    <div>
+      <ul>
+        <% @tags.each do |name, count| %>
+          <%# On click, add the tag to the parameters %>
+          <li><%= link_to "#{name} (#{count})", search_path(tag: name, search_results: @results) %></li>
+        <% end %>
+      </ul>
+    </div>
+    
+    <%# else: if no results %>
     <% else %>
       <p>No results for "<%= params[:search] %>".</p>
       <%= link_to  "Add an argument", new_argument_path %>

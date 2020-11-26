@@ -1,7 +1,7 @@
 <div>
-    <%= simple_form_for :search_form, url: search_path, method: "GET" do |f| %>
+    <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
       <input type="text" name="search" id="search" placeholder="Search..." autocomplete="off"/>
-      <%= f.hidden_field :results, id: 'results', value: '' %>
+      <%= f.hidden_field :results_ids, id: 'results', value: '' %>
       <%= button_tag type: :submit do %>
         <i class="fas fa-search" title="Search"></i>
       <% end %>

@@ -23,15 +23,10 @@ const algoliaSearch = () => {
         
         // Run the search
         const resultsInput = document.getElementById('results');
-        
         let resultsId = statements.map((statement) => {
           return statement.objectID;
         })
-
         resultsInput.value = JSON.stringify(resultsId);
-
-        
-        
         
         
         // Autocomplete
