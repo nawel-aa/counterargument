@@ -16,12 +16,12 @@ class PagesController < ApplicationController
 
     # Else create @arguments with the ids passed by Algolia's JSON
     else
-      @results = search_results_params
+      @results = search_results_params[:results_ids]
       parse_results
     end
 
     # Apply filters if there are some
-    filter_results if params[:tag]
+    filter_results if search_results_params[:tag]
     # Generate filters list
     generate_filter_list
   end
@@ -29,11 +29,11 @@ class PagesController < ApplicationController
   private
 
   def search_results_params
-    params.require("search_results").permit(:results_ids)
+    params.require("search_results").permit(:results_ids, :tag)
   end
 
   def parse_results
-    results_ids = JSON.parse(@results[:results_ids])
+    results_ids = JSON.parse(@results)
 
     @arguments =
       results_ids
@@ -42,10 +42,16 @@ class PagesController < ApplicationController
   end
 
   def filter_results
-    @selected_tag = Tag.find_by(name: params[:tag])
+    # Split the tags in an array
+    @selected_tags = search_results_params[:tag].split('|')
+    @selected_tags.map! do |tag|
+      Tag.find_by(name: tag)
+    end
 
-    # Select only arguments that are tagged with the selected tag
-    @arguments = @arguments.select { |argument| argument.tags.include?(@selected_tag) }
+    # Select only arguments that are tagged with the selected tags
+    @selected_tags.each do |tag|
+      @arguments = @arguments.select { |argument| argument.tags.include?(tag) }
+    end
   end
 
   def generate_filter_list

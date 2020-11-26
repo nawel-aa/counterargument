@@ -4,8 +4,13 @@
 
   <%# If results %>
     <% if @arguments %>
-      <% if @selected_tag %>
-        <p><strong>Selection: </strong><%= @selected_tag.name %></p>
+    <p><%= @arguments.count %> results</p>
+      <% if @selected_tags %>
+        <p><strong>Selected filters: </strong>
+          <% @selected_tags.each do |tag| %>
+            <%= tag.name %> 
+          <% end %>
+        </p>
       <% end %>
       <ul>
         <% @arguments.each do |argument| %>
@@ -17,8 +22,16 @@
     <div>
       <ul>
         <% @tags.each do |name, count| %>
-          <%# On click, add the tag to the parameters %>
-          <li><%= link_to "#{name} (#{count})", search_path(tag: name, search_results: @results) %></li>
+          <%# On click, add the tag to the parameters. The tags are seperated by | %>
+          <li>
+            <%= link_to "#{name} (#{count})", search_path(
+            search_results: {
+              results_ids: @results,
+              tag: "#{params[:search_results][:tag] ? params[:search_results][:tag] + '|' : ''}#{name}"
+              }
+            )
+            %>
+          </li>
         <% end %>
       </ul>
     </div>

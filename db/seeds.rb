@@ -56,6 +56,12 @@ child2 = Argument.create!(
 ArgumentParentChildRelationship.create!(child: child, parent: parent)
 ArgumentParentChildRelationship.create!(child: child, parent: parent2)
 ArgumentParentChildRelationship.create!(child: child2, parent: parent2)
+TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Politics"))
+TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: parent2, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child2, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Politics"))
 
 10.times do
   argument = Argument.new(
