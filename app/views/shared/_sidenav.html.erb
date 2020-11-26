@@ -1,4 +1,5 @@
 <div id="sideBarNav" class="sidenav">
+  <%= link_to 'Log-in' , new_user_session_path %>
   <a href="#">Login</a>
   <a href="#">Sign up</a>
   <a href="#">Argument</a>
@@ -7,6 +8,10 @@
     <i class="fas fa-times"></i>
   </div>
 </div>
-  <div class="icon">
-    <i class="fas fa-bars"></i>
+  <div class="avatar-btn">
+    <%= image_tag "useravatar.png", height: 40, width: 40, class:"openav rounded-circle" %>
+    <!-- <i class="fas fa-bars"></i> -->
   </div>
+
+
+

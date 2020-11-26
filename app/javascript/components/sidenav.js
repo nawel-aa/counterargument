@@ -1,6 +1,6 @@
 const initSidenavOnClick = () => {
   let closeBtn = document.querySelector('.fa-times');
-  let openBtn = document.querySelector('.fa-bars');
+  let openBtn = document.querySelector('.openav');
   let sideBarMenu = document.querySelector('#sideBarNav')
 
   // Add listener to open sidenav from avatar
