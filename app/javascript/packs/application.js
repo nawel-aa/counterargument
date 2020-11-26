@@ -23,7 +23,11 @@ require("channels")
 
 // External imports
 import "bootstrap";
+
+import { initSidenavOnClick } from '../components/sidenav.js';
+
 import "controllers";
+
 
 import { algoliaSearch } from "../plugins/init_algolia_search.js";
 algoliaSearch();
@@ -38,7 +42,11 @@ initSelect2();
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
+  initSidenavOnClick();
+
   // responsiveSearch();
+
 });
 
 // const responsiveSearch = () => {
