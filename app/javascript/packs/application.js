@@ -25,6 +25,7 @@ require("channels")
 import "bootstrap";
 
 import { initSidenavOnClick } from '../components/sidenav.js';
+import { initExpandableSearch } from '../components/expandable_search.js';
 
 import "controllers";
 
@@ -44,7 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   initSidenavOnClick();
-
+  initExpandableSearch();
   // responsiveSearch();
 
 });
@@ -57,7 +58,7 @@ document.addEventListener('turbolinks:load', () => {
 //     // send search term to Algolia API
 //     // loop through how many searches we want to display
 //     // create a new html element (this is the suggestion) - creating string, putting inside a div (interpolate)
-//     // 
+//     //
 //   });
 // };
 
