@@ -1,9 +1,16 @@
-<input type="text" name="search" id="search"/>
 
-<h1>This is the results list page</h1>
+<div class="container">
+  <div class="row justify-content-center">
 
-<ul>
-  <% @arguments.each do |argument| %>
-    <li><%= argument.content %></li>
-  <% end %>
-</ul>
+      <h1>Results list page</h1>
+
+      <input type="text" name="search" id="search"/>
+      <div id="searchSuggestions"></div>
+        <ul id='search-result'>
+          <% @arguments.each do |argument| %>
+            <li><%= argument.content %></li>
+          <% end %>
+        </ul>
+
+ </div>
+</div>
