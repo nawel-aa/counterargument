@@ -6,31 +6,29 @@
   </div>
 </div>
 
-<%  Argument.find_each do |a| %>
-  <% if a.argument_id == @argument_show.id %>
-      <div class="container" id="arg-<%= a.id %>">
-        <div class="card-product">
-          <div class="card-product-infos">
-            <h2><%= link_to a.content, argument_path(a) %></h2>
-            <p>source: <%= link_to a.source, argument_path(a) %></p>
-            <% unless a.hidden %>
-              <p>user: <%= link_to a.user.nickname, argument_path(a) %></p>
-            <% end %>
-            <div class="votes">
-              <%= link_to argument_votes_path(a, category: "source", origin: @argument_show), remote: true, method: :post do %>
-                <div><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: a.id, category: "source").count %></p></div>
-              <% end %>
-              <%= link_to argument_votes_path(a, category: "funny", origin: @argument_show), remote: true, method: :post do %>
-                <div><p><i class="far fa-laugh-beam"></i> <%= Vote.where(argument_id: a.id, category: "funny").count %></p></div>
-              <% end %>
-              <%= link_to argument_votes_path(a, category: "concise", origin: @argument_show), remote: true, method: :post do %>
-                <div><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: a.id, category: "concise").count %></p></div>
-              <% end %>
-            </div>
-          </div>
+<% @argument_show.children.each do |counterargument| %>
+  <div class="container" id="arg-<%= a.id %>">
+    <div class="card-product">
+      <div class="card-product-infos">
+        <h2><%= link_to counterargument.content, argument_path(counterargument) %></h2>
+        <p>source: <%= link_to counterargument.source, argument_path(counterargument) %></p>
+        <% unless counterargument.hidden %>
+          <p>user: <%= link_to counterargument.user.nickname, argument_path(counterargument) %></p>
+        <% end %>
+        <div class="votes">
+          <%= link_to argument_votes_path(counterargument, category: "source", origin: @argument_show), method: :post do %>
+            <div><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
+          <% end %>
+          <%= link_to argument_votes_path(counterargument, category: "funny", origin: @argument_show), method: :post do %>
+            <div><p><i class="far fa-laugh-beam"></i> <%= Vote.where(argument_id: counterargument.id, category: "funny").count %></p></div>
+          <% end %>
+          <%= link_to argument_votes_path(counterargument, category: "concise", origin: @argument_show), method: :post do %>
+            <div><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
+          <% end %>
         </div>
       </div>
-  <% end %>
+    </div>
+  </div>
 <% end %>
 
 <div class="col-12 col-md-8 d-flex justify-content-center" id="Answer">

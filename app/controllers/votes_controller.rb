@@ -3,16 +3,18 @@ class VotesController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def create
-    @vote = Vote.new(vote_params)
-    @vote.user = current_user
-    @vote.positive = true
-    # raise
-    authorize @vote
+    vote = Vote.new(vote_params)
+    vote.user = current_user
+    vote.positive = true
+    
+    authorize vote
     @vote.save
+    
+    # Create upvote notification
+    create_notification
+    
     @argument_show = Argument.find(params[:origin])
     redirect_to argument_path(@argument_show, anchor: "arg-#{params[:argument_id]}")
-    # @results = index.search(params[:query])[0]
-    # render "/arguments/show"
   end
 
   private
@@ -21,8 +23,18 @@ class VotesController < ApplicationController
     params.permit(:argument_id, :category)
   end
 
+
+  def create_notification
+    notification = Notification.new
+    upvoted_argument = Argument.find(params[:argument_id])
+    notification.argument = upvoted_argument
+    notification.message = "#{current_user.nickname} upvoted \"#{upvoted_argument.content}\""
+    notification.user = upvoted_argument.user
+    notification.save
+  end
+  
   def user_not_authorized
-    alert = current_user.nil? ? "You ust be logged in to upvote a post" : "You cannont upvote your own post"
+    alert = current_user.nil? ? "You must be logged in to upvote a post" : "You cannont upvote your own post"
     flash[:alert] = alert
     redirect_to(request.referrer || root_path)
   end

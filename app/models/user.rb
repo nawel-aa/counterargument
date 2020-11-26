@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true, uniqueness: true
+  has_many :arguments
+  has_many :notifications, dependent: :destroy
 end
