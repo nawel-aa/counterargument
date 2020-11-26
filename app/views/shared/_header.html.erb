@@ -1,21 +1,17 @@
 
-  <div class="container bg-transparent">
-
+  <div class=" bg-transparent">
+    <div class="container">
     <div class="row justify-content-between align-items-center">
-      <div class="ca-logo col-8">
+      <div class="ca-logo col-6">
         <%= link_to root_path do %>
         <%= image_tag "ca-logo.png", alt:"counterargument logo" %>
         <% end %>
       </div>
 
-      <div class="col-2">
+      <div class="col-6 d-flex justify-content-center align-items-center ">
         <%= render '/shared/search-header' %>
-
-      </div>
-      <div class="col-2">
         <%= render '/shared/sidenav' %>
       </div>
-
-
+    </div>
   </div>
 
