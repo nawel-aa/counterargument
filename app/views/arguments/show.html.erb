@@ -7,7 +7,7 @@
 </div>
 
 <% @argument_show.children.each do |counterargument| %>
-  <div class="container">
+  <div class="container" id="arg-<%= a.id %>">
     <div class="card-product">
       <div class="card-product-infos">
         <h2><%= link_to counterargument.content, argument_path(counterargument) %></h2>
@@ -32,7 +32,25 @@
 <% end %>
 
 <div class="col-12 col-md-8 d-flex justify-content-center" id="Answer">
-  <h1>Add an Answer</h1>
+  <h1>Counter this argument</h1>
+</div>
+<div class="col-12 col-md-8 d-flex justify-content-center">
+  <%= simple_form_for :search, remote: true, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search" id="search" />
+    <%# <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button> %>
+  </div>
+  <% end %>
+</div>
+<div class="container">
+  <div class="card-product">
+    <div class="card-product-infos" id="search_results">
+      <h2>Test content</h2>
+      <p>Test user.nickname</p>
+    </div>
+  </div>
 </div>
 <div class="col-12 col-md-8 d-flex justify-content-center">
   <%= render '/arguments/form', arg: @argument_show %>

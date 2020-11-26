@@ -1,5 +1,10 @@
 require "faker"
 
+Argument.all.each do |a|
+  a.argument_id = nil
+  a.save
+end
+Vote.destroy_all
 Argument.destroy_all
 User.destroy_all
 
@@ -13,26 +18,27 @@ emails.each do |email|
   user.save!
 end
 
+
 parent = Argument.create!(
-  content: "Parent: the sun is hot",
+  content: "The sun is hot",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample
 )
 parent2 = Argument.create!(
-  content: "Parent: ice is cold",
+  content: "Ice is cold",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample
 )
 child = Argument.create!(
-  content: "Child with two parents: temperature is subjective",
+  content: "Temperature is subjective",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample,
 )
 child2 = Argument.create!(
-  content: "Child: Freezing point is affected by pressure",
+  content: "Freezing point is affected by pressure",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample,
@@ -49,6 +55,6 @@ ArgumentParentChildRelationship.create!(child: child2, parent: parent2)
     # votes: (0..1000).to_a.sample,
     user: User.all.sample
   )
-  
+
   argument.save
 end
