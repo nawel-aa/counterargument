@@ -12,16 +12,19 @@
     </div>
   </div>
 
+  <div class="container">
 
-<% @argument_show.children.each do |counterargument| %>
-  <div class="container" id="arg-<%= counterargument.id %>">
+    <% @argument_show.children.each do |counterargument| %>
+  <!-- <div class="container" id="arg-<%= counterargument.id %>">
     <div class="card-product">
-      <div class="card-product-infos">
+      <div class="card-product-infos"> -->
+        <div class="col-12 col-md-12 justify-content-center show-argument-child mb-3">
         <h2><%= link_to counterargument.content, argument_path(counterargument) %></h2>
         <p>source: <%= link_to counterargument.source, argument_path(counterargument) %></p>
         <% unless counterargument.hidden %>
-          <p>user: <%= link_to counterargument.user.nickname, argument_path(counterargument) %></p>
+          <p>Submitted by:: <%= link_to counterargument.user.nickname, argument_path(counterargument) %></p>
         <% end %>
+
         <div class="votes">
           <%= link_to argument_votes_path(counterargument, category: "source", origin: @argument_show), method: :post do %>
             <div><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
@@ -33,10 +36,12 @@
             <div><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
           <% end %>
         </div>
-      </div>
+     <!--  </div>
     </div>
+  </div> -->
+    <% end %>
   </div>
-<% end %>
+  </div>
 
 <div class="col-12 col-md-8 d-flex justify-content-center" id="Answer">
   <h1>Counter this argument</h1>
