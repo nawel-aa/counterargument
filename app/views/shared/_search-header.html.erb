@@ -1,11 +1,16 @@
-<div class="search-box d-flex">
-
     <%= simple_form_for :search, url: search_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <input type="text" name="search" id="search" class="search-txt" placeholder="Search..."/>
+      <input type="text" class="search-input" name="search" id="search" placeholder="Search..."/>
 
-      <%= button_tag type: 'submit', class: "search-btn cursor-pointer" do %>
+      <div class="iconsearch">
+      <i class="fas fa-search" title="Search"></i>
+      </div>
+
+      <%= button_tag type: 'submit', class: " iconsearch2 cursor-pointer" do %>
         <i class="fas fa-search" title="Search"></i>
       <% end %>
 
     <% end %>
-</div>
+
+
+
+
