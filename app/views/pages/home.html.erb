@@ -36,7 +36,7 @@
         <h2 class="card-title"><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
       </div>
       <div class="tags">
-        <div><%= image_tag("argument_bubble", id: 'argument_bubble') %><%= @trending[1][0] %></div>
+        <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[1][0] %></div>
         <div>
       <%= render partial: "shared/tag", locals: {tag_name: "BLM"}%>
       </div>
@@ -47,7 +47,7 @@
         <h2 class="card-title"><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
       </div>
       <div class="tags">
-        <div><%= image_tag("argument_bubble", id: 'argument_bubble') %><%= @trending[2][0] %></div>
+        <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[2][0] %></div>
         <div>
 
         <%= render partial: "shared/tag", locals: {tag_name: "tbt"}%>
