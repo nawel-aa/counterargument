@@ -1,4 +1,6 @@
-<div class="centered-title tagline"><h1>Always have the last word.</h1></div>
+<div class="centered-title tagline">
+  <h1>Always have the last word.</h1>
+</div>
 
 <!-- <div class="search-bar home-search">
  <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'form-inline' } do |f| %>
@@ -12,13 +14,13 @@
 
     <div id="searchSuggestions"></div>
 </div> -->
-
+<div class="container">
 <div class="centered-title trending"><h2>Trending Arguments</h2></div>
 
-<div class="container">
+<div class="col-12">
+<div class="row d-flex align-items-center justify-content-center">
   <div class="card">
       <div class="card-title">
-
         <h2 class="card-title"><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
       </div>
       <div class="tags">
@@ -29,8 +31,9 @@
       </div>
       </div>
   </div>
+  </div>
 
-
+<div class="row d-flex align-items-center justify-content-center">
   <div class="card">
       <div class="card-title">
         <h2 class="card-title"><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
@@ -42,6 +45,9 @@
       </div>
       </div>
   </div>
+</div>
+
+<div class="row d-flex align-items-center justify-content-center">
   <div class="card">
       <div class="card-title">
         <h2 class="card-title"><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
@@ -54,13 +60,14 @@
         <%= render partial: "shared/tag", locals: {tag_name: "nature"}%>
         <%= render partial: "shared/tag", locals: {tag_name: "love"}%>
         <%= render partial: "shared/tag", locals: {tag_name: "animal"}%>
-
-
       </div>
       </div>
   </div>
 </div>
-<hr>
+
+</div>
+</div>
+
 <div class="centered-title"><h2>Hot Topics</h2></div>
 
 <div class="cards">
