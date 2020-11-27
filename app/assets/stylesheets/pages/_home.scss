@@ -47,3 +47,31 @@ h2 {
   left: 4px;
   bottom: 11px;
 }
+
+hr {
+  width: 100vw;
+  border: 1px solid black rgba(0, 0, 0, 0.4);
+}
+
+.card-category {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 24px;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.tagline {
+  margin: 0px;
+}
+
+.search-bar {
+  width: 300px;
+  margin: auto;
+}
+
+#home {
+  margin-top: 80px;
+}
