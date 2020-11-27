@@ -1,14 +1,16 @@
-<h1>Always have the last word.</h1>
+<div class="centered-title"><h1>Always have the last word.</h1></div>
 
-<div><h2>Trending Arguments</h2></div>
+<div class="centered-title"><h2>Trending Arguments</h2></div>
 
 <div class="container">
   <div class="card">
       <div class="card-title">
-        <h2 class="card-title">Covid is not deadly</h2>
+
+        <h2 class="card-title"><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
       </div>
       <div class="tags">
-        <p class="card-text">Argument counter</p>
+        <div><%= image_tag("argument_bubble", id: 'argument_bubble') %><%= @trending[0][0] %></div>
+        <div>and tags</div>
         <%= render partial: "shared/tag", locals: {tag_name: "politics"}%>
         <%= render partial: "shared/tag", locals: {tag_name: "health"}%>
       </div>
@@ -17,17 +19,20 @@
 
   <div class="card">
       <div class="card-title">
-        <h2 class="card-title">Pigs are smart</h2>
+        <h2 class="card-title"><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
       </div>
       <div class="tags">
-        <p class="card-text">Argument counter</p>
+        <div><%= image_tag("argument_bubble", id: 'argument_bubble') %><%= @trending[1][0] %></div>
+        <div>and tags</div>
       </div>
-  </div>  <div class="card">
+  </div>
+  <div class="card">
       <div class="card-title">
-        <h2 class="card-title">Green tea is better</h2>
+        <h2 class="card-title"><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
       </div>
       <div class="tags">
-        <p class="card-text">Argument counter</p>
+        <div><%= image_tag("argument_bubble", id: 'argument_bubble') %><%= @trending[2][0] %></div>
+        <div>and tags</div>
       </div>
   </div>
 </div>
