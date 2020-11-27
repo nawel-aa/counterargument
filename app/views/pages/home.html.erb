@@ -5,13 +5,18 @@
 <div class="container">
   <div class="card">
       <div class="card-title">
+
         <h2 class="card-title"><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
       </div>
       <div class="tags">
         <div><%= image_tag("argument_bubble", id: 'argument_bubble') %><%= @trending[0][0] %></div>
         <div>and tags</div>
+        <%= render partial: "shared/tag", locals: {tag_name: "politics"}%>
+        <%= render partial: "shared/tag", locals: {tag_name: "health"}%>
       </div>
   </div>
+
+
   <div class="card">
       <div class="card-title">
         <h2 class="card-title"><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>

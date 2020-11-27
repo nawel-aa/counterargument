@@ -4,10 +4,11 @@
     font-size: 1em;
     width: 0;
     outline: none;
-    padding-left: 10px;
+    // padding-left: 100px;
     border: none;
     border-radius: 15px;
     transition: all 0.5s;
+    // visibility:hidden;
 }
 
 .iconsearch{
@@ -36,7 +37,7 @@
     font-size: 1.8em;
     color: #fff;
     cursor: pointer;
-    transform: translateX(-30px);
+    transform: translateX(-20px);
     visibility:hidden;
 }
 
@@ -46,7 +47,7 @@
 
 
 .active{
-    width: 60%;
+    width: 170px;
 }
 
 .remove{
