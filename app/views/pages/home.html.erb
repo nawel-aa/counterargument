@@ -1,6 +1,19 @@
-<div class="centered-title"><h1>Always have the last word.</h1></div>
+<div class="centered-title tagline"><h1>Always have the last word.</h1></div>
 
-<div class="centered-title"><h2>Trending Arguments</h2></div>
+<div class="search-bar home-search">
+ <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <input type="text" class="search-input active" name="search" id="search" placeholder="Search..." autocomplete="off" style="width:340px"/>
+      <%= f.hidden_field :results_ids, id: 'results', value: '' %>
+
+      <%= button_tag type: 'submit', class: " iconsearch2 cursor-pointer" do %>
+        <i class="fas fa-search" title="Search"></i>
+      <% end %>
+    <% end %>
+
+    <div id="searchSuggestions"></div>
+</div>
+
+<div class="centered-title trending"><h2>Trending Arguments</h2></div>
 
 <div class="container">
   <div class="card">
@@ -47,31 +60,31 @@
       </div>
   </div>
 </div>
-<div>--------------------------------------------------</div>
-<h2>Hot Topics</h2>
+<hr>
+<div class="centered-title"><h2>Hot Topics</h2></div>
 
 <div class="cards">
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Politics
+    <%= link_to "Politics", root_path + "search?search=politics&search_results%5Bresults_ids%5D=&button=" %>
   </div>
 
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Global Warming
+    <%= link_to "Global Warming", root_path + "search?search=global+warming&search_results%5Bresults_ids%5D=&button=" %>
   </div>
 
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Covid-19
+    <%= link_to "Covid-19", root_path + "search?search=covid-19&search_results%5Bresults_ids%5D=&button=" %>
   </div>
 
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Religion
+    <%= link_to "Religion", root_path + "search?search=religion&search_results%5Bresults_ids%5D=&button=" %>
   </div>
 
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
-    #BLM
+    <%= link_to "#BLM", root_path + "search?search=BLM&search_results%5Bresults_ids%5D=&button=" %>
   </div>
 
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    Vaccination
+    <%= link_to "Vaccination", root_path + "search?search=vaccination&search_results%5Bresults_ids%5D=&button=" %>
   </div>
 </div>
