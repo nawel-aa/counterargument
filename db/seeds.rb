@@ -1,10 +1,13 @@
 require "faker"
 
-Argument.all.each do |a|
-  a.argument_id = nil
-  a.save
-end
+# Argument.all.each do |a|
+#   a.argument_id = nil
+#   a.save
+# end
 Vote.destroy_all
+ArgumentParentChildRelationship.destroy_all
+TagsArgument.destroy_all
+Tag.destroy_all
 Argument.destroy_all
 User.destroy_all
 
@@ -18,7 +21,13 @@ emails.each do |email|
   user.save!
 end
 
+puts "Generating tags..."
+tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19"]
+tag_names.each do |tag_name|
+  Tag.create!(name: tag_name)
+end
 
+puts "Generating arguments..."
 parent = Argument.create!(
   content: "The sun is hot",
   source: Faker::Internet.url,
@@ -47,6 +56,12 @@ child2 = Argument.create!(
 ArgumentParentChildRelationship.create!(child: child, parent: parent)
 ArgumentParentChildRelationship.create!(child: child, parent: parent2)
 ArgumentParentChildRelationship.create!(child: child2, parent: parent2)
+TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Politics"))
+TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: parent2, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child2, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Politics"))
 
 10.times do
   argument = Argument.new(
@@ -57,4 +72,5 @@ ArgumentParentChildRelationship.create!(child: child2, parent: parent2)
   )
 
   argument.save
+  TagsArgument.create!(argument: argument, tag: Tag.all.sample)
 end

@@ -53,6 +53,10 @@
     display:none;
 }
 
+#searchSuggestions {
+  position: absolute;
+}
+
 input:hover{
     box-shadow: 0 0 5px #fff,
         0 0 10px #fff,

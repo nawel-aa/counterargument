@@ -13,26 +13,31 @@ const algoliaSearch = () => {
     
     inputField.addEventListener("keyup", () => {
       
-      const cardContainer = document.querySelector('#searchSuggestions');
+      const autocompleteElement = document.querySelector('#searchSuggestions');
       index.search(inputField.value).then((content) => {
         if (inputField.value.length === 0) {
-          cardContainer.innerHTML = ""
+          autocompleteElement.innerHTML = ""
           return
         }
         const statements = content.hits
-
-
-        // JSON.stringify(statements);
         
-        cardContainer.innerHTML = ""
+        // Run the search
+        const resultsInput = document.getElementById('results');
+        let resultsId = statements.map((statement) => {
+          return statement.objectID;
+        })
+        resultsInput.value = JSON.stringify(resultsId);
         
+        
+        // Autocomplete
+        autocompleteElement.innerHTML = ""
         
         statements.forEach((statement, index) => {
           
           if (index < 5){
             const content = statement.content.slice(0, 10) + "...";
             const suggestion = `<li data-id=${statement.objectID} class=suggestion>${content}</li>`
-            cardContainer.insertAdjacentHTML("beforeEnd", suggestion);
+            autocompleteElement.insertAdjacentHTML("beforeEnd", suggestion);
             
           }
           // asking the card conatiner what to put into the container and where
@@ -41,7 +46,7 @@ const algoliaSearch = () => {
           // looping through the suggestions and adding event listenign so once press enter in takes to the new page
           suggestions.forEach((suggestion) => {
             suggestion.addEventListener("click", (event) => {
-              window.location=window.location.origin + "/search?statement_id=" + suggestion.dataset.id
+              window.location=window.location.origin + "/arguments/" + suggestion.dataset.id
             })
           });
           
