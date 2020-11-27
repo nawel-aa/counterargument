@@ -16,11 +16,7 @@
   </head>
 
   <body>
-    <% if current_page?(root_path) %>
-      <%= render 'shared/home_header' %>
-    <% else %>
-      <%= render 'shared/header' %>
-    <% end %>
+    <%= render 'shared/header' %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
