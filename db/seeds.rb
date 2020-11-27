@@ -25,45 +25,46 @@ emails.each do |email|
 end
 
 puts "Generating tags..."
-tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19"]
+tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment"]
 tag_names.each do |tag_name|
   Tag.create!(name: tag_name)
 end
 
 puts "Generating arguments..."
 parent = Argument.create!(
-  content: "The sun is hot",
+  content: "Global warming is not real",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample
 )
 parent2 = Argument.create!(
-  content: "Ice is cold",
+  content: "Global overpopulation is a myth",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample
 )
 child = Argument.create!(
-  content: "Temperature is subjective",
+  content: "Global temperature is rising",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample,
 )
 child2 = Argument.create!(
-  content: "Freezing point is affected by pressure",
+  content: "A lot of countries have famines",
   source: Faker::Internet.url,
   # votes: (0..1000).to_a.sample,
   user: User.all.sample,
 )
 
 ArgumentParentChildRelationship.create!(child: child, parent: parent)
-ArgumentParentChildRelationship.create!(child: child, parent: parent2)
 ArgumentParentChildRelationship.create!(child: child2, parent: parent2)
 TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Politics"))
+TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: parent, tag: Tag.find_by(name: "Global Warming"))
-TagsArgument.create!(argument: parent2, tag: Tag.find_by(name: "Global Warming"))
-TagsArgument.create!(argument: child2, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: parent2, tag: Tag.find_by(name: "Politics"))
+TagsArgument.create!(argument: child2, tag: Tag.find_by(name: "Politics"))
 TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: child, tag: Tag.find_by(name: "Politics"))
 
 10.times do
