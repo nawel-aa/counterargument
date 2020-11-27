@@ -3,6 +3,10 @@ class PagesController < ApplicationController
 
   def home
     @arguments = policy_scope(Argument).order(created_at: :desc)
+    @trending = @arguments.map do |argument|
+      [argument.children.count, argument]
+    end
+    @trending.sort!.reverse!
   end
 
   def search
