@@ -5,7 +5,7 @@
 ul { padding-left:20px; list-style:none; }
 li { margin-bottom:10px; }
 
-ul li:before {
+.new-guidelines li:before {
   content: '✔ ';
   margin-left: -20px;
 }

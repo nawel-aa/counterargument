@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     vote.positive = true
     
     authorize vote
-    @vote.save
+    vote.save
     
     # Create upvote notification
     create_notification
