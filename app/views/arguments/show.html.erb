@@ -1,5 +1,7 @@
 
   <p><%= link_to "Back (delete me at some point)", :back %></p>
+
+  <!-- Parent Argument -->
   <div class="col-12 col-md-12 justify-content-center show-argument-main">
     <h1 class="title"><%= @argument_show.content %></h1>
     <div class="arg-user">
@@ -12,21 +14,16 @@
     </div>
   </div>
 
-    <!-- <div class="container">
-    <div class="col-12 col-md-12 d-flex justify-content-center align-items-center show-argument-child mb-3"> -->
-    <% @argument_show.children.each do |counterargument| %>
-
+  <!-- Child Arguments  -->
+  <% @argument_show.children.each do |counterargument| %>
   <div class="container" id="arg-<%= counterargument.id %>">
     <div class="show-argument-child">
       <div class="show-argument-child-infos">
-
         <h5><%= link_to counterargument.content, argument_path(counterargument) %></h5>
-
-        <% unless counterargument.hidden %>
-          <p>Submitted by: <%= link_to counterargument.user.nickname, argument_path(counterargument) %> <%= time_ago_in_words(counterargument.created_at) %> ago</p>
-        <% end %>
+          <% unless counterargument.hidden %>
+        <p>Submitted by: <%= link_to counterargument.user.nickname, argument_path(counterargument) %> <%= time_ago_in_words(counterargument.created_at) %> ago</p>
+          <% end %>
         <p><strong>source:</strong> <%= link_to counterargument.source, argument_path(counterargument) %></p>
-
         <div class="votes">
           <%= link_to argument_votes_path(counterargument, title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
             <div class = 'vote-btn'><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
@@ -41,32 +38,27 @@
       </div>
     </div>
   </div>
-    <% end %>
+  <% end %>
 
-  <!-- </div>
-  </div> -->
-
-<div class="col-12 col-md-8 d-flex justify-content-center" id="Answer">
-  <h1>Counter this argument</h1>
-</div>
-<div class="col-12 col-md-8 d-flex justify-content-center">
+<!-- Add counter argument section -->
+<div class="container">
+  <div class="col-12 col-md-8" id="Answer">
+    <h5>Counter this argument</h5>
+  </div>
+<!-- Form to find EXISTING counter argument -->
+<div class="col-12 col-md-8">
   <%= simple_form_for :search, remote: true, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search" id="search" />
-    <%# <button name="button" type="submit" class="btn btn-flat">
+    <input class="form-control string required" type="text" name="search" id="search" placeholder="Add an existing counterargument" />
+    <button name="button" type="submit" class="btn btn-flat mt-3">
       <i class="fas fa-search"></i> Search
-    </button> %>
+    </button>
   </div>
   <% end %>
 </div>
-<div class="container">
-  <div class="card-product">
-    <div class="card-product-infos" id="search_results">
-      <h2>Test content</h2>
-      <p>Test user.nickname</p>
-    </div>
-  </div>
-</div>
-<div class="col-12 col-md-8 d-flex justify-content-center">
+
+<!-- Form to add a NEW counter argument -->
+<div class="col-12 col-md-8">
   <%= render '/arguments/form', arg: @argument_show %>
+</div>
 </div>
