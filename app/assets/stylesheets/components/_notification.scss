@@ -1,9 +1,8 @@
 .notification {
   display: flex;
   align-items: center;
-  background: white;
   padding: 8px 16px;
-  border-bottom: 1px solid rgb(235,235,235);
+  border-bottom: 1px solid #C4C4C4;
 }
 
 .notification:last-child {
@@ -11,12 +10,15 @@
 }
 .notification .notification-content {
   flex-grow: 1;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 .notification p {
   margin: 0;
   line-height: 1.4;
+  a {
+    color: $text-color;
+  }
 }
 
 .notification small {
