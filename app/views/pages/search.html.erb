@@ -1,10 +1,16 @@
 
 <div class="container">
-  <h1>Results list page</h1>
 
   <%# If results %>
     <% if @arguments %>
-    <p><%= @arguments.count %> results</p>
+      <div class="row align-items-center">
+        <div class="col">
+          <p class="m-0"><%= @arguments.count %> results for <strong><%= params[:search] %></strong></p>
+        </div>
+        <div class="col col-auto">
+          <%= image_tag "filters-icon.svg", width: "41", height: "35", alt: "filter results", title: "filter results", class: "openFilters" %>
+        </div>
+      </div>
       <% if @selected_tags %>
         <p><strong>Selected filters: </strong>
           <% @selected_tags.each do |tag| %>
@@ -18,23 +24,27 @@
         <% end %>
       </ul>
 
-    <%# Filters %>
-    <div>
-      <ul>
-        <% @tags.each do |name, count| %>
-          <%# On click, add the tag to the parameters. The tags are seperated by | %>
-          <li>
-            <%= link_to "#{name} (#{count})", search_path(
-            search_results: {
-              results_ids: @results,
-              tag: "#{params[:search_results][:tag] ? params[:search_results][:tag] + '|' : ''}#{name}"
-              }
-            )
-            %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+      <%# Filters %>
+      <div id="filters" class="sidenav">
+        <ul>
+          <% @tags.each do |name, count| %>
+            <%# On click, add the tag to the parameters. The tags are seperated by | %>
+            <li>
+              <%= link_to "#{name} (#{count})", search_path(
+              search: params[:search],
+              search_results: {
+                results_ids: @results,
+                tag: "#{params[:search_results][:tag] ? params[:search_results][:tag] + '|' : ''}#{name}"
+                }
+              )
+              %>
+            </li>
+          <% end %>
+        </ul>
+        <div class="icon closeFilters">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
     
     <%# else: if no results %>
     <% else %>
