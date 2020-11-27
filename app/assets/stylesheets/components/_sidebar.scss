@@ -14,31 +14,46 @@
   right: -80%;
   background-color: #fff;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding: 60px 20px;
   transition: 0.8s ease;
   text-align: left;
 
-}
-.sidenav a {
-  padding: 9px 9px 9px 33px;
-  text-decoration: none;
-  font-size: 22px;
-  color: $brandblue;
-  display: block;
-  transition: 0.4s;
-  border-bottom: 1px solid #f1f1f1;
+  > a, > ul {
+    padding: 20px 10px;
+    text-decoration: none;
+    font-size: 22px;
+    color: $text-color;
+    font-family: $headers-font;
+    display: block;
+    transition: 0.4s;
+    border-bottom: 1px solid #f1f1f1;
+
+    &:hover{
+      background:$brandlightblue ;
+    }
+  }
+
+  .fa-times{
+    color: $primary;
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  } 
 }
 
-.sidenav a:hover{
-  background:$brandlightblue ;
-}
+.filters {
+  &__link {
+    font-family: $body-font;
+    color: $text-color;
+    font-size: $font-size-base;
+  }
 
-.sidenav .fa-times{
-  color: $brandblue;
-  font-size: 20px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-
+  ul {
+    padding-left: 0;
+     ul {
+      padding-top: 10px;
+    }
+  }
 }

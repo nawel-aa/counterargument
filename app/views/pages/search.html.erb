@@ -25,21 +25,25 @@
       </ul>
 
       <%# Filters %>
-      <div id="filters" class="sidenav">
+      <div id="filters" class="sidenav filters">
         <ul>
-          <% @tags.each do |name, count| %>
-            <%# On click, add the tag to the parameters. The tags are seperated by | %>
-            <li>
-              <%= link_to "#{name} (#{count})", search_path(
-              search: params[:search],
-              search_results: {
-                results_ids: @results,
-                tag: "#{params[:search_results][:tag] ? params[:search_results][:tag] + '|' : ''}#{name}"
-                }
-              )
-              %>
-            </li>
-          <% end %>
+          <li>Topic
+            <ul>
+              <% @tags.each do |name, count| %>
+                <%# On click, add the tag to the parameters. The tags are seperated by | %>
+                  <li>
+                    <%= link_to "#{name} (#{count})", search_path(
+                    search: params[:search],
+                    search_results: {
+                      results_ids: @results,
+                      tag: "#{params[:search_results][:tag] ? params[:search_results][:tag] + '|' : ''}#{name}"
+                      }
+                    ), class: "filters__link"
+                    %>
+                  </li>
+              <% end %>
+            </ul>
+          </li>
         </ul>
         <div class="icon closeFilters">
           <i class="fas fa-times"></i>
