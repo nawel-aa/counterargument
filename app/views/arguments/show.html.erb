@@ -1,6 +1,4 @@
 
-  <p><%= link_to "Back (delete me at some point)", :back %></p>
-
   <!-- Parent Argument -->
   <div class="col-12 col-md-12 justify-content-center show-argument-main">
     <h1 class="title"><%= @argument_show.content %></h1>
@@ -8,7 +6,8 @@
     <%= image_tag "useravatar.png", class:"show-avatar" %>
 
     <div class="arg-info">
-    <p class="nickname">Submitted by: <%= @argument_show.user.nickname unless @argument_show.hidden %></p>
+    <p class="nickname"><%= "Source: #{@argument_show.source}" %></p>
+    <p class="nickname"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
     <p class="nickname"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
     </div>
     </div>
