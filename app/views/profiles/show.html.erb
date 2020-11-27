@@ -1,7 +1,56 @@
-<h1>Profile</h1>
+<h1>Hi Sophie</h1>
 
 <% @notifications.each do |notification| %>
   <%= link_to argument_path(notification.argument) do %>
     <p><%= notification.message %></p>
   <% end %>
 <% end %>
+
+
+<div>
+<div class="container">
+      <div class="tabs">
+        <a href="" class="tab active">Recent activities</a>
+        <a href="" class="tab">Find ternding arguments</a>
+</div>
+
+<div class="notifications">
+
+          <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/aliceclv' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>1st November</small></p>
+            <p>Alice liked <a href="#">Green tea is better</a>.</p>
+          </div>
+
+          <div class="notification-actions">
+            <a href="#">Mark as seen <i class="fas fa-check"></i></a>
+          </div>
+        </div>
+
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/sarahlafer' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>14th November</small></p>
+            <p>Sarah started to follow you.</p>
+          </div>
+
+          <div class="notification-actions">
+            <a href="#">Follow back <i class="fas fa-user-plus"></i></a>
+          </div>
+        </div>
+
+        <div class="notification">
+          <img src='https://kitt.lewagon.com/placeholder/users/pdunleav' class="avatar-large"/>
+          <div class="notification-content">
+            <p><small>23rd November</small></p>
+            <p>Boris liked <a href="#">Covid are not deadly</a>.</p>
+          </div>
+
+          <div class="notification-actions">
+            <a href="#">Follow back <i class="fas fa-user-plus"></i></a>
+          </div>
+        </div>
+
+    </div>
+</div>
