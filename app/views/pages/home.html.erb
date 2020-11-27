@@ -5,25 +5,29 @@
 <div class="container">
   <div class="card">
       <div class="card-title">
-        <h2 class="card-title">Card title</h2>
+        <h2 class="card-title">Covid is not deadly</h2>
       </div>
       <div class="tags">
-        <p class="card-text">Argument counter and tags</p>
+        <p class="card-text">Argument counter</p>
+        <%= render partial: "shared/tag", locals: {tag_name: "politics"}%>
+        <%= render partial: "shared/tag", locals: {tag_name: "health"}%>
       </div>
   </div>
+
+
   <div class="card">
       <div class="card-title">
-        <h2 class="card-title">Card title</h2>
+        <h2 class="card-title">Pigs are smart</h2>
       </div>
       <div class="tags">
-        <p class="card-text">Argument counter and tags</p>
+        <p class="card-text">Argument counter</p>
       </div>
   </div>  <div class="card">
       <div class="card-title">
-        <h2 class="card-title">Card title</h2>
+        <h2 class="card-title">Green tea is better</h2>
       </div>
       <div class="tags">
-        <p class="card-text">Argument counter and tags</p>
+        <p class="card-text">Argument counter</p>
       </div>
   </div>
 </div>
