@@ -8,7 +8,10 @@ Vote.destroy_all
 ArgumentParentChildRelationship.destroy_all
 TagsArgument.destroy_all
 Tag.destroy_all
+# Reindexing algolia
+Argument.clear_index!
 Argument.destroy_all
+Argument.reindex!
 User.destroy_all
 
 
