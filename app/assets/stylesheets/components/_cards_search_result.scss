@@ -1,6 +1,4 @@
 .cards_search_result{
-display: flex;
-justify-content: space-between;
 background-color: white;
 border: 1px solid rgba(0, 0, 0, 0.125);
 border-radius: 6px;
@@ -16,11 +14,9 @@ margin:10px;
 .cards_search_result a:hover{
   color: #E7A92F;
   opacity: 1;
+  text-decoration: none;
 }
 
-.cards_search_result_tags{
-  display: flex;
-}
 
 .cards_result_tag{
 
