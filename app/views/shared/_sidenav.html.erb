@@ -12,7 +12,8 @@
   </div>
 </div>
 <div class="avatar-btn">
-  <%= image_tag "useravatar.png", height: 40, width: 40, class:"openav rounded-circle" %>
+  <div id="notifications-counter" class="<%= "d-none" if current_user.notifications.count <= 0%> rounded-circle"><%= current_user.notifications.count if current_user.notifications.count > 0 %></div>
+  <%= image_tag "useravatar.png", height: 42, width: 42, class:"openav rounded-circle" %>
   <!-- <i class="fas fa-bars"></i> -->
 </div>
 

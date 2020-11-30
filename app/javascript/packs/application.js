@@ -26,6 +26,7 @@ import "bootstrap";
 
 import { initSidenavOnClick } from '../components/sidenav.js';
 import { initExpandableSearch } from '../components/expandable_search.js';
+import { initNotificationsCable } from '../channels/notifications.js';
 
 import "controllers";
 
@@ -35,17 +36,16 @@ algoliaSearch();
 
 import { initSelect2 } from "../plugins/init_select2";
 
-initSelect2();
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
-
+  initSelect2();
+  
   initSidenavOnClick();
   initExpandableSearch();
+  initNotificationsCable();
   // responsiveSearch();
 
 });
