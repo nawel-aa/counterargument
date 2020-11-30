@@ -39,7 +39,6 @@ class ArgumentsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -60,5 +59,10 @@ class ArgumentsController < ApplicationController
     notification.message = "#{current_user.nickname} submitted a new counterargument to \"#{argument_countered.content}\""
     notification.user = argument_countered.user
     notification.save
+
+    NotificationsChannel.broadcast_to(
+      notification.user,
+      notification.user.notifications.count
+    )
   end
 end
