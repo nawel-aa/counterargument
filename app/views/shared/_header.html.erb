@@ -2,19 +2,22 @@
   <!-- <div class=" bg-transparent"> -->
     <div class="container">
 
-    <div class="row align-items-center">
-      <div class="ca-logo col-4 justify-content-start">
+    <div class="row d-flex align-items-center">
+      <div class="ca-logo col-4 d-flex align-items-center">
         <%= link_to root_path do %>
         <%= image_tag "ca-logo.png", alt:"counterargument logo" %>
         <% end %>
       </div>
 
-      <div class="col-7 d-flex justify-content-end ">
+      <div class="col-8 d-flex align-items-center justify-content-end">
+      <!-- <div class="col-7 d-flex justify-content-end "> -->
         <%= render '/shared/search-header' %>
-      </div>
-      <div class="col-1 justify-content-start ">
+      <!-- </div> -->
+      <!-- <div class="col-1 justify-content-start "> -->
         <%= render '/shared/sidenav' %>
+      <!-- </div> -->
       </div>
+
       </div>
 
   </div>

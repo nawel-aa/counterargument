@@ -11,6 +11,15 @@ const srchBtn = document.querySelector('.iconsearch2');
     srchBtn.classList.toggle('visible');
 
   })
+// Reset everything when clicking anywhere on page
+  document.addEventListener('click',() =>{
+    let isClickInside = openSearch.contains(event.target);
+    if (!isClickInside){
+    inputBar.classList.remove('active');
+    srchBtn.classList.remove('visible');
+    openSearch.classList.remove('remove');
+  }
+  })
 
 }
 
