@@ -10,6 +10,7 @@ class Argument < ApplicationRecord
   belongs_to :user
   has_many :tags, through: :tags_argument
   has_many :tags_argument
+  # has_many_attached :photos
 
   # Gets all the relationships where you are the parent
   has_many :relationships_as_a_parent, class_name: 'ArgumentParentChildRelationship', foreign_key: :parent_id
