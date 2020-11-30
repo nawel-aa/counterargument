@@ -1,12 +1,10 @@
 
-
-
 <div class="container">
   <h1 class="mb-3">Hi<%= current_user.nickname ? ", #{current_user.nickname}!" : "!" %></h1>
 
   <div class="notifications">
   <h2>Notifications (<%= @notifications.count %>)</h2>
-    <% @notifications.each do |notification| %>    
+    <% @notifications.each do |notification| %>
       <div class="notification">
       <%= image_tag "useravatar.png", class: "avatar" %>
       <div class="notification-content">
@@ -18,4 +16,11 @@
     </div>
 
   <% end %>
+</div>
+
+
+
+<div class="col-12 col-md">
+  <p class="mb-1"><%= @user.email %></p>
+  <p class="btn"><%= link_to  "Edit", user_path %></p>
 </div>

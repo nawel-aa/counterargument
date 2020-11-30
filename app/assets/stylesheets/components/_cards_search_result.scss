@@ -1,0 +1,23 @@
+.cards_search_result{
+background-color: white;
+border: 1px solid rgba(0, 0, 0, 0.125);
+border-radius: 6px;
+font-family: $body-font;
+padding: 20px;
+margin:10px;
+}
+
+.cards_search_result a{
+    color: black;
+  }
+
+.cards_search_result a:hover{
+  color: #E7A92F;
+  opacity: 1;
+  text-decoration: none;
+}
+
+
+.cards_result_tag{
+
+}
