@@ -1,11 +1,12 @@
 .cards_search_result{
-
+display: flex;
+justify-content: space-between;
 background-color: white;
 border: 1px solid rgba(0, 0, 0, 0.125);
-border-radius: 4px;
+border-radius: 6px;
 font-family: $body-font;
-padding: 2px;
-margin:3px;
+padding: 20px;
+margin:10px;
 }
 
 .cards_search_result a{
@@ -17,3 +18,10 @@ margin:3px;
   opacity: 1;
 }
 
+.cards_search_result_tags{
+  display: flex;
+}
+
+.cards_result_tag{
+
+}

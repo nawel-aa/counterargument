@@ -22,13 +22,19 @@
         </p>
       <% end %>
 
-        <div class="cards_search_result">
+
         <% @arguments.each do |argument| %>
+          <div class="cards_search_result">
+            <div>
+              <div><%= link_to argument.content, argument_path(argument) %></div>
+                  <div class="cards_result_tag">
+                    <%= render partial: "shared/tag", locals: {tag_name: argument.tags} %>
+                  </div>
+            </div>
 
-          <div><%= link_to argument.content, argument_path(argument) %></div>
+            <div class="arg-bubble"><%=argument.children.count%></div>
+          </div>
         <% end %>
-         </div>
-
 
       <%# Filters %>
       <div id="filters" class="sidenav filters">
