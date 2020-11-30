@@ -1,7 +1,9 @@
 <% tag_name.first(2).each do |tag| %>
+<!-- <div class="col-auto"> -->
 <%= link_to search_path, class: "tag-selector" do %>
   <%= image_tag "Price Tag.svg", {width: 12} %>
   <%= tag.name %>
   <% end %>
+<!-- </div> -->
 <% end %>
 
