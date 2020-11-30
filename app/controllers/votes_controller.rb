@@ -6,13 +6,13 @@ class VotesController < ApplicationController
     vote = Vote.new(vote_params)
     vote.user = current_user
     vote.positive = true
-    
+
     authorize vote
     vote.save
-    
+
     # Create upvote notification
     create_notification
-    
+
     @argument_show = Argument.find(params[:origin])
     redirect_to argument_path(@argument_show, anchor: "arg-#{params[:argument_id]}")
   end
@@ -23,7 +23,6 @@ class VotesController < ApplicationController
     params.permit(:argument_id, :category)
   end
 
-
   def create_notification
     notification = Notification.new
     upvoted_argument = Argument.find(params[:argument_id])
@@ -31,8 +30,13 @@ class VotesController < ApplicationController
     notification.message = "#{current_user.nickname} upvoted \"#{upvoted_argument.content}\""
     notification.user = upvoted_argument.user
     notification.save
+
+    NotificationsChannel.broadcast_to(
+      notification.user,
+      notification.user.notifications.count
+    )
   end
-  
+
   def user_not_authorized
     alert = current_user.nil? ? "You must be logged in to upvote a post" : "You cannont upvote your own post"
     flash[:alert] = alert

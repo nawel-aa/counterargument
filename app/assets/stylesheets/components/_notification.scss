@@ -44,3 +44,14 @@
 .notification .notification-actions a:hover {
   color: #555555;
 }
+
+#notifications-counter {
+  background-color: $secondary;
+  height: 24px;
+  min-width: 24px;
+  text-align: center;
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  font-family: $btn-font;
+}
