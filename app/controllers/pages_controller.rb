@@ -7,6 +7,12 @@ class PagesController < ApplicationController
       [argument.children.count, argument]
     end
     @trending.sort!.reverse!
+    @politics = "search?search=politics&search_results%5Bresults_ids%5D=&search_results%5Btag%5D=Politics"
+    @global_warming = "search?search=global+warming&search_results%5Bresults_ids%5D=&search_results%5Btag%5D=Global+Warming"
+    @covid_19 = "search?search=covid-19&search_results%5Bresults_ids%5D=&search_results%5Btag%5D=COVID-19"
+    @religion = "search?search=religion&search_results%5Bresults_ids%5D=&search_results%5Btag%5D=Religion"
+    @blm = "search?search=BLM&search_results%5Bresults_ids%5D=&search_results%5Btag%5D=BLM"
+    @vaccination = "search?search=vaccination&search_results%5Bresults_ids%5D=&search_results%5Btag%5D=Vaccination"
   end
 
   def search
