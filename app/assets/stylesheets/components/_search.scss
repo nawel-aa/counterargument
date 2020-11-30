@@ -1,14 +1,14 @@
 
+
 .search-input{
     height: 40px;
     font-size: 1em;
     width: 0;
     outline: none;
-    // padding-left: 100px;
     border: none;
     border-radius: 15px;
-    transition: all 0.5s;
-    // visibility:hidden;
+    transition: 0.5s ease;
+    visibility:hidden;
 }
 
 .iconsearch{
@@ -22,8 +22,6 @@
     font-size: 1.8em;
     color: #fff;
     cursor: pointer;
-    transform: translateX(-30px);
-    // visibility: hidden;
 }
 
 .iconsearch2{
@@ -31,13 +29,10 @@
     width: 40px;
     background: $brandblue;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 1.8em;
     color: #fff;
     cursor: pointer;
-    transform: translateX(-20px);
+    transform: translateX(-30px);
     visibility:hidden;
 }
 
@@ -47,7 +42,10 @@
 
 
 .active{
-    width: 170px;
+    width: 200px;
+    opacity:0.8;
+    visibility:visible;
+    cursor:auto;
 }
 
 .remove{
