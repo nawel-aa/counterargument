@@ -16,52 +16,65 @@
     <h2 class="text-center mt-5 mb-4">Trending Arguments</h2>
   <div class="row d-flex justify-content-between">
     <div class="col-12 col-md-4">
-        <div class="card">
+        <div class="card mb-4">
           <div class="card-title">
             <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
           </div>
-          <div class="tag-section d-flex align-items-center justify-content-between">
-            <div class="arg-bubble">
-              <p><%= @trending[0][0] %></p>
-              </div>
-            <div>
+          <div class="tag-section align-items-center justify-content-between flex-wrap">
+          <div class="row">
+            <div class="col-auto arg-bubble">
+            <p><%= @trending[2][0] %></p>
+            </div>
+          </div>
+          <div class="row d-flex ">
+            <div class="col-auto">
             <%= render partial: "shared/tag", locals: {tag_name: @trending[0][1].tags}%>
+            </div>
           </div>
-          </div>
+        </div>
         </div>
     </div>
 
     <div class="col-12 col-md-4">
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-title">
               <h2><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
             </div>
-            <div class="tag-section d-flex align-items-center justify-content-between">
-              <div class="arg-bubble">
-                <p><%= @trending[1][0] %></p>
-              </div>
-              <div>
+           <div class="tag-section align-items-center justify-content-between flex-wrap">
+          <div class="row">
+            <div class="col-auto arg-bubble">
+            <p><%= @trending[2][0] %></p>
+            </div>
+          </div>
+          <div class="row d-flex ">
+            <div class="col-auto">
             <%= render partial: "shared/tag", locals: {tag_name: @trending[1][1].tags}%>
             </div>
-            </div>
+          </div>
+        </div>
         </div>
     </div>
 
     <div class="col-12 col-md-4">
-      <div class="card">
+      <div class="card mb-4">
         <div class="card-title">
           <h2><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
         </div>
-        <div class="tag-section d-flex align-items-center justify-content-between">
-          <div class="arg-bubble">
+        <div class="tag-section align-items-center justify-content-between flex-wrap">
+          <div class="row">
+            <div class="col-auto arg-bubble">
             <p><%= @trending[2][0] %></p>
+            </div>
           </div>
-          <div>
+          <div class="row d-flex ">
+            <div class="col-auto">
             <%= render partial: "shared/tag", locals: {tag_name: @trending[2][1].tags}%>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
