@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user
+  before_action :set_user, only: %i[show edit update]
 
   def show
     @arguments = @user.arguments.order(created_at: :desc)
@@ -21,6 +21,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -28,5 +33,9 @@ class ProfilesController < ApplicationController
   def set_user
     @user = current_user
     authorize @user
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :profile_picture)
   end
 end

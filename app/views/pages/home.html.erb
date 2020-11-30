@@ -1,7 +1,3 @@
-<div class="centered-title tagline">
-  <h1>Always have the last word.</h1>
-</div>
-
 <!-- <div class="search-bar home-search">
  <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'form-inline' } do |f| %>
       <input type="text" class="search-input active" name="search" id="search" placeholder="Search..." autocomplete="off" style="width:340px"/>
@@ -15,83 +11,100 @@
     <div id="searchSuggestions"></div>
 </div> -->
 <div class="container">
-<div class="centered-title trending"><h2>Trending Arguments</h2></div>
+  <h1 class="text-center">Always have the last word.</h1>
 
-<div class="col-12">
-<div class="row d-flex align-items-center justify-content-center">
-  <div class="card">
-      <div class="card-title">
-        <h2 class="card-title"><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
-      </div>
-      <div class="tags">
-        <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[0][0] %></div>
-        <div>
-        <%= render partial: "shared/tag", locals: {tag_name: "politics"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "health"}%>
-      </div>
-      </div>
-  </div>
-  </div>
+    <h2 class="text-center mt-5 mb-4">Trending Arguments</h2>
+  <div class="row d-flex justify-content-between">
+    <div class="col-12 col-md-4">
+        <div class="card mb-4">
+          <div class="card-title">
+            <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
+          </div>
+          <div class="tag-section align-items-center justify-content-between flex-wrap">
+          <div class="row">
+            <div class="col-auto arg-bubble">
+            <p><%= @trending[2][0] %></p>
+            </div>
+          </div>
+          <div class="row d-flex ">
+            <div class="col-auto">
+            <%= render partial: "shared/tag", locals: {tag_name: @trending[0][1].tags}%>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
 
-<div class="row d-flex align-items-center justify-content-center">
-  <div class="card">
-      <div class="card-title">
-        <h2 class="card-title"><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
+    <div class="col-12 col-md-4">
+        <div class="card mb-4">
+            <div class="card-title">
+              <h2><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
+            </div>
+           <div class="tag-section align-items-center justify-content-between flex-wrap">
+          <div class="row">
+            <div class="col-auto arg-bubble">
+            <p><%= @trending[2][0] %></p>
+            </div>
+          </div>
+          <div class="row d-flex ">
+            <div class="col-auto">
+            <%= render partial: "shared/tag", locals: {tag_name: @trending[1][1].tags}%>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="card mb-4">
+        <div class="card-title">
+          <h2><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
+        </div>
+        <div class="tag-section align-items-center justify-content-between flex-wrap">
+          <div class="row">
+            <div class="col-auto arg-bubble">
+            <p><%= @trending[2][0] %></p>
+            </div>
+          </div>
+          <div class="row d-flex ">
+            <div class="col-auto">
+            <%= render partial: "shared/tag", locals: {tag_name: @trending[2][1].tags}%>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="tags">
-        <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[1][0] %></div>
-        <div>
-      <%= render partial: "shared/tag", locals: {tag_name: "BLM"}%>
-      </div>
-      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="row d-flex align-items-center justify-content-center">
-  <div class="card">
-      <div class="card-title">
-        <h2 class="card-title"><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
+<div class="container">
+  <hr class="mt-5">
+  <h2 class="text-center mt-5 mb-4">🔥 Hot Topics 🔥</h2>
+
+  <div class="cards">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        <%= link_to "Politics", root_path + @politics %>
       </div>
-      <div class="tags">
-        <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[2][0] %></div>
-        <div>
 
-        <%= render partial: "shared/tag", locals: {tag_name: "tbt"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "nature"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "love"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "animal"}%>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        <%= link_to "Global Warming", root_path + @global_warming %>
       </div>
+
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        <%= link_to "Covid-19", root_path + @covid_19 %>
       </div>
-  </div>
-</div>
 
-</div>
-</div>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        <%= link_to "Religion", root_path + @religion %>
+      </div>
 
-<div class="centered-title"><h2>Hot Topics</h2></div>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
+        <%= link_to "#BLM", root_path + @blm %>
+      </div>
 
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    <%= link_to "Politics", root_path + "search?search=politics&search_results%5Bresults_ids%5D=&button=" %>
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    <%= link_to "Global Warming", root_path + "search?search=global+warming&search_results%5Bresults_ids%5D=&button=" %>
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    <%= link_to "Covid-19", root_path + "search?search=covid-19&search_results%5Bresults_ids%5D=&button=" %>
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    <%= link_to "Religion", root_path + "search?search=religion&search_results%5Bresults_ids%5D=&button=" %>
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
-    <%= link_to "#BLM", root_path + "search?search=BLM&search_results%5Bresults_ids%5D=&button=" %>
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-    <%= link_to "Vaccination", root_path + "search?search=vaccination&search_results%5Bresults_ids%5D=&button=" %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+        <%= link_to "Vaccination", root_path + @vaccination %>
+      </div>
   </div>
 </div>

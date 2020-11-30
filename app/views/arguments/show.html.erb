@@ -33,6 +33,7 @@
           <%= link_to argument_votes_path(counterargument, title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
             <div class = 'vote-btn'><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
           <% end %>
+          <%= render partial: "shared/tag", locals: {tag_name: counterargument.tags} %>
         </div>
       </div>
     </div>

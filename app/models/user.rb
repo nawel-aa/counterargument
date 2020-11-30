@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true
   has_many :arguments
   has_many :notifications, dependent: :destroy
+  has_one_attached :profile_picture
 end

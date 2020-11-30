@@ -7,22 +7,40 @@
         <div class="col">
           <p class="m-0"><%= @arguments.count %> results for <strong><%= params[:search] %></strong></p>
         </div>
+
         <div class="col col-auto">
           <%= image_tag "filters-icon.svg", width: "41", height: "35", alt: "filter results", title: "filter results", class: "openFilters" %>
         </div>
       </div>
+
+
       <% if @selected_tags %>
         <p><strong>Selected filters: </strong>
           <% @selected_tags.each do |tag| %>
-            <%= tag.name %> 
+            <%= tag.name %>
           <% end %>
         </p>
       <% end %>
-      <ul>
+
+<!-- Results Cards -->
         <% @arguments.each do |argument| %>
-          <li><%= link_to argument.content, argument_path(argument) %></li>
+          <div class="cards_search_result">
+            <div class="row d-flex justify-content-between">
+              <div class="col-10"><%= link_to argument.content, argument_path(argument) %></div>
+              <div class="col-2 arg-bubble">
+              <p><%=argument.children.count%></p>
+              </div>
+            </div>
+              <div class="row mt-3">
+                  <div class="cards_result_tag">
+                    <%= render partial: "shared/tag", locals: {tag_name: argument.tags} %>
+                  </div>
+              </div>
+            </div>
         <% end %>
-      </ul>
+
+<!-- container closed belwo -->
+</div>
 
       <%# Filters %>
       <div id="filters" class="sidenav filters">
@@ -31,6 +49,7 @@
             <ul>
               <% @tags.each do |name, count| %>
                 <%# On click, add the tag to the parameters. The tags are seperated by | %>
+
                   <li>
                     <%= link_to "#{name} (#{count})", search_path(
                     search: params[:search],
@@ -41,18 +60,22 @@
                     ), class: "filters__link"
                     %>
                   </li>
-              <% end %>
+                    <% end %>
+
             </ul>
           </li>
         </ul>
+
+
         <div class="icon closeFilters">
           <i class="fas fa-times"></i>
         </div>
-      </div>
-    
+        </div>
+
     <%# else: if no results %>
-    <% else %>
-      <p>No results for "<%= params[:search] %>".</p>
-      <%= link_to  "Add an argument", new_argument_path %>
-    <% end %>
-</div>
+        <% else %>
+          <p>No results for "<%= params[:search] %>".</p>
+          <%= link_to  "Add an argument", new_argument_path %>
+        <% end %>
+      </div>
+
