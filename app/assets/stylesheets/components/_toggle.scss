@@ -1,12 +1,23 @@
+.form-check {
+  padding: 0;
+}
+
 .toggle {
   position: absolute;
   transform: scale(0);
+
+  &:valid {
+
+    + label {
+      color: $text-muted !important;
+    }
+  }
 }
 
 .toggle + label {
   position: relative;
   display: inline-block;
-  padding-left: 40px;
+  padding-left: 47px;
 }
 
 .toggle + label::before {
@@ -14,8 +25,8 @@
   display: block;
   position: absolute;
   cursor: pointer;
-  width: 36px;
-  height: 20px;
+  width: 39px;
+  height: 23px;
   top: 0;
   left: 0;
   background-color: #EAEAEA;
@@ -23,7 +34,7 @@
 }
 
 .toggle:checked + label::before {
-  background-color: #1EDD88;
+  background-color: $primary;
 }
 
 .toggle + label::after {
@@ -31,8 +42,8 @@
   display: block;
   position: absolute;
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
   top: 2px;
   left: 2px;
   background-color: white;

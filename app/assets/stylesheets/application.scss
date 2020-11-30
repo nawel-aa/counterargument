@@ -12,18 +12,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
 
 // Your CSS partials
+@import "config/texts";
 @import "components/index";
 @import "pages/index";
-@import "components/argument_show_card";
-@import "components/button";
-@import "components/toggle";
-@import "components/card_category";
-@import "components/cards_grid";
-@import "components/footer";
-@import "components/tag";
-@import "components/notification";
-@import "components/tabs";
-@import "components/cards_search_result";
 
 body{
   background:$brandlightblue;
