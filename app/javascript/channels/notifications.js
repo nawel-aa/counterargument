@@ -5,7 +5,7 @@ const initNotificationsCable = () => {
 
   consumer.subscriptions.create("NotificationsChannel", {
     received(data) {
-      notificationsContainer.insertAdjacentHTML('beforeend', data);
+      notificationsContainer.innerText = data;
       notificationsContainer.classList.remove('d-none');
     },
   });
