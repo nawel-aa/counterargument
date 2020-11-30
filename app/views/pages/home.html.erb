@@ -26,8 +26,7 @@
       <div class="tags">
         <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[0][0] %></div>
         <div>
-        <%= render partial: "shared/tag", locals: {tag_name: "politics"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "health"}%>
+        <%= render partial: "shared/tag", locals: {tag_name: @trending[0][1].tags} %>
       </div>
       </div>
   </div>
@@ -41,7 +40,7 @@
       <div class="tags">
         <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[1][0] %></div>
         <div>
-      <%= render partial: "shared/tag", locals: {tag_name: "BLM"}%>
+      <%= render partial: "shared/tag", locals: {tag_name: @trending[1][1].tags} %>
       </div>
       </div>
   </div>
@@ -55,11 +54,7 @@
       <div class="tags">
         <div><%= image_tag("argument_bubble.png", id: 'argument_bubble') %><%= @trending[2][0] %></div>
         <div>
-
-        <%= render partial: "shared/tag", locals: {tag_name: "tbt"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "nature"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "love"}%>
-        <%= render partial: "shared/tag", locals: {tag_name: "animal"}%>
+        <%= render partial: "shared/tag", locals: {tag_name: @trending[2][1].tags} %>
       </div>
       </div>
   </div>

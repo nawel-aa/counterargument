@@ -7,12 +7,17 @@ class ArgumentsController < ApplicationController
 
   def new
     @argument = Argument.new
+    @tags = Tag.all.map { |tag| tag.name }.sort
     authorize @argument
   end
 
   def create
     @argument = Argument.new(content: argument_params[:content], source: argument_params[:source], hidden: argument_params[:hidden])
     @argument.user = current_user
+    if params[:argument][:tag_ids] 
+      @tags = params[:argument][:tag_ids]
+      @tags.each { |tag_id| @argument.tags << Tag.find(tag_id.to_i) }
+    end
     authorize @argument
 
     parent = Argument.find(argument_params[:parent_id]) if argument_params[:parent_id]
@@ -34,6 +39,8 @@ class ArgumentsController < ApplicationController
   def show
     @argument = Argument.new
     @argument_show = Argument.find(params[:id])
+    @tag = Tag.new
+    @tags = Tag.all.map { |tag| tag.name }.sort
     authorize @argument_show
     # @results = index.search(params[:query])[0]
   end
@@ -49,7 +56,7 @@ class ArgumentsController < ApplicationController
   private
 
   def argument_params
-    params.require(:argument).permit(:content, :source, :hidden, :parent_id)
+    params.require(:argument).permit(:content, :source, :hidden, :parent_id, :tag_ids)
   end
 
   def create_notification(parent)

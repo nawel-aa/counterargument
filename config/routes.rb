@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :votes, only: :create
   end
 
+  resources :tags, only: :create
+
 
   get '/profile', to: 'profiles#show'
   get '/profile/edit', to: 'profiles#edit', as: "user"
