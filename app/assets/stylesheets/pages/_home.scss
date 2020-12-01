@@ -5,13 +5,17 @@
 border-radius:5px;
 }
 
-.card-title { 
+.card-title {
   color: white;
   background-color: #2E5FE8;
-  height: 200px;
+  line-height: 2rem;
+  height: 75px;
   overflow:hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
     h2 {
-      padding: 9px 0 0 15.64px;
+      padding: 10px;
     }
     a {
       text-decoration: none;
@@ -25,18 +29,17 @@ border-radius:5px;
 
 .tag-section {
   background-color: white;
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   padding: 0 14px;
-  position: relative;
   margin:2px;
 }
 
 .arg-bubble{
   width:70px;
   height:40px;
-  background-image: url('/assets/argument_bubble.png');
+  background-image: asset-url('argument_bubble.png');
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;
@@ -47,27 +50,6 @@ border-radius:5px;
   margin-top: 0.5rem;
 }
 
-h1 {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 24px;
-}
-
-h2 {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 18px;
-}
-
-
-// #argument_bubble {
-//   position: absolute;
-//   left: 4px;
-//   bottom: 11px;
-// }
-
-// hr {
-//   width: 100vw;
-//   border: 1px solid black rgba(0, 0, 0, 0.4);
-// }
 
 .card-category {
   font-family: $body-font;

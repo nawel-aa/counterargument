@@ -1,12 +1,17 @@
 
 <div class="container">
-  
+
   <%# Hi card %>
   <section class="card mb-3">
     <div class="card-body p-2">
       <div class="row no-gutters">
         <div class="col-4 col-md-3">
-          <%= image_tag "useravatar.png", class: "w-100"%>
+          <% if user_signed_in? && current_user.profile_picture.attached? %>
+            <%= cl_image_tag current_user.profile_picture.key, class: "w-100" %>
+          <% else %>
+              <%= image_tag "useravatar.png", class: "w-100"%>
+          <% end %>
+
           <%= link_to user_path, class: "btn-edit" do %>
             <i class="fas fa-pen" title="Edit" aria-label="Edit"></i>
           <% end %>
@@ -51,7 +56,7 @@
       <p class="text-muted">No notification.</p>
     <% else %>
 
-      <% @notifications.each do |notification| %>    
+      <% @notifications.each do |notification| %>
         <div class="notification">
           <%= image_tag "useravatar.png", class: "avatar" %>
           <div class="notification-content">

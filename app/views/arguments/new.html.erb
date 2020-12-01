@@ -10,9 +10,11 @@
   <%= simple_form_for [@argument] do |f| %>
     <%= f.input :content, placeholder: "Maximum 180 characters" %>
     <%= f.input :source, placeholder: "https//example.com" %>
-    <%= f.association :tags, collection: Tag.order('name ASC'), as: :check_boxes, include_hidden: false %>
+    <%= f.association :tags, collection: Tag.order('name ASC'), as: :check_boxes, input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item', include_hidden:false %>
     <%= f.input :hidden, label: "Hide your username from this argument?", input_html: { class: "toggle" } %>
     <%= f.button :submit, value: "Add Argument", class: "btn btn-lg w-50" %>
   <% end %>
+
 
 </div>
