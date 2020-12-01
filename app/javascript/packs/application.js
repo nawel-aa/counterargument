@@ -36,6 +36,8 @@ algoliaSearch();
 
 import { initSelect2 } from "../plugins/init_select2";
 
+import { responsiveSearch } from '../plugins/init_responsive_search.js';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -46,19 +48,6 @@ document.addEventListener('turbolinks:load', () => {
   initSidenavOnClick();
   initExpandableSearch();
   initNotificationsCable();
-  // responsiveSearch();
+  responsiveSearch();
 
 });
-
-// const responsiveSearch = () => {
-//   addEventListener("keyup", event => {
-//     const input = document.getElementById("search").value;
-//     console.log(input);
-//     // query select card container of the suggestion
-//     // send search term to Algolia API
-//     // loop through how many searches we want to display
-//     // create a new html element (this is the suggestion) - creating string, putting inside a div (interpolate)
-//     //
-//   });
-// };
-
