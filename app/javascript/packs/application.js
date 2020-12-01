@@ -24,25 +24,22 @@ require("channels")
 // External imports
 import "bootstrap";
 
-import { initSidenavOnClick } from '../components/sidenav.js';
-import { initExpandableSearch } from '../components/expandable_search.js';
-import { initNotificationsCable } from '../channels/notifications.js';
+
+
 
 import "controllers";
 
 
-import { algoliaSearch } from "../plugins/init_algolia_search.js";
-algoliaSearch();
-
-import { initSelect2 } from "../plugins/init_select2";
-
-
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { algoliaSearch } from "../plugins/init_algolia_search.js";
+import { initSidenavOnClick } from '../components/sidenav.js';
+import { initExpandableSearch } from '../components/expandable_search.js';
+import { initNotificationsCable } from '../channels/notifications.js';
 
 document.addEventListener('turbolinks:load', () => {
-  initSelect2();
-  
+  algoliaSearch();
+
   initSidenavOnClick();
   initExpandableSearch();
   initNotificationsCable();

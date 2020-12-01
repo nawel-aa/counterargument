@@ -46,19 +46,36 @@
     <h5>Counter this argument</h5>
   </div>
 <!-- Form to find EXISTING counter argument -->
-<div class="col-12 col-md-8">
-  <%= simple_form_for :search, remote: true, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search" id="search" placeholder="Add an existing counterargument" />
-    <button name="button" type="submit" class="btn btn-flat mt-3">
-      <i class="fas fa-search"></i> Search
-    </button>
+  <div class="col-12 col-md-8">
+    <%= simple_form_for :search, remote: true, url: root_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="search" id="search" placeholder="Add an existing counterargument" />
+      <button name="button" type="submit" class="btn btn-flat mt-3">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+    <% end %>
   </div>
-  <% end %>
+
+  <!-- Form to add a NEW counter argument -->
+  <div class="col-12 col-md-8">
+    <%= render '/arguments/form', arg: @argument_show %>
+  </div>
 </div>
 
-<!-- Form to add a NEW counter argument -->
-<div class="col-12 col-md-8">
-  <%= render '/arguments/form', arg: @argument_show %>
-</div>
-</div>
+<div id="arguments-map"></div>
+
+ 
+<script src="/sigma.min.js"></script>
+<script src="/sigma.parsers.json.min.js"></script>
+
+<script>
+
+  sigma.parsers.json('/api/v1/sigma_arguments', {
+    container: 'arguments-map',
+    settings: {
+      defaultNodeColor: '#2E5FE8'
+    }
+  });
+  
+</script>
