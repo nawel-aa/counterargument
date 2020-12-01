@@ -5,13 +5,17 @@
 border-radius:5px;
 }
 
-.card-title { 
+.card-title {
   color: white;
   background-color: #2E5FE8;
-  height: 200px;
+  line-height: 2rem;
+  height: 75px;
   overflow:hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
     h2 {
-      padding: 9px 0 0 15.64px;
+      padding: 10px;
     }
     a {
       text-decoration: none;
@@ -25,11 +29,10 @@ border-radius:5px;
 
 .tag-section {
   background-color: white;
-  height: 80px;
+  height: 75px;
   display: flex;
   justify-content: space-between;
   padding: 0 14px;
-  position: relative;
   margin:2px;
 }
 
