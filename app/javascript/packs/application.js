@@ -27,27 +27,25 @@ require("channels")
 import "bootstrap";
 import "../plugins/social_share";
 
-import { initSidenavOnClick } from '../components/sidenav.js';
-import { initExpandableSearch } from '../components/expandable_search.js';
-import { initNotificationsCable } from '../channels/notifications.js';
+
+
 
 import "controllers";
-
-
-import { algoliaSearch } from "../plugins/init_algolia_search.js";
-algoliaSearch();
-
-import { initSelect2 } from "../plugins/init_select2";
 
 import { responsiveSearch } from '../plugins/init_responsive_search.js';
 
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { algoliaSearch } from "../plugins/init_algolia_search.js";
+import { initSidenavOnClick } from '../components/sidenav.js';
+import { initExpandableSearch } from '../components/expandable_search.js';
+import { initNotificationsCable } from '../channels/notifications.js';
+import { initSigma } from '../plugins/init_sigma.js';
 
 document.addEventListener('turbolinks:load', () => {
-  initSelect2();
-
+  initSigma();
+  algoliaSearch();
   initSidenavOnClick();
   initExpandableSearch();
   initNotificationsCable();
