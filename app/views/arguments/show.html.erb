@@ -9,6 +9,11 @@
     <p class="nickname"><%= "Source: #{@argument_show.source}" %></p>
     <p class="nickname"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
     <p class="nickname"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
+    <div class="social-btns d-flex">
+      <p><%= social_share_button_tag(@argument_show.content, :allow_sites => %w(twitter)) %></p>
+      <P><%= social_share_button_tag('Share to Facebook',
+       :url => argument_path(@argument_show), desc:  @argument_show.content, :allow_sites => %w(facebook)) %></P>
+     </div>
     </div>
     </div>
   </div>

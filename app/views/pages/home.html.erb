@@ -20,6 +20,7 @@
           <div class="card-title">
             <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
           </div>
+
           <div class="tag-section align-items-center justify-content-between flex-wrap">
           <div class="row">
             <div class="col-auto arg-bubble">
@@ -31,6 +32,11 @@
             <%= render partial: "shared/tag", locals: {tag_name: @trending[0][1].tags}%>
             </div>
           </div>
+        </div>
+        <div class="social-btns d-flex justify-content-end">
+          <p><%= social_share_button_tag(@trending[0][1].content, :allow_sites => %w(twitter)) %></p>
+          <P><%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[0][1]), desc:  @trending[0][1].content, :allow_sites => %w(facebook)) %></P>
         </div>
         </div>
     </div>
@@ -52,6 +58,11 @@
             </div>
           </div>
         </div>
+        <div class="social-btns d-flex justify-content-end">
+          <p><%= social_share_button_tag(@trending[1][1].content, :allow_sites => %w(twitter)) %></p>
+          <P><%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[1][1]), desc:  @trending[1][1].content, :allow_sites => %w(facebook)) %></P>
+        </div>
         </div>
     </div>
 
@@ -71,6 +82,11 @@
             <%= render partial: "shared/tag", locals: {tag_name: @trending[2][1].tags}%>
             </div>
           </div>
+        </div>
+        <div class="social-btns d-flex justify-content-end">
+          <p><%= social_share_button_tag(@trending[2][1].content, :allow_sites => %w(twitter)) %></p>
+          <P><%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[2][1]), desc:  @trending[2][1].content, :allow_sites => %w(facebook)) %></P>
         </div>
       </div>
     </div>
