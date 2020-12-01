@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+//=require social-share-button
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -23,6 +25,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "../plugins/social_share";
 
 import { initSidenavOnClick } from '../components/sidenav.js';
 import { initExpandableSearch } from '../components/expandable_search.js';
@@ -44,7 +47,7 @@ import { responsiveSearch } from '../plugins/init_responsive_search.js';
 
 document.addEventListener('turbolinks:load', () => {
   initSelect2();
-  
+
   initSidenavOnClick();
   initExpandableSearch();
   initNotificationsCable();

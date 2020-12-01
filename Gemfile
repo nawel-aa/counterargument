@@ -24,9 +24,9 @@ gem 'redis', '~> 4.0'
 gem 'cloudinary', '~> 1.16.0'
 
 gem 'faker'
-
+gem 'animate.css-rails', '~> 3.2'
 gem "algoliasearch-rails"
-
+gem 'social-share-button'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
