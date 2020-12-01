@@ -17,21 +17,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.8em;
     color: #fff;
     cursor: pointer;
 }
 
 .iconsearch2{
+    position: absolute;
     height: 40px;
     width: 40px;
     background: $brandblue;
     border-radius: 50%;
-    font-size: 1.8em;
     color: #fff;
     cursor: pointer;
     transform: translateX(-30px);
     visibility:hidden;
+    border: none;
 }
 
 .visible{
@@ -40,7 +40,7 @@
 
 
 .active{
-    width: 200px;
+    width: 100%;
     opacity:0.8;
     visibility:visible;
     cursor:auto;
@@ -50,9 +50,9 @@
     display:none;
 }
 
-#searchSuggestions {
-  position: absolute;
-}
+// #searchSuggestions {
+//   position: absolute;
+// }
 
 input:hover{
     box-shadow: 0 0 5px #fff,
