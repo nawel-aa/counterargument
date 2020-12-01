@@ -15,8 +15,12 @@
   <% if @notifications %>
     <div id="notifications-counter" class="<%= "d-none" if @notifications.count <= 0 %> rounded-circle"><%= @notifications.count %></div>
   <% end %>
-  <%= image_tag "useravatar.png", height: 42, width: 42, class:"openav rounded-circle" %>
-  <!-- <i class="fas fa-bars"></i> -->
+  <% if user_signed_in? && current_user.profile_picture.attached? %>
+    <%= cl_image_tag current_user.profile_picture.key, height: 42, width: 42, crop: :fill, class:"openav rounded-circle" %>
+  <% else %>
+    <%= image_tag "useravatar.png", height: 42, width: 42, class:"openav rounded-circle" %>
+  <% end %>
+
 </div>
 
 
