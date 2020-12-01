@@ -1,4 +1,4 @@
-
+// style of tags to be chosen when adding argument
 .tag-item {
   display: inline-block;
 }
@@ -31,5 +31,24 @@
 .tag-selector:checked + label {
   background-color: $brandblue;
   color: white;
+}
+
+// style of Bubbles with tag description on argument cards
+.tag-bubble {
+  background-color: transparent;
+  border: 1px solid #2E5FE8;
+  border-radius: 25px;
+  padding: 2px 8px;
+  margin:3px;
+  text-decoration: none;
+  color: $brandblack;
+}
+
+
+.tag-bubble:hover{
+  color: $brandblack;
+  opacity: 1;
+  text-decoration: none;
+  background-color: #E0EBF6;
 }
 
