@@ -1,21 +1,86 @@
 
-
-
 <div class="container">
-  <h1 class="mb-3">Hi<%= current_user.nickname ? ", #{current_user.nickname}!" : "!" %></h1>
-
-  <div class="notifications">
-  <h2>Notifications (<%= @notifications.count %>)</h2>
-    <% @notifications.each do |notification| %>    
-      <div class="notification">
-      <%= image_tag "useravatar.png", class: "avatar" %>
-      <div class="notification-content">
-        <p class="text-body"><%= link_to argument_path(notification.argument) do %>
-          <%= notification.message %>
-        <% end %></p>
-        <p class="text-muted"><%= time_ago_in_words(notification.created_at) %> ago</p>
+  
+  <%# Hi card %>
+  <section class="card mb-3">
+    <div class="card-body p-2">
+      <div class="row no-gutters">
+        <div class="col-4 col-md-3">
+          <%= image_tag "useravatar.png", class: "w-100"%>
+          <%= link_to user_path, class: "btn-edit" do %>
+            <i class="fas fa-pen" title="Edit" aria-label="Edit"></i>
+          <% end %>
+        </div>
+        <div class="col">
+          <div class="pl-3">
+            <h1>Hi, <%= @user.nickname %></h1>
+            <p class="text-muted"><%= @user.email %></p>
+            <div class="row">
+              <div class="col-auto">
+                <div class="row no-gutters">
+                  <div class="col-auto">
+                    <i class="fas fa-comment count-icon-counterargument" title="Coutnerarguments" aria-label="Counterarguments"></i>
+                  </div>
+                  <div class="col-auto">
+                    <%= @counterarguments_count %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <div class="row no-gutters">
+                  <div class="col-auto">
+                    <i class="fas fa-comment count-icon" title="Arguments" aria-label="Arguments"></i>
+                  </div>
+                  <div class="col-auto">
+                    <%= @arguments_count %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  <% end %>
+  <%# Notifications %>
+  <section class="notifications mb-3">
+    <h2>Notifications <span class="text-muted">(<%= @notifications.count %>)</span></h2>
+
+    <% if @notifications.empty? %>
+      <p class="text-muted">No notification.</p>
+    <% else %>
+
+      <% @notifications.each do |notification| %>    
+        <div class="notification">
+          <%= image_tag "useravatar.png", class: "avatar" %>
+          <div class="notification-content">
+            <p class="text-body"><%= link_to update_notification_path(notification), method: :patch do %>
+              <%= notification.message %>
+            <% end %></p>
+            <p class="text-muted"><%= time_ago_in_words(notification.created_at) %> ago</p>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
+
+  </section>
+
+  <%# Arguments %>
+  <section>
+    <h2>Arguments</h2>
+    <!-- 
+    <% @arguments.each do |argument| %>
+      <div class="card mb-2">
+        <div class="card-body">
+          <h3><%= argument.content %></h3>
+          <%= simple_form_for argument do |f| %>
+            <%= f.input :hidden, label: "Anonymous", input_html: { class: "toggle" } %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    -->
+  </section>
 </div>

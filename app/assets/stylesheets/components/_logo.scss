@@ -1,4 +1,11 @@
-.ca-logo img{
-max-width: 100%;
-height:auto;
+header {
+  height: 130px;
+}
+.ca-logo {
+  img{
+    max-width: 100%;
+    height:auto;
+  }
+  position: absolute;
+  max-width: 170px;
 }

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :votes, only: :create
   end
 
+  patch '/notifications/:id', to: 'notifications#update', as: 'update_notification'
+
   resources :tags, only: :create
 
 

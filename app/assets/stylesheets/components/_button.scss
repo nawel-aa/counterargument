@@ -3,4 +3,24 @@
   background-color: $brandyellow;
   color:$brandblack;
   font-family:$btn-font;
+
+  &-edit {
+    color: #fff;
+    background-color: $primary;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #fff;
+      background-color: $secondary;
+      text-decoration: none;
+    }
+  }
 }

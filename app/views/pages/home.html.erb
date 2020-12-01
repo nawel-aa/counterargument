@@ -78,35 +78,33 @@
   </div>
 </div>
 
-
-
 <div class="container">
   <hr class="mt-5">
   <h2 class="text-center mt-5 mb-4">🔥 Hot Topics 🔥</h2>
 
   <div class="cards">
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Politics", root_path + "search?search=politics&search_results%5Bresults_ids%5D=&button=" %>
+        <%= link_to "Politics", root_path + @politics %>
       </div>
 
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Global Warming", root_path + "search?search=global+warming&search_results%5Bresults_ids%5D=&button=" %>
+        <%= link_to "Global Warming", root_path + @global_warming %>
       </div>
 
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Covid-19", root_path + "search?search=covid-19&search_results%5Bresults_ids%5D=&button=" %>
+        <%= link_to "Covid-19", root_path + @covid_19 %>
       </div>
 
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Religion", root_path + "search?search=religion&search_results%5Bresults_ids%5D=&button=" %>
+        <%= link_to "Religion", root_path + @religion %>
       </div>
 
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
-        <%= link_to "#BLM", root_path + "search?search=BLM&search_results%5Bresults_ids%5D=&button=" %>
+        <%= link_to "#BLM", root_path + @blm %>
       </div>
 
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Vaccination", root_path + "search?search=vaccination&search_results%5Bresults_ids%5D=&button=" %>
+        <%= link_to "Vaccination", root_path + @vaccination %>
       </div>
   </div>
 </div>
