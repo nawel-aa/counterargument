@@ -39,10 +39,13 @@ class ArgumentsController < ApplicationController
   def show
     @argument = Argument.new
     @argument_show = Argument.find(params[:id])
+    authorize @argument_show
+
     @tag = Tag.new
     @tags = Tag.all.map { |tag| tag.name }.sort
-    authorize @argument_show
     # @results = index.search(params[:query])[0]
+
+    @related_arguments = @argument_show.parents.first(5)
   end
 
   def edit

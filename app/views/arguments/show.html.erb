@@ -1,20 +1,22 @@
 
-  <!-- Parent Argument -->
-  <div class="col-12 col-md-12 justify-content-center show-argument-main">
-    <h1 class="title"><%= @argument_show.content %></h1>
-    <div class="arg-user">
-    <%= image_tag "useravatar.png", class:"show-avatar" %>
-
-    <div class="arg-info">
-    <p class="nickname"><%= "Source: #{@argument_show.source}" %></p>
-    <p class="nickname"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
-    <p class="nickname"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
-    </div>
-    </div>
+<!-- Parent Argument -->
+<div class="col-12 col-md-12 justify-content-center show-argument-main">
+  <div class="container">
+  	<h1 class="title mb-1"><%= @argument_show.content %></h1>
+      <p class="nickname mb-4"><%= @argument_show.source %></p>
+  	<div class="arg-user">
+  	  <%= image_tag "useravatar.png", class:"show-avatar" %>
+  
+  	  <div class="arg-info">
+  	    <p class="nickname"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
+  	    <p class="nickname"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
+  	  </div>
+  	</div>
   </div>
+</div>
 
-  <!-- Child Arguments  -->
-  <% @argument_show.children.each do |counterargument| %>
+<!-- Child Arguments  -->
+<% @argument_show.children.each do |counterargument| %>
   <div class="container" id="arg-<%= counterargument.id %>">
     <div class="show-argument-child">
       <div class="show-argument-child-infos">
@@ -38,10 +40,10 @@
       </div>
     </div>
   </div>
-  <% end %>
+<% end %>
 
 <!-- Add counter argument section -->
-<div class="container">
+<section class="container">
   <div class="col-12 col-md-8" id="Answer">
     <h5>Counter this argument</h5>
   </div>
@@ -61,21 +63,27 @@
   <div class="col-12 col-md-8">
     <%= render '/arguments/form', arg: @argument_show %>
   </div>
-</div>
+</section>
 
-<div id="arguments-map"></div>
+<section class="related-arguments">
+  <div class="container">
+    <div class="row">
+      <% unless @related_arguments.empty? %>
+      
+        <div class="col-lg-6">
+          <h2>Related arguments</h2>
+          <% @related_arguments.each do |argument| %>
+            <div class="notification pl-0">
+              <p class="text-body"><%= link_to argument.content, argument_path(argument)%></p>
+            </div>
+          <% end %>
+        </div>
 
- 
-<script src="/sigma.min.js"></script>
-<script src="/sigma.parsers.json.min.js"></script>
-
-<script>
-
-  sigma.parsers.json('/api/v1/sigma_arguments', {
-    container: 'arguments-map',
-    settings: {
-      defaultNodeColor: '#2E5FE8'
-    }
-  });
+      <% end %>
   
-</script>
+      <div class="col-12 col-lg">
+        <div id="arguments-map"></div>
+      </div>
+    </div>
+  </div>
+</section>

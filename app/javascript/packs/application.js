@@ -36,26 +36,14 @@ import { algoliaSearch } from "../plugins/init_algolia_search.js";
 import { initSidenavOnClick } from '../components/sidenav.js';
 import { initExpandableSearch } from '../components/expandable_search.js';
 import { initNotificationsCable } from '../channels/notifications.js';
+import { initSigma } from '../plugins/init_sigma.js';
 
 document.addEventListener('turbolinks:load', () => {
+  initSigma();
   algoliaSearch();
-
   initSidenavOnClick();
   initExpandableSearch();
   initNotificationsCable();
   // responsiveSearch();
 
 });
-
-// const responsiveSearch = () => {
-//   addEventListener("keyup", event => {
-//     const input = document.getElementById("search").value;
-//     console.log(input);
-//     // query select card container of the suggestion
-//     // send search term to Algolia API
-//     // loop through how many searches we want to display
-//     // create a new html element (this is the suggestion) - creating string, putting inside a div (interpolate)
-//     //
-//   });
-// };
-
