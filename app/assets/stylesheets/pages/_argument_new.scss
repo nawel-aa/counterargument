@@ -8,6 +8,12 @@ ul { padding-left:20px; list-style:none; }
 li { margin-bottom:10px; }
 
 .new-guidelines li:before {
-  content: '✔ ';
-  margin-left: -20px;
+  // content: '✔ ';
+  // margin-left: -20px;
 }
+
+.new-guidelines .fas{
+  color:$brandblue;
+}
+
+
