@@ -52,14 +52,33 @@
   </div>
 <!-- Form to find EXISTING counter argument -->
 <div class="col-12 col-md-8">
-  <%= simple_form_for :search, remote: true, url: root_path, method: :get do |f| %>
-  <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search" id="search" placeholder="Add an existing counterargument" />
-    <button name="button" type="submit" class="btn btn-flat mt-3">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
+  <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'row justify-content-end' } do |f| %>
+    <input type="text" class="counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
+    <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
+
+    <%= button_tag type: 'submit', class: "counter-iconsearch2 cursor-pointer" do %>
+      <i class="fas fa-search" title="Search"></i>
+    <% end %>
   <% end %>
+</div>
+
+<%# <div class="counter-box">
+  <h1 id="counter-title">title</h1>
+  <p id="counter-nickname">nickname</p>
+</div> %>
+
+<div class="container" >
+  <div class="show-argument-child">
+    <div class="show-argument-child-infos-counter" id="0">
+      <h5 id="counter-title">title</h1>
+       <p id="counter-nickname">nickname</p>
+    </div>
+    <div>
+      <%= simple_form_for [@argument] do |f| %>
+        <%= f.button :submit, value: "Add Argument", class: "btn btn-primary btn-lg w-100" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <!-- Form to add a NEW counter argument -->

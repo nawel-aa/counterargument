@@ -1,0 +1,33 @@
+.counter-search {
+  height: 48px;
+  font-size: 1em;
+  width: 382px;
+  outline: none;
+  border: 2px solid $brandblue;
+  border-radius: 25px;
+  padding: 8px 16px;
+}
+
+// .counter-iconsearch{
+//   height: 40px;
+//   width: 40px;
+//   background: $brandblue;
+//   border-radius: 50%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-size: 1.8em;
+//   color: #fff;
+//   cursor: pointer;
+// }
+
+.counter-iconsearch2{
+  height: 40px;
+  width: 40px;
+  background: $brandblue;
+  border-radius: 50%;
+  font-size: 1.8em;
+  color: #fff;
+  cursor: pointer;
+  transform: translateX(-40px);
+}
