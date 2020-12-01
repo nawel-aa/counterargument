@@ -35,9 +35,9 @@
           </div>
         </div>
         <div class="social-btns d-flex justify-content-end">
-          <p><%= social_share_button_tag(@trending[0][1].content, :allow_sites => %w(twitter)) %></p>
-          <P><%= social_share_button_tag('Share to Facebook',
-            :url => argument_path(@trending[0][1]), desc:  @trending[0][1].content, :allow_sites => %w(facebook)) %></P>
+          <%= social_share_button_tag(@trending[0][1].content, :allow_sites => %w(twitter)) %>
+          <%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[0][1]), desc:  @trending[0][1].content, :allow_sites => %w(facebook)) %>
         </div>
         </div>
     </div>
