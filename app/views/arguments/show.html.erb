@@ -51,7 +51,7 @@
   <div class="col-12 col-md-8" id="Answer">
     <h5>Counter this argument</h5>
   </div>
-  
+
 <!-- Form to find EXISTING counter argument -->
   <div class="col-12 col-md-8">
     <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'row justify-content-end' } do |f| %>
@@ -70,14 +70,8 @@
       <div class="show-argument-child-infos-counter" id="0">
         <h5 id="counter-title"></h1>
 
-        <!--- I can't get the nickname to display properly, maybe it's okay without it
-        <%= tag.p id: "counter-nickname", data: { test: 1 } do %>
-            <%= Argument.find(95).user.nickname %>
-        <% end %>
-        --->
-
       </div>
-      
+
       <div>
         <%= simple_form_for [@argument] do |f| %>
           <%= f.hidden_field :parent_id, value: @argument_show.id %>
@@ -101,7 +95,7 @@
   <div class="container">
     <div class="row">
       <% unless @related_arguments.empty? %>
-      
+
         <div class="col-lg-6">
           <h2>Related arguments</h2>
           <% @related_arguments.each do |argument| %>
@@ -112,7 +106,7 @@
         </div>
 
       <% end %>
-  
+
       <div class="col-12 col-lg">
         <div id="arguments-map"></div>
       </div>
