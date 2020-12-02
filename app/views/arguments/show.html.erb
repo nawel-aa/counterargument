@@ -46,38 +46,45 @@
     <h5>Counter this argument</h5>
   </div>
 <!-- Form to find EXISTING counter argument -->
-<div class="col-12 col-md-8">
-  <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'row justify-content-end' } do |f| %>
-    <input type="text" class="counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
-    <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
+  <div class="col-12 col-md-8">
+    <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'row justify-content-end' } do |f| %>
+      <input type="text" class="counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
+      <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
 
-    <%= button_tag type: 'submit', class: "counter-iconsearch2 cursor-pointer" do %>
-      <i class="fas fa-search" title="Search"></i>
-    <% end %>
-  <% end %>
-</div>
-
-<%# <div class="counter-box">
-  <h1 id="counter-title">title</h1>
-  <p id="counter-nickname">nickname</p>
-</div> %>
-
-<div class="container" >
-  <div class="show-argument-child">
-    <div class="show-argument-child-infos-counter" id="0">
-      <h5 id="counter-title">title</h1>
-       <p id="counter-nickname">nickname</p>
-    </div>
-    <div>
-      <%= simple_form_for [@argument] do |f| %>
-        <%= f.button :submit, value: "Add Argument", class: "btn btn-primary btn-lg w-100" %>
+      <%= button_tag type: 'submit', class: "counter-iconsearch2 cursor-pointer" do %>
+        <i class="fas fa-search" title="Search"></i>
       <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="counter-container" id="counter-container" >
+    <div class="show-argument-child">
+      <div class="show-argument-child-infos-counter" id="0">
+        <h5 id="counter-title"></h1>
+
+        <!--- I can't get the nickname to display properly, maybe it's okay without it
+        <%= tag.p id: "counter-nickname", data: { test: 1 } do %>
+            <%= Argument.find(95).user.nickname %>
+        <% end %>
+        --->
+
+      </div>
+      
+      <div>
+        <%= simple_form_for [@argument] do |f| %>
+          <%= f.hidden_field :parent_id, value: @argument_show.id %>
+          <%= f.hidden_field :argument_id, value: :id, class: "counter-hidden-field" %>
+          <%= f.button :submit, value: "Add Argument", class: "btn btn-primary btn-lg w-100" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Form to add a NEW counter argument -->
-<div class="col-12 col-md-8">
-  <%= render '/arguments/form', arg: @argument_show %>
-</div>
+<div class="container">
+  <div class="col-12 col-md-8">
+    <%= render '/arguments/form', arg: @argument_show %>
+  </div>
 </div>
