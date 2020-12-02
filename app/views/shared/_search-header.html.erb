@@ -1,14 +1,14 @@
 
     <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
-      <div class="iconsearch">
-      <i class="fas fa-search" title="Search"></i>
+      <div class="search-icon">
+        <i class="fas fa-search" title="Search"></i>
       </div>
       
-      <input type="text" class="search-input" name="search" id="search" placeholder="Search..." autocomplete="off"/>
+      <input type="text" class="search-input" name="search" id="search" placeholder="Search..." autocomplete="off" />
       <%= f.hidden_field :results_ids, id: 'results', value: '' %>
 
 
-      <%= button_tag type: 'submit', class: " iconsearch2 cursor-pointer" do %>
+      <%= button_tag type: 'submit', class: "search-button cursor-pointer" do %>
         <i class="fas fa-search" title="Search"></i>
       <% end %>
     <% end %>
