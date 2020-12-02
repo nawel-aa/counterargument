@@ -10,25 +10,6 @@
     cursor: pointer;
 }
 
-.iconsearch-home{
-    height: 40px;
-    width: 40px;
-    border: none;
-    background: none;
-    color: #616161;
-    border-radius: 50%;
-    font-size: 1em;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 3px;
-}
-
-.search-input.active.home {
-    border: 2px solid $brandblue;
-    border-radius: 25px;
-    padding: 15px;
-}
 
 .visible{
   visibility:visible;
@@ -88,6 +69,31 @@
 // Applied to icon when form is opened
 .remove{
     display:none;
+}
+
+// Search bar used by itself (on homepage, show argument page)
+.search-bar {
+    max-width: 500px;
+    height: 45px;
+    margin:auto;
+    position:relative;
+
+    &-input {
+        border: 2px solid $brandblue;
+        border-radius: 25px;
+        padding: 8px 15px;
+        outline: none;
+        width: 100%;
+    }
+
+    &-icon{
+        @include search-icons;
+        border: none;
+        background: none;
+        color: #616161;
+        right: 0;
+        top: 3px;
+    }
 }
 
 // #searchSuggestions {

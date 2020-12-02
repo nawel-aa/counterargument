@@ -1,16 +1,75 @@
+.show-argument {
+  
+  &-header{
+    background: $primary;
+    color:white;
+    font-family: $btn-font;
+    padding: 32px 0;
+    
+    .avatar {
+      margin-right: 15px;
+    }
+    
+    .social-share-button {
+      margin: 0 5px;
+    }
+  }
+  
+  &-title {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    font-family: $btn-font;
+    line-height: 1.5;
+  }
+  
+  &-date, &-user, &-source {
+    opacity: .6;
+    word-break: break-word;
+    margin: 0;
+  }
+  
+  &-source {
+    margin-bottom: 24px;
+  }
+  
+  &-counterarguments {
+    margin: 24px 0;
+
+    > div {
+      margin-bottom: 15px;
+    }
+    
+    p {
+      margin: 0;
+    }
+    
+    p:last-of-type {
+      margin-bottom: 15px;
+    }
+    
+    a {
+      color: $text-color;
+      
+      &:hover {
+        color: $text-color;
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .search-bar {
+    margin: 15px 0;
+    
+    &-icon {
+      top:11px;
+      cursor: default;
+    }
+  }
+}
+
 .card-product-infos a {
   text-decoration: none;
   color: black;
-}
-
-.title {
-  margin: 8px 0 -4px 0;
-}
-
-.nickname {
-  opacity: .6;
-  // font-style: italic;
-  word-break: break-word;
 }
 
 #Answer {
@@ -19,6 +78,8 @@
 
 .votes {
   display: flex;
+  margin-top:5px;
+
   p {
     margin-right: 16px;
     background-color: #E0EBF6;
@@ -31,5 +92,5 @@
 }
 
 #counter-container {
-  visibility: hidden;
+  display: none;
 }

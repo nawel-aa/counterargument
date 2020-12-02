@@ -1,12 +1,13 @@
 <div class="container">
   <h1 class="text-center animate__animated animate__fadeInDown">Always have the last word.</h1>
 
-<div class="search-bar home-search">
- <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <div style="width:300px; height:45px; margin:auto; position:relative;"><input type="text" class="search-input active home" name="search" id="search" placeholder="Search for keywords" autocomplete="off" style="width:300px; height:45px; margin:auto;"/>
-      <%= f.hidden_field :results_ids, id: 'results', value: '' %>
+<div>
+ <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
+      <div class="search-bar">
+        <input type="text" class="search-bar-input" name="search" id="search" placeholder="Search for keywords" autocomplete="off"/>
+        <%= f.hidden_field :results_ids, id: 'results', value: '' %>
 
-      <%= button_tag type: 'submit', class: "iconsearch-home cursor-pointer" do %>
+        <%= button_tag type: 'submit', class: "search-bar-icon cursor-pointer" do %>
         <i class="fas fa-search" title="Search"></i>
       <% end %>
       </div>

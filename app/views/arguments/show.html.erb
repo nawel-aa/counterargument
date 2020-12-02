@@ -1,114 +1,132 @@
 
-  <!-- Parent Argument -->
-  <div class="col-12 col-md-12 justify-content-center show-argument-main">
-    <h1 class="title"><%= @argument_show.content %></h1>
-    <div class="arg-user">
-    <%= image_tag "useravatar.png", class:"show-avatar" %>
-
-    <div class="arg-info">
-    <p class="nickname"><%= "Source: #{@argument_show.source}" %></p>
-    <p class="nickname"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
-    <p class="nickname"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
-    <div class="social-btns d-flex">
-      <p><%= social_share_button_tag(@argument_show.content, allow_sites: %w(twitter)) %></p>
-      <P><%= social_share_button_tag('Share to Facebook',
-       url: argument_path(@argument_show), desc:  @argument_show.content, allow_sites: %w(facebook)) %></P>
-     </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-<!-- Child Arguments  -->
-<% @argument_show.children.each do |counterargument| %>
-  <div class="container" id="arg-<%= counterargument.id %>">
-    <div class="show-argument-child">
-      <div class="show-argument-child-infos">
-        <h5><%= link_to counterargument.content, argument_path(counterargument) %></h5>
-          <% unless counterargument.hidden %>
-        <p>Submitted by: <%= link_to counterargument.user.nickname, argument_path(counterargument) %> <%= time_ago_in_words(counterargument.created_at) %> ago</p>
-          <% end %>
-        <p><strong>source:</strong> <%= link_to counterargument.source, argument_path(counterargument) %></p>
-        <div class="votes">
-          <%= link_to argument_votes_path(counterargument, title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
-            <div class = 'vote-btn'><p><i class="fas fa-book"></i> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
-          <% end %>
-          <%= link_to argument_votes_path(counterargument, title: "Funny Vote", category: "funny", origin: @argument_show), method: :post do %>
-            <div class = 'vote-btn'><p><i class="far fa-laugh-beam"></i> <%= Vote.where(argument_id: counterargument.id, category: "funny").count %></p></div>
-          <% end %>
-          <%= link_to argument_votes_path(counterargument, title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
-            <div class = 'vote-btn'><p><i class="fas fa-bolt"></i> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
-          <% end %>
-          <%= render partial: "shared/tag", locals: {tag_name: counterargument.tags} %>
-        </div>
+<article class="show-argument">
+<!-- Parent Argument -->
+  <div class="col-12 col-md-12 show-argument-header">
+    <div class="container">
+      <h1 class="show-argument-title"><%= @argument_show.content %></h1>
+      <p class="show-argument-source"><%= @argument_show.source %></p>
+      <div class="row no-gutters justify-content-between align-items-center">
+  
+        <% if @argument_show.user.profile_picture.attached? %>
+          <%= cl_image_tag @argument_show.user.profile_picture.key, class: "avatar" %>
+        <% else %>
+          <%= image_tag "useravatar.png", class:"avatar" %>
+        <% end %>
+    
+          <div class="col">
+            <p class="show-argument-user"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
+            <p class="show-argument-date"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
+          </div>
+          <div class="col-auto">
+            <div class="d-flex">
+              <%= social_share_button_tag(@argument_show.content, allow_sites: %w(twitter)) %>
+              <%= social_share_button_tag('Share to Facebook',
+                url: argument_path(@argument_show), desc:  @argument_show.content, allow_sites: %w(facebook)) %>
+            </div>
+          </div>
       </div>
     </div>
   </div>
-<% end %>
-
-<!-- Add counter argument section -->
-<section class="container">
-  <div class="col-12 col-md-8" id="Answer">
-    <h5>Counter this argument</h5>
-  </div>
   
-<!-- Form to find EXISTING counter argument -->
-  <div class="col-12 col-md-8">
-    <%= simple_form_for :search_results, url: search_path, method: "GET", html: { class: 'row justify-content-end' } do |f| %>
-      <input type="text" class="counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
-      <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
-
-    <%= button_tag type: 'submit', class: "counter-search-button cursor-pointer" do %>
-      <i class="fas fa-search" title="Search"></i>
-      <% end %>
+  <!-- Child Arguments  -->
+  <div class="show-argument-counterarguments">
+  <h2 class="d-none">Counterarguments</h2>
+    <% @argument_show.children.each do |counterargument| %>
+      <div class="container" id="arg-<%= counterargument.id %>">
+        <div class="card">
+          <div class="card-body">
+            <h3><%= link_to counterargument.content, argument_path(counterargument) %></h3>
+            <p><%= link_to counterargument.source, argument_path(counterargument), class: "text-muted" %></p>
+            <p class="text-muted">
+            Submitted by <%= counterargument.hidden ? "anonymous" : counterargument.user.nickname %> <%= time_ago_in_words(counterargument.created_at) %> ago
+            </p>
+            <div class="mb-3">
+                <%= render partial: "shared/tag", locals: {tag_name: counterargument.tags} %>
+            </div>
+            <div class="votes">
+              <%= link_to argument_votes_path(counterargument, title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-source" %> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
+              <% end %>
+              <%= link_to argument_votes_path(counterargument, title: "Funny Vote", category: "funny", origin: @argument_show), method: :post do %>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-funny" %> <%= Vote.where(argument_id: counterargument.id, category: "funny").count %></p></div>
+              <% end %>
+              <%= link_to argument_votes_path(counterargument, title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-clear" %> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-
-
-  <div class="counter-container" id="counter-container" >
-    <div class="show-argument-child">
-      <div class="show-argument-child-infos-counter" id="0">
-        <h5 id="counter-title"></h1>
-      </div>
-      
-      <div>
-        <%= simple_form_for [@argument] do |f| %>
-          <%= f.hidden_field :parent_id, value: @argument_show.id %>
-          <%= f.hidden_field :argument_id, value: :id, class: "counter-hidden-field" %>
-          <%= f.button :submit, value: "Add Argument", class: "btn btn-primary btn-lg w-100" %>
-        <% end %>
-      </div>
+  
+  <!-- Add counter argument section -->
+  <section class="container">
+    <div id="Answer">
+      <h2>Counter this argument</h2>
     </div>
-  </div>
-</div>
-
-<!-- Form to add a NEW counter argument -->
-<div class="container">
-  <div class="col-12 col-md-8">
-    <%= render '/arguments/form', arg: @argument_show %>
-  </div>
-</div>
-</section>
-
-<section class="related-arguments">
-  <div class="container">
-    <div class="row">
-      <% unless @related_arguments.empty? %>
-      
-        <div class="col-lg-6">
-          <h2>Related arguments</h2>
-          <% @related_arguments.each do |argument| %>
-            <div class="notification pl-0">
-              <p class="text-body"><%= link_to argument.content, argument_path(argument)%></p>
-            </div>
+    
+  <!-- Form to find EXISTING counter argument -->
+    <div>
+      <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
+        <div class="search-bar">
+          <input type="text" class="search-bar-input counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
+          <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
+    
+          <div class="search-bar-icon">
+            <i class="fas fa-search" title="Search"></i>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  
+  
+    <div class="counter-container card" id="counter-container" >
+      <div class="card-body row align-items-center">
+        <div class="show-argument-counterargument-infos-counter col" id="0">
+          <h3 id="counter-title"></h3>
+        </div>
+        
+        <div class="col-auto">
+          <%= simple_form_for [@argument] do |f| %>
+            <%= f.hidden_field :parent_id, value: @argument_show.id %>
+            <%= f.hidden_field :argument_id, value: :id, class: "counter-hidden-field" %>
+            <%= f.hidden_field :user, value: current_user, class: "counter-hidden-field" %>
+            <%= f.button :submit, value: "Add Argument", class: "btn btn-lg w-100" %>
           <% end %>
         </div>
-
-      <% end %>
-  
-      <div class="col-12 col-lg">
-        <div id="arguments-map"></div>
       </div>
     </div>
   </div>
-</section>
+  
+  <!-- Form to add a NEW counter argument -->
+  <div class="container">
+    <div class="col-12 col-md-8">
+      <%= render '/arguments/form', arg: @argument_show %>
+    </div>
+  </div>
+  </section>
+  
+  <section class="related-arguments">
+    <div class="container">
+      <div class="row">
+        <% unless @related_arguments.empty? %>
+        
+          <div class="col-lg-6">
+            <h2>Related arguments</h2>
+            <% @related_arguments.each do |argument| %>
+              <div class="notification pl-0">
+                <p class="text-body"><%= link_to argument.content, argument_path(argument)%></p>
+              </div>
+            <% end %>
+          </div>
+  
+        <% end %>
+    
+        <div class="col-12 col-lg">
+          <div id="arguments-map"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
