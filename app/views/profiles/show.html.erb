@@ -53,7 +53,7 @@
     <h2>Notifications <span class="text-muted">(<%= @notifications.count %>)</span></h2>
 
     <% if @notifications.empty? %>
-      <p class="text-muted">No notification.</p>
+      <p class="text-muted">No notifications.</p>
     <% else %>
 
       <% @notifications.each do |notification| %>
@@ -74,16 +74,23 @@
 
   <%# Arguments %>
   <section>
-    <h2>Arguments</h2>
-    <% @arguments.each do |argument| %>
-      <div class="card mb-2">
-        <div class="card-body">
-          <h3><%= argument.content %></h3>
-          <%= simple_form_for argument do |f| %>
-            <%= f.input :hidden, label: "Anonymous", input_html: { class: "toggle" } %>
-          <% end %>
+    <h2 style="margin-bottom: 14px;">Arguments <span class="text-muted">(<%= @arguments.count %>)</h2>
+
+    <% if @arguments.empty? %>
+      <p class="text-muted">No arguments.</p>
+    <% else %>
+
+      <% @arguments.each do |argument| %>
+        <div class="card mb-2" id=<%="anchor-#{argument.id}"%>>
+          <div class="card-body switch">
+            <h3><%= link_to argument.content, argument_path(argument) %></h3>
+            <%= simple_form_for argument, html: { id: "anon-switch-#{argument.id}" } do |f| %>
+              <%= f.input :hidden, placeholder: argument.hidden, label: "Anonymous", input_html: { class: "toggle anon-switch", id: argument.id } %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
+
     <% end %>
   </section>
 </div>

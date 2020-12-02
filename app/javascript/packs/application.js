@@ -42,6 +42,7 @@ import { initSidenavOnClick } from '../components/sidenav.js';
 import { initExpandableSearch } from '../components/expandable_search.js';
 import { initNotificationsCable } from '../channels/notifications.js';
 import { initSigma } from '../plugins/init_sigma.js';
+import { anonymousSwitch } from '../components/anonymous_switch.js';
 
 document.addEventListener('turbolinks:load', () => {
   initSigma();
@@ -50,5 +51,5 @@ document.addEventListener('turbolinks:load', () => {
   initExpandableSearch();
   initNotificationsCable();
   responsiveSearch();
-
+  anonymousSwitch();
 });
