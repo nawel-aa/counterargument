@@ -27,7 +27,11 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= render 'shared/header' %>
+    <% if current_page?(root_path) %>
+      <%= render 'shared/home_header' %>
+    <% else %>
+      <%= render 'shared/header' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <div class="site-content">
 
