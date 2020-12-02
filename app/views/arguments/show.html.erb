@@ -1,9 +1,14 @@
 
-  <!-- Parent Argument -->
-  <div class="col-12 col-md-12 justify-content-center show-argument-main">
-    <h1 class="title"><%= @argument_show.content %></h1>
-    <div class="arg-user">
-    <%= image_tag "useravatar.png", class:"show-avatar" %>
+<% content_for :meta_title, @argument_show.content %>
+<%# content_for :meta_description, @tags.join(", ")%>
+<%# content_for :meta_image, asset_url("logo.png") %>
+
+
+<!-- Parent Argument -->
+<div class="col-12 col-md-12 justify-content-center show-argument-main">
+  <h1 class="title"><%= @argument_show.content %></h1>
+  <div class="arg-user">
+  <%= image_tag "useravatar.png", class:"show-avatar" %>
 
     <div class="arg-info">
     <p class="nickname"><%= "Source: #{@argument_show.source}" %></p>
@@ -58,8 +63,8 @@
       <input type="text" class="counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
       <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
 
-      <%= button_tag type: 'submit', class: "counter-iconsearch2 cursor-pointer" do %>
-        <i class="fas fa-search" title="Search"></i>
+    <%= button_tag type: 'submit', class: "counter-search-button cursor-pointer" do %>
+      <i class="fas fa-search" title="Search"></i>
       <% end %>
     <% end %>
   </div>
@@ -69,7 +74,6 @@
     <div class="show-argument-child">
       <div class="show-argument-child-infos-counter" id="0">
         <h5 id="counter-title"></h1>
-
       </div>
 
       <div>

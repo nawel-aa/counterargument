@@ -3,13 +3,15 @@
 
   <div class="ca-logo">
     <%= link_to root_path do %>
-      <%= image_tag "logo.png", alt:"Counterargument logo" %>
+      <%= image_tag "logo-md.png", alt:"Counterargument logo" %>
     <% end %>
   </div>
 
-  <div class="row align-items-center justify-content-end">
-    <div class="col">
-      <%= render '/shared/search-header' %>
+  <div class="row justify-content-end no-gutters">
+    <div class="col-auto">
+      <div class="search-form">
+        <%= render '/shared/search-header' %>
+      </div>
     </div>
     <div class="col-auto">
       <%= render '/shared/sidenav' %>

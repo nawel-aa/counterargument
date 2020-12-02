@@ -30,14 +30,14 @@ const algoliaSearch = () => {
         
         
         // Autocomplete
-        autocompleteElement.innerHTML = ""
+        // autocompleteElement.innerHTML = ""
         
         statements.forEach((statement, index) => {
           
           if (index < 5){
             const content = statement.content.slice(0, 10) + "...";
             const suggestion = `<li data-id=${statement.objectID} class=suggestion>${content}</li>`
-            autocompleteElement.insertAdjacentHTML("beforeEnd", suggestion);
+            // autocompleteElement.insertAdjacentHTML("beforeEnd", suggestion);
             
           }
           // asking the card conatiner what to put into the container and where

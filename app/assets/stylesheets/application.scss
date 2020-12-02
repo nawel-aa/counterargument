@@ -15,11 +15,27 @@
 @import "config/texts";
 @import "components/index";
 @import "pages/index";
-@import "social-share-button";
+
+// Leave commented for custom styles please!
+// @import "social-share-button"; Leave Commented
+
 
 
 body{
   background:$brandlightblue;
+  height: 100%;
+  margin: 0;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-content {
+  flex: 1;
+  margin-bottom: 50px;
 }
 
 
