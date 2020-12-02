@@ -8,9 +8,10 @@ class Argument < ApplicationRecord
   end
 
   belongs_to :user
-  has_many :tags, through: :tags_argument
   has_many :tags_argument
-  # has_many_attached :photos
+  has_many :tags, through: :tags_argument
+  has_many :notifications, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   # Gets all the relationships where you are the parent
   has_many :relationships_as_a_parent, class_name: 'ArgumentParentChildRelationship', foreign_key: :parent_id
@@ -23,9 +24,6 @@ class Argument < ApplicationRecord
   # Taking all the relationships where you are the child, getting the parent and calling it children
   has_many :children, through: :relationships_as_a_parent, source: :child
 
-  has_many :tags, through: :tags_argument
-  has_many :notifications, dependent: :destroy
-  has_many :votes, dependent: :destroy
 
   validates :content, presence: true
 end

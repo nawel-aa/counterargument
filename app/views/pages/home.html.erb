@@ -10,16 +10,18 @@
 
     <div id="searchSuggestions"></div>
 </div> -->
-<div class="container">
-  <h1 class="text-center">Always have the last word.</h1>
 
-    <h2 class="text-center mt-5 mb-4">Trending Arguments</h2>
+<div class="container">
+  <h1 class="text-center animate__animated animate__fadeInDown">Always have the last word.</h1>
+
+    <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Trending Arguments</h2>
   <div class="row d-flex justify-content-between">
     <div class="col-12 col-md-4">
         <div class="card mb-4">
-          <div class="card-title">
+          <div class="card-title animate__animated animate__fadeIn">
             <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
           </div>
+
           <div class="tag-section align-items-center justify-content-between flex-wrap">
           <div class="row">
             <div class="col-auto arg-bubble">
@@ -32,12 +34,17 @@
             </div>
           </div>
         </div>
+        <div class="social-btns d-flex justify-content-end">
+          <p><%= social_share_button_tag(@trending[0][1].content, :allow_sites => %w(twitter)) %></p>
+          <P><%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[0][1]), desc:  @trending[0][1].content, :allow_sites => %w(facebook)) %></P>
+        </div>
         </div>
     </div>
 
     <div class="col-12 col-md-4">
         <div class="card mb-4">
-            <div class="card-title">
+            <div class="card-title animate__animated animate__fadeIn">
               <h2><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
             </div>
            <div class="tag-section align-items-center justify-content-between flex-wrap">
@@ -52,12 +59,17 @@
             </div>
           </div>
         </div>
+        <div class="social-btns d-flex justify-content-end">
+          <p><%= social_share_button_tag(@trending[1][1].content, :allow_sites => %w(twitter)) %></p>
+          <P><%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[1][1]), desc:  @trending[1][1].content, :allow_sites => %w(facebook)) %></P>
+        </div>
         </div>
     </div>
 
     <div class="col-12 col-md-4">
       <div class="card mb-4">
-        <div class="card-title">
+        <div class="card-title animate__animated animate__fadeIn">
           <h2><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
         </div>
         <div class="tag-section align-items-center justify-content-between flex-wrap">
@@ -72,6 +84,11 @@
             </div>
           </div>
         </div>
+        <div class="social-btns d-flex justify-content-end">
+          <p><%= social_share_button_tag(@trending[2][1].content, :allow_sites => %w(twitter)) %></p>
+          <P><%= social_share_button_tag('Share to Facebook',
+            :url => argument_path(@trending[2][1]), desc:  @trending[2][1].content, :allow_sites => %w(facebook)) %></P>
+        </div>
       </div>
     </div>
 
@@ -80,30 +97,30 @@
 
 <div class="container">
   <hr class="mt-5">
-  <h2 class="text-center mt-5 mb-4">🔥 Hot Topics 🔥</h2>
+  <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">🔥 Hot Topics 🔥</h2>
 
   <div class="cards">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
         <%= link_to "Politics", root_path + @politics %>
       </div>
 
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
         <%= link_to "Global Warming", root_path + @global_warming %>
       </div>
 
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
         <%= link_to "Covid-19", root_path + @covid_19 %>
       </div>
 
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
         <%= link_to "Religion", root_path + @religion %>
       </div>
 
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
+      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
         <%= link_to "#BLM", root_path + @blm %>
       </div>
 
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
         <%= link_to "Vaccination", root_path + @vaccination %>
       </div>
   </div>

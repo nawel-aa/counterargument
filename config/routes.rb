@@ -18,8 +18,14 @@ Rails.application.routes.draw do
 
   resources :tags, only: :create
 
-
   get '/profile', to: 'profiles#show'
   get '/profile/edit', to: 'profiles#edit', as: "user"
   patch '/profile/:id', to: 'profiles#update'
+
+  # API created for Sigma
+  namespace :api, defaults: { format: :jason } do
+    namespace :v1 do
+      resources :sigma_arguments, only: :index
+    end
+  end
 end

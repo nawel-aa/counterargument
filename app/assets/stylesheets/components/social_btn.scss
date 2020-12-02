@@ -1,0 +1,17 @@
+$size: 32px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+
+    margin-right:5px;
+    margin-top: 5px;
+    border:1px solid $brandlightblue;
+    border-radius:50%;
+  }
+  .ssb-icon:hover{
+    transform: scale(1.2);
+  }
+}

@@ -9,7 +9,8 @@
 
 .nickname {
   opacity: .6;
-  font-style: italic;
+  // font-style: italic;
+  word-break: break-word;
 }
 
 #Answer {

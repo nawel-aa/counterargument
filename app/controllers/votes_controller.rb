@@ -33,7 +33,7 @@ class VotesController < ApplicationController
 
     NotificationsChannel.broadcast_to(
       notification.user,
-      notification.user.notifications.count
+      notification.user.notifications.where(read: false).count
     )
   end
 
