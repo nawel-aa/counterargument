@@ -9,10 +9,10 @@ border-radius:5px;
   color: white;
   background-color: #2E5FE8;
   line-height: 2rem;
-  height: 75px;
+  height: 80px;
   overflow:hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
     h2 {
       padding: 10px;
@@ -29,7 +29,7 @@ border-radius:5px;
 
 .tag-section {
   background-color: white;
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   padding: 0 14px;
@@ -37,17 +37,17 @@ border-radius:5px;
 }
 
 .arg-bubble{
-  width:70px;
-  height:40px;
+  // width:70px;
+  // height:40px;
   background-image: asset-url('argument_bubble.png');
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 32px 32px;
   background-position: center;
   text-align:center;
 }
 
 .arg-bubble p{
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
 }
 
 
