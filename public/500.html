@@ -1,66 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>500: I am speechless</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&family=Archivo+Black&family=Judson&display=swap" rel="stylesheet">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    html {
+      font-size: 62.5%;
+    }
+    
+    body {
+      font-size: 1.6rem;
+      font-family: 'Judson', serif;
+      background-color: #E0EBF6;
+      margin: 0;
+    }
+    
+    h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 5.4rem;
+      margin: 0;
+    }
+    
+    p {
+      font-size: 2.8rem;
+      margin-bottom: 2.5rem;
+      margin-top: 4rem;
+    }
+    
+    .container {
+      min-height: 100vh;
+      max-width: 1110px;
+      margin: auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .btn {
+      border-radius: 24px;
+      background-color: #E7A92F;
+      color: #1E212B;
+      font-family: 'Archivo', 'sans-serif';
+      text-decoration: none;
+      padding: 15px 20px;
+      display: inline-block;
+    }
+    
+    .btn:hover {
+      background-color: #2E5FE8;
+      color: #fff;
+    }
+    
+    .error {
+      font-size: 24rem;
+      color: rgba(46, 95, 232, .2);
+      position: absolute;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      transform: translateY(-50%);
+    }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    .logo {
+      width: 180px;
+    }
+    
+    @media screen and (max-width: 768px) {
+      html {
+        font-size: 50%;
+      }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      .error {
+        font-size: 20rem;
+      }
+    }
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
+<body>
+  <!-- This file lives in public/404.html -->
+  <div class="container">
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <a href="/"><img class="logo" src="/images/small-logo.png" alt="CounterArgument logo"></a>
+      <div>
+        <div>
+          <div>
+            <h1><span class="error">500</span>I am speechless</h1>
+            <p>Sorry, something went wrong.</p>
+            <a href="/" class="btn">Back to homepage</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
