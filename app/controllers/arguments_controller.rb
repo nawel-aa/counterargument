@@ -12,7 +12,7 @@ class ArgumentsController < ApplicationController
   end
 
   def create
-    if params[:argument][:argument_id].to_i
+    if params[:argument][:argument_id]
       @argument = Argument.find(params[:argument][:argument_id].to_i)
       parent = Argument.find(params[:argument][:parent_id].to_i)
       # counter.children << ["parent_id", params[:argument][:parent_id].to_i]
