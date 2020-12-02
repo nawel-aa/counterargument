@@ -22,6 +22,18 @@ const srchBtn = document.querySelector('.search-button');
   }
   })
 
+    })
+  // Reset when clicking anywhere except input bar & visible search btn
+    document.addEventListener('click',() =>{
+      let isClickOnSearch = openSearch.contains(event.target);
+      let isClickOnInput = inputBar.contains(event.target);
+      if (!isClickOnSearch && !isClickOnInput){
+      inputBar.classList.remove('active');
+      srchBtn.classList.remove('visible');
+      openSearch.classList.remove('remove');
+    }
+    })
+  }   
 }
 
 export { initExpandableSearch };
