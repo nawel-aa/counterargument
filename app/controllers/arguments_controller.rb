@@ -12,27 +12,38 @@ class ArgumentsController < ApplicationController
   end
 
   def create
-    @argument = Argument.new(content: argument_params[:content], source: argument_params[:source], hidden: argument_params[:hidden])
-    @argument.user = current_user
-    if params[:argument][:tag_ids] 
-      @tags = params[:argument][:tag_ids]
-      @tags.each { |tag_id| @argument.tags << Tag.find(tag_id.to_i) }
-    end
-    authorize @argument
-
-    parent = Argument.find(argument_params[:parent_id]) if argument_params[:parent_id]
-
-    if @argument.save
-      if parent
-        ArgumentParentChildRelationship.create(parent: parent, child: @argument)
-        create_notification(parent)
-        redirect_to argument_path(parent)
-      else
-        redirect_to argument_path(@argument)
-      end
+    if params[:argument][:argument_id]
+      @argument = Argument.find(params[:argument][:argument_id].to_i)
+      parent = Argument.find(params[:argument][:parent_id].to_i)
+      # counter.children << ["parent_id", params[:argument][:parent_id].to_i]
+      authorize @argument
+      @argument.save
+      ArgumentParentChildRelationship.create(parent: parent, child: @argument)
+      create_notification(parent)
+      redirect_to argument_path(parent)
     else
-      @argument_show = parent
-      render "/arguments/show"
+      @argument = Argument.new(content: argument_params[:content], source: argument_params[:source], hidden: argument_params[:hidden])
+      @argument.user = current_user
+      if params[:argument][:tag_ids] 
+        @tags = params[:argument][:tag_ids]
+        @tags.each { |tag_id| @argument.tags << Tag.find(tag_id.to_i) }
+      end
+      authorize @argument
+
+      parent = Argument.find(argument_params[:parent_id]) if argument_params[:parent_id]
+
+      if @argument.save
+        if parent
+          ArgumentParentChildRelationship.create(parent: parent, child: @argument)
+          create_notification(parent)
+          redirect_to argument_path(parent)
+        else
+          redirect_to argument_path(@argument)
+        end
+      else
+        @argument_show = parent
+        render "/arguments/show"
+      end
     end
   end
 
