@@ -15,15 +15,15 @@
 </div>
 
     <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Trending Arguments</h2>
-  <div class="row d-flex justify-content-between">
+  <div class="row justify-content-between">
     <div class="col-12 col-md-4">
         <div class="card mb-4">
-          <div class="card-title animate__animated animate__fadeIn">
+          <div class="card-title animate__animated animate__fadeIn mb-0">
             <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
           </div>
 
-          <div class="row tag-section ">
-            <div class="col-auto arg-bubble mb-2">
+          <div class="row align-items-center tag-section no-gutters justify-content-between">
+            <div class="col-auto arg-bubble">
             <p><%= @trending[0][0] %></p>
             </div>
 
@@ -39,11 +39,11 @@
 
     <div class="col-12 col-md-4">
         <div class="card mb-4">
-            <div class="card-title animate__animated animate__fadeIn">
+            <div class="card-title animate__animated animate__fadeIn mb-0">
               <h2><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
             </div>
-           <div class="row tag-section ">
-            <div class="col-auto arg-bubble mb-2">
+           <div class="row align-items-center tag-section no-gutters justify-content-between">
+            <div class="col-auto arg-bubble">
             <p><%= @trending[1][0] %></p>
             </div>
 
@@ -59,11 +59,11 @@
 
     <div class="col-12 col-md-4">
       <div class="card mb-4">
-        <div class="card-title animate__animated animate__fadeIn">
+        <div class="card-title animate__animated animate__fadeIn mb-0">
           <h2><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
         </div>
-          <div class="row tag-section ">
-            <div class="col-auto arg-bubble mb-2">
+          <div class="row align-items-center tag-section no-gutters justify-content-between">
+            <div class="col-auto arg-bubble">
             <p><%= @trending[2][0] %></p>
             </div>
 

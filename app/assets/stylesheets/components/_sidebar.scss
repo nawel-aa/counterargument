@@ -18,6 +18,10 @@
   text-align: left;
   z-index: 3;
 
+  > .sidenav-element:hover{
+    background: $brandlightblue;
+  }
+
   > a, > ul {
     padding: 20px 10px;
     text-decoration: none;
@@ -27,10 +31,6 @@
     display: block;
     transition: 0.4s;
     border-bottom: 1px solid #f1f1f1;
-
-    &:hover{
-      background:$brandlightblue ;
-    }
   }
 
   .fa-times{
@@ -44,10 +44,15 @@
 }
 
 .filters {
-  &__link {
+  &-link {
     font-family: $body-font;
     color: $text-color;
     font-size: $font-size-base;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   ul {
