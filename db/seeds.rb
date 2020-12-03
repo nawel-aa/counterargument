@@ -21,7 +21,7 @@ emails.each do |email|
 end
 
 puts "Generating tags..."
-tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment", "Science", "Equality", "Vegan"]
+tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment", "Science", "Equality", "Vegan", "Animal"]
 tag_names.each do |tag_name|
   Tag.create!(name: tag_name)
 end
@@ -417,7 +417,7 @@ TagsArgument.create!(argument: feed_the_globe, tag: Tag.find_by(name: "Equality"
 zoo_parent = Argument.create!(
   content: "Zoos should be banned",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "tatiana@email.com")
 )
 
 zoo_violate_animal = Argument.create!(
@@ -433,16 +433,76 @@ zoo_black_market = Argument.create!(
 zoo_conservation = Argument.create!(
   content: "Zoos play a critical role in the conservation of endangered species",
   source: Faker::Internet.url,
+  user: User.find_by(email:"jadam@email.com")
+)
+brazil_black_market = Argument.create!(
+  content: "In Brazil “Animal laundering” is a reality through zoos or so-called scientific, conservationist, or commercial breeding grounds which provide false certificates claiming that animals were born in captivity.",
+  source: "https://wildwelfare.org/portfolio/animal-welfare-in-brazilian-zoos/",
+  user: User.all.sample
+)
+pet_trade = Argument.create!(
+  content: "The exotic pet trade, which is highly unregulated, is a multi-billion dollar industry, second only to drugs and weapons on the black market",
+  source: Faker::Internet.url,
+  user: User.all.sample
+)
+no_zoo = Argument.create!(
+  content: "Conservation can be achieved without keeping animals in artificial captive environments.",
+  source: Faker::Internet.url,
+  user: User.all.sample
+)
+yes_zoo = Argument.create!(
+  content: "Zoos contribute financially to conservation, both at their facilities and in wild habitats.",
+  source: Faker::Internet.url,
+  user: User.find_by(email:"jadam@email.com")
+)
+national_parks = Argument.create!(
+  content: "For example, national parks play critical roles in conservation.",
+  source: Faker::Internet.url,
+  user: User.all.sample
+)
+
+animal_suffering = Argument.create!(
+  content: "Zoos cause suffering to animals.",
+  source: Faker::Internet.url,
+  user: User.all.sample
+)
+natural_environment = Argument.create!(
+  content: "Zoos cannot replicate the natural environment of animals.",
+  source: Faker::Internet.url,
   user: User.all.sample
 )
 
 ArgumentParentChildRelationship.create!(child: zoo_violate_animal, parent: zoo_parent)
 ArgumentParentChildRelationship.create!(child: zoo_black_market, parent: zoo_parent)
+ArgumentParentChildRelationship.create!(child: animal_suffering, parent: zoo_parent)
 ArgumentParentChildRelationship.create!(child: zoo_conservation, parent: zoo_black_market)
+ArgumentParentChildRelationship.create!(child: brazil_black_market, parent: zoo_black_market)
+ArgumentParentChildRelationship.create!(child: pet_trade, parent: zoo_black_market)
+ArgumentParentChildRelationship.create!(child: no_zoo, parent: zoo_conservation)
+ArgumentParentChildRelationship.create!(child: yes_zoo, parent: zoo_conservation)
+ArgumentParentChildRelationship.create!(child: national_parks, parent: no_zoo)
+ArgumentParentChildRelationship.create!(child: natural_environment, parent: animal_suffering)
+
+TagsArgument.create!(argument: zoo_parent, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: zoo_violate_animal, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: zoo_black_market, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: animal_suffering, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: zoo_conservation, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: brazil_black_market, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: pet_trade, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: no_zoo, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: yes_zoo, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: national_parks, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: natural_environment, tag: Tag.find_by(name: "Animal"))
 TagsArgument.create!(argument: zoo_parent, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: zoo_violate_animal, tag: Tag.find_by(name: "Equality"))
 TagsArgument.create!(argument: zoo_black_market, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: zoo_conservation, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: brazil_black_market, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: pet_trade, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: natural_environment, tag: Tag.find_by(name: "Environment"))
+
+
 
 # Title 7: languages
 languages_parent = Argument.create!(
