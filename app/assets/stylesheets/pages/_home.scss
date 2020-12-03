@@ -30,16 +30,14 @@ border-radius:5px;
 .tag-section {
   background-color: white;
   height: 50px;
-  display: flex;
-  justify-content: space-between;
   padding: 0 14px;
   margin:2px;
 }
 
 .arg-bubble{
-  // width:70px;
-  // height:40px;
-  background-image: asset-url('argument_bubble.png');
+  height:32px;
+  width: 32px;
+  background-image: asset-url('argument-bubble.svg');
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: center;
@@ -47,7 +45,7 @@ border-radius:5px;
 }
 
 .arg-bubble p{
-  margin-top: 0.6rem;
+  margin: 3px 0 0 0;
 }
 
 

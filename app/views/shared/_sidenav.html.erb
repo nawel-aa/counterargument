@@ -1,11 +1,11 @@
 <div id="sideBarNav" class="sidenav">
   <% if user_signed_in? %>
-    <%= link_to 'My Profile', profile_path %>
-    <%= link_to 'Add an Argument', new_argument_path  %>
-    <%= link_to 'Log Out', destroy_user_session_path, :method => 'delete' %>
+    <%= link_to 'My Profile', profile_path, class: "sidenav-element" %>
+    <%= link_to 'Add an Argument', new_argument_path, class: "sidenav-element"  %>
+    <%= link_to 'Log Out', destroy_user_session_path, :method => 'delete', class: "sidenav-element" %>
   <% else %>
-    <%= link_to 'Log-in' , new_user_session_path %>
-    <%= link_to 'Add an Argument', new_argument_path  %>
+    <%= link_to 'Log-in' , new_user_session_path, class: "sidenav-element" %>
+    <%= link_to 'Add an Argument', new_argument_path, class: "sidenav-element"  %>
   <% end %>
   <div class="icon">
     <i class="fas fa-times"></i>
