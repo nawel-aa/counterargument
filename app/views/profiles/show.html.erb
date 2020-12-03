@@ -44,11 +44,6 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex" style="margin-top: 16px; line-height: 8px;">
-              <h3>Total counter points:</h3>&nbsp;
-              <h3 id="point-score"><%= @points %></h3>
-            </div>
-              <p class="text-muted">Post more arguments and gain more upvotes to increase your score!</p>
           </div>
         </div>
       </div>
@@ -63,24 +58,24 @@
     <div class="card-body p-2">
       <div class="row no-gutters">
         <div class="col-4 text-center">
-          <%= image_tag "smoothtalker.png", alt: "smooth talker badge", class:"badge-img" %>
+          <%= image_tag "smoothtalker.png", alt: "smooth talker badge", class:"badge-img", id: (@posts >= 10 ? "earned" : "") %>
         </div>
         <div class="col-4 text-center">
-          <%= image_tag "thediplomat.png", alt: "diplomat badge", class:"badge-img" %>
+          <%= image_tag "thediplomat.png", alt: "diplomat badge", class:"badge-img", id: (@posts >= 25 ? "earned" : "") %>
         </div>
         <div class="col-4 text-center">
-          <%= image_tag "greatdebater.png", alt: "great debater badge", class:"badge-img" %>
+          <%= image_tag "greatdebater.png", alt: "great debater badge", class:"badge-img", id: (@posts >= 100 ? "earned" : "") %>
         </div>
       </div>
       <div class="row no-gutters">
         <div class="col-4 text-center">
-          <%= image_tag "fanclub.png", alt: "fanclub badge", class:"badge-img" %>
+          <%= image_tag "fanclub.png", alt: "fanclub badge", class:"badge-img", id: (@upvotes >= 15 ? "earned" : "") %>
         </div>
         <div class="col-4 text-center">
-           <%= image_tag "legitelected.png", alt: "legit elected badge", class:"badge-img" %>
+           <%= image_tag "legitelected.png", alt: "legit elected badge", class:"badge-img", id: (@upvotes >= 50 ? "earned" : "") %>
         </div>
         <div class="col-4 text-center">
-           <%= image_tag "famous.png", alt: "famous badge", class:"badge-img" %>
+           <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
         </div>
       </div>
     </div>
@@ -93,14 +88,14 @@
   <section class="card mb-3">
     <div class="card-body p-0">
       <div class="row no-gutters">
-        <div class="col-4 text-center">
+        <div class="col-4 mt-2 text-center">
           <%= image_tag "yellow-bubble.svg", alt: "counter arguments bubble", class:"points-img" %>
-          <h3>35</h3>
+          <h3><%= @posts %></h3>
           <p>Counters</p>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-4 mt-2 text-center">
           <%= image_tag "upvote-icon.svg", alt: "upvotes", class:"points-img" %>
-          <h3>12</h3>
+          <h3><%= @upvotes %></h3>
           <p>Upvotes</p>
         </div>
         <div class="col-4 text-center points-total">
