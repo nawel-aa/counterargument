@@ -24,7 +24,7 @@ const responsiveSearch = () => {
       const suggestedTitle = document.getElementById("counter-title");
       // const suggestedNickname = document.getElementById("counter-nickname");
       const counterHiddenForm = document.querySelector(".counter-hidden-field");
-      const counterCard = document.querySelector(".show-argument-child-infos-counter");
+      const counterCard = document.querySelector(".show-argument-counterargument-infos-counter");
 
       const autocompleteElement = document.querySelector('#searchSuggestions');
         index.search(inputField.value).then((content) => {
