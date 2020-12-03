@@ -10,13 +10,14 @@
       <h1 class="show-argument-title"><%= @argument_show.content %></h1>
       <p class="show-argument-source"><%= @argument_show.source %></p>
       <div class="row no-gutters justify-content-between align-items-center">
-  
+
         <% if @argument_show.user.profile_picture.attached? %>
           <%= cl_image_tag @argument_show.user.profile_picture.key, class: "avatar" %>
         <% else %>
+
           <%= image_tag "useravatar.png", class:"avatar" %>
         <% end %>
-    
+
           <div class="col">
             <p class="show-argument-user"><%=@argument_show.hidden ? "Submitted by: anonymous" : "Submitted by: #{@argument_show.user.nickname}"  %></p>
             <p class="show-argument-date"><%= time_ago_in_words(@argument_show.created_at) %> ago</p>
@@ -31,7 +32,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Child Arguments  -->
   <div class="show-argument-counterarguments">
   <h2 class="d-none">Counterarguments</h2>
@@ -90,34 +91,34 @@
     <% end %>
   </div>
 
-  
+
   <!-- Add counter argument section -->
   <div class="container">
     <div id="Answer">
       <h2>Counter this argument</h2>
     </div>
-    
+
   <!-- Form to find EXISTING counter argument -->
     <div>
       <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
         <div class="search-bar">
           <input type="text" class="form-control counter-search" name="search" id="counter-search" placeholder="Add an existing counterargument" autocomplete="off"/>
           <%= f.hidden_field :results_ids, id: 'counters', value: '' %>
-    
+
           <div class="search-bar-icon">
             <i class="fas fa-search" title="Search"></i>
           </div>
         </div>
       <% end %>
     </div>
-  
-  
+
+
     <div class="counter-container card" id="counter-container" >
       <div class="card-body row align-items-center">
         <div class="show-argument-counterargument-infos-counter col" id="0">
           <h3 id="counter-title"></h3>
         </div>
-        
+
         <div class="col-auto">
           <%= simple_form_for [@argument] do |f| %>
             <%= f.hidden_field :parent_id, value: @argument_show.id %>
@@ -127,17 +128,17 @@
         </div>
       </div>
     </div>
-  
+
   <!-- Form to add a NEW counter argument -->
-  
+
     <%= render '/arguments/form', arg: @argument_show %>
   </div>
-  
+
   <div class="related-arguments">
     <div class="container">
       <div class="row">
         <% unless @related_arguments.empty? %>
-        
+
           <div class="col-lg-6">
             <h2>Related arguments</h2>
             <% @related_arguments.each do |argument| %>
@@ -146,9 +147,9 @@
               </div>
             <% end %>
           </div>
-  
+
         <% end %>
-    
+
         <div class="col-12 col-lg">
           <div id="arguments-map"></div>
         </div>
