@@ -423,7 +423,7 @@ zoo_parent = Argument.create!(
 zoo_violate_animal = Argument.create!(
   content: "Zoos violate animal rights and cause suffering to animals",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"patrick@email.com")
 )
 zoo_black_market = Argument.create!(
   content: "Zoos can be a source of animals' black market",
