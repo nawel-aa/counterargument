@@ -35,3 +35,30 @@
 .card-body.visit a:hover {
   color: $brandyellow;
 }
+
+.badge-img{
+  width: 50%;
+  height: auto;
+  opacity: 0.3;
+}
+
+.points-img{
+  // padding-top:20px;
+}
+
+.points-total{
+  width: 40%;
+  padding: 20px;
+  position: relative;
+  background-color:$brandblue;
+  // // background-image: asset-url('shape-bg.svg');
+  // background-repeat: no-repeat;
+  // background-size: 100% 100%;
+  // background-position: center;
+  color:$brandlightblue;
+}
+
+
+
+
+
