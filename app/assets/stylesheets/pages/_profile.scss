@@ -22,3 +22,16 @@
 .card-body.switch {
   padding-bottom: 0px;
 }
+
+#point-score {
+  color: $brandblue;
+}
+
+.card-body.visit a {
+  text-decoration: none;
+  color: $brandblack;
+}
+
+.card-body.visit a:hover {
+  color: $brandyellow;
+}

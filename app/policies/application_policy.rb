@@ -34,6 +34,10 @@ class ApplicationPolicy
     false
   end
 
+  def visit?
+    true
+  end
+
   class Scope
     attr_reader :user, :scope
 

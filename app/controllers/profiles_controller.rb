@@ -15,6 +15,12 @@ class ProfilesController < ApplicationController
     @arguments.each do |argument|
       @arguments_count += 1 if argument.parents.empty?
     end
+
+    posts = Argument.where(user_id: current_user.id)
+    
+    @posts = posts.count
+    @upvotes = posts.map { |post| post.votes.count }.sum
+    @points = @posts*2 + @upvotes*5
   end
 
   def edit
@@ -28,6 +34,30 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def visit
+    @user = User.find(visitor_params)
+    authorize @user
+    # raise
+    @arguments = @user.arguments.order(created_at: :desc)
+    
+    @counterarguments_count = 0
+    @arguments.each do |argument|
+      @counterarguments_count += argument.relationships_as_a_child.count
+    end
+
+    # Count the number of arguments that don't have a parent
+    @arguments_count = 0
+    @arguments.each do |argument|
+      @arguments_count += 1 if argument.parents.empty?
+    end
+
+    posts = Argument.where(user_id: @user.id)
+    
+    @posts = posts.count
+    @upvotes = posts.map { |post| post.votes.count }.sum
+    @points = @posts*2 + @upvotes*5
+  end
+
   private
 
   def set_user
@@ -37,5 +67,9 @@ class ProfilesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :profile_picture)
+  end
+
+  def visitor_params
+    params[:id]
   end
 end
