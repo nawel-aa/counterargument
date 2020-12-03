@@ -42,23 +42,3 @@
     cursor: pointer;
   }
 }
-
-.filters {
-  &-link {
-    font-family: $body-font;
-    color: $text-color;
-    font-size: $font-size-base;
-
-    &:hover {
-      text-decoration: none;
-      color: inherit;
-    }
-  }
-
-  ul {
-    padding-left: 0;
-     ul {
-      padding-top: 10px;
-    }
-  }
-}
