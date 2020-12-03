@@ -91,7 +91,6 @@
           <%= simple_form_for [@argument] do |f| %>
             <%= f.hidden_field :parent_id, value: @argument_show.id %>
             <%= f.hidden_field :argument_id, value: :id, class: "counter-hidden-field" %>
-            <%= f.hidden_field :user, value: current_user, class: "counter-hidden-field" %>
             <%= f.button :submit, value: "Add Argument", class: "btn" %>
           <% end %>
         </div>
