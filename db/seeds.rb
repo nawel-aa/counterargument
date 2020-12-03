@@ -415,7 +415,7 @@ TagsArgument.create!(argument: feed_the_globe, tag: Tag.find_by(name: "Equality"
 # Title 6: zoo & animals
 
 zoo_parent = Argument.create!(
-  content: "Zoos should be banned",
+  content: "Zoos are a good way to experience wildlife.",
   source: Faker::Internet.url,
   user: User.find_by(email: "tatiana@email.com")
 )
@@ -426,7 +426,7 @@ zoo_violate_animal = Argument.create!(
   user: User.all.sample
 )
 zoo_black_market = Argument.create!(
-  content: "Zoos can be a source of animals ' black market",
+  content: "Zoos can be a source of animals' black market",
   source: Faker::Internet.url,
   user: User.all.sample
 )
@@ -436,7 +436,7 @@ zoo_conservation = Argument.create!(
   user: User.find_by(email:"jadam@email.com")
 )
 brazil_black_market = Argument.create!(
-  content: "In Brazil “Animal laundering” is a reality through zoos or so-called scientific, conservationist, or commercial breeding grounds which provide false certificates claiming that animals were born in captivity.",
+  content: "In Brazil, zoos do “Animal laundering” and provide false certificates, claiming that animals were born in captivity.",
   source: "https://wildwelfare.org/portfolio/animal-welfare-in-brazilian-zoos/",
   user: User.all.sample
 )
