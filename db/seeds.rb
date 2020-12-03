@@ -102,6 +102,11 @@ space = Argument.create!(
   source: Faker::Internet.url,
   user: User.find_by(email: "tatiana@email.com")
 )
+disable_users = Argument.create!(
+  content: "Some disabled people require cars to transport them.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "spud@email.com")
+)
 
 ArgumentParentChildRelationship.create!(child: cars_cities, parent: cars_parent)
 ArgumentParentChildRelationship.create!(child: cars_only_transport, parent: cars_parent)
@@ -116,6 +121,7 @@ ArgumentParentChildRelationship.create!(child: demand_for_publictransport, paren
 ArgumentParentChildRelationship.create!(child: pollution, parent: cars_cities)
 ArgumentParentChildRelationship.create!(child: noise, parent: cars_cities)
 ArgumentParentChildRelationship.create!(child: space, parent: cars_cities)
+ArgumentParentChildRelationship.create!(child: disable_users, parent: prefer_cars)
 
 # Title 1: Global Warming/Cars Tags
 TagsArgument.create!(argument: cars_parent, tag: Tag.find_by(name: "Environment"))
@@ -135,7 +141,7 @@ TagsArgument.create!(argument: no_bikes, tag: Tag.find_by(name: "Global Warming"
 TagsArgument.create!(argument: prefer_cars, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: demand_for_publictransport, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: demand_for_publictransport, tag: Tag.find_by(name: "Environment"))
-
+TagsArgument.create!(argument: disable_users, tag: Tag.find_by(name: "Equality"))
 
 # Title 2: Vaccination
 
