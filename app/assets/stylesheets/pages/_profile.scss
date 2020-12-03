@@ -9,3 +9,16 @@
     color: $secondary;
   }
 }
+
+.card-body.switch a {
+  text-decoration: none;
+  color: $brandblack;
+}
+
+.card-body.switch a:hover {
+  color: $brandyellow;
+}
+
+.card-body.switch {
+  padding-bottom: 0px;
+}

@@ -22,9 +22,9 @@ class ArgumentsController < ApplicationController
       create_notification(parent)
       redirect_to argument_path(parent)
     else
-      @argument = Argument.new(content: argument_params[:content], source: argument_params[:source], hidden: argument_params[:hidden])
+      @argument = Argument.new(content: argument_params[:content], source: argument_params[:source], hidden: argument_params[:hidden] == "1")
       @argument.user = current_user
-      if params[:argument][:tag_ids] 
+      if params[:argument][:tag_ids]
         @tags = params[:argument][:tag_ids]
         @tags.each { |tag_id| @argument.tags << Tag.find(tag_id.to_i) }
       end
@@ -64,7 +64,10 @@ class ArgumentsController < ApplicationController
 
   def update
     @argument = Argument.find(params[:id])
+    @argument.hidden ? @argument.hidden = false : @argument.hidden = true
     authorize @argument
+    @argument.save
+    redirect_to profile_path(current_user, anchor: "anchor-#{@argument.id}")
   end
 
   private

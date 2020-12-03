@@ -1,0 +1,5 @@
+meta_product_name: "CounterArgument"
+meta_title: "Always have the last word"
+meta_description: "@argument.content"
+meta_image: "og-logo.jpg" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
