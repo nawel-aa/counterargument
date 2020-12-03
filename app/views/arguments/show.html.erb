@@ -49,13 +49,13 @@
             </div>
             <div class="votes">
               <%= link_to argument_votes_path(counterargument, title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-source" %> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-source.svg" %> <%= Vote.where(argument_id: counterargument.id, category: "source").count %></p></div>
               <% end %>
               <%= link_to argument_votes_path(counterargument, title: "Funny Vote", category: "funny", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-funny" %> <%= Vote.where(argument_id: counterargument.id, category: "funny").count %></p></div>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-funny.svg" %> <%= Vote.where(argument_id: counterargument.id, category: "funny").count %></p></div>
               <% end %>
               <%= link_to argument_votes_path(counterargument, title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-clear" %> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-clear.svg" %> <%= Vote.where(argument_id: counterargument.id, category: "concise").count %></p></div>
               <% end %>
             </div>
           </div>
