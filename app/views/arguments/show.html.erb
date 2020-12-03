@@ -40,9 +40,13 @@
         <div class="card">
           <div class="card-body">
             <h3><%= link_to counterargument.content, argument_path(counterargument) %></h3>
-            <p><%= link_to counterargument.source, argument_path(counterargument), class: "text-muted" %></p>
+            <% if /(.com|.org|.gov|.edu|.ca)/.match?(counterargument.source) %>
+              <p><%= link_to counterargument.source, /^https:\/\//.match?(counterargument.source) ? counterargument.source : "https://#{counterargument.source}", class: "text-muted", id: "source-link", target: :_blank %></p>
+            <% else %>
+              <p class="text-muted"><%= counterargument.source %></p>
+            <% end %>
             <p class="text-muted">
-            Submitted by <%= counterargument.hidden ? "anonymous" : counterargument.user.nickname %> <%= time_ago_in_words(counterargument.created_at) %> ago
+            Submitted by <%= counterargument.hidden ? "anonymous" : (link_to counterargument.user.nickname, current_user == counterargument.user ? profile_path : visit_profile_path(counterargument.user), class: "text-muted", id: "user-link") %> <%= time_ago_in_words(counterargument.created_at) %> ago
             </p>
             <div class="mb-3">
                 <%= render partial: "shared/tag", locals: {tag_name: counterargument.tags} %>
