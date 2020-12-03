@@ -6,20 +6,17 @@
     <div class="card-body p-2">
       <div class="row no-gutters">
         <div class="col-4 col-md-3">
-          <% if user_signed_in? && current_user.profile_picture.attached? %>
-            <%= cl_image_tag current_user.profile_picture.key, class: "w-100" %>
+          <% if user_signed_in? && @user.profile_picture.attached? %>
+            <%= cl_image_tag @user.profile_picture.key, class: "w-100" %>
           <% else %>
               <%= image_tag "useravatar.png", class: "w-100"%>
           <% end %>
-
-          <%= link_to user_path, class: "btn-edit" do %>
-            <i class="fas fa-pen" title="Edit" aria-label="Edit"></i>
-          <% end %>
+          <%# removed ability to edit the profile picture %>
         </div>
         <div class="col">
           <div class="pl-3">
-            <h3>Hi, <%= @user.nickname %></h3>
-            <p class="text-muted"><%= @user.email %></p>
+            <h3><%= @user.nickname %>'s profile</h3>
+            <%# removed email %>
             <div class="row">
               <div class="col-auto">
                 <div class="row no-gutters">
@@ -55,49 +52,24 @@
     </div>
   </section>
 
-  <%# Notifications %>
-  <section class="notifications mb-3">
-    <h2>Notifications <span class="text-muted">(<%= @notifications.count %>)</span></h2>
+  <%# Notifications section removed%>
 
-    <% if @notifications.empty? %>
-      <p class="text-muted">No notifications.</p>
-    <% else %>
-
-      <% @notifications.each do |notification| %>
-        <div class="notification">
-          <%= image_tag "useravatar.png", class: "avatar" %>
-          <div class="notification-content">
-            <p class="text-body"><%= link_to update_notification_path(notification), method: :patch do %>
-              <%= notification.message %>
-            <% end %></p>
-            <p class="text-muted"><%= time_ago_in_words(notification.created_at) %> ago</p>
-          </div>
-        </div>
-      <% end %>
-
-    <% end %>
-
-  </section>
-
-  <%# Arguments %>
   <section>
     <h2 style="margin-bottom: 14px;">Arguments <span class="text-muted">(<%= @arguments.count %>)</h2>
 
     <% if @arguments.empty? %>
-      <p class="text-muted">No arguments.</p>
+      <p class="text-muted"><%= @user.nickname %> has no arguments.</p>
     <% else %>
 
       <% @arguments.each do |argument| %>
-        <div class="card mb-2" id=<%="anchor-#{argument.id}"%>>
-          <div class="card-body switch">
-            <h3><%= link_to argument.content, argument_path(argument) %></h3>
-            <%= simple_form_for argument, html: { id: "anon-switch-#{argument.id}" } do |f| %>
-              <%= f.input :hidden, placeholder: argument.hidden, label: "Anonymous", input_html: { class: "toggle anon-switch", id: argument.id } %>
-            <% end %>
+        <% unless argument.hidden %>
+          <div class="card mb-2" id=<%="anchor-#{argument.id}"%>>
+            <div class="card-body visit">
+              <h3><%= link_to argument.content, argument_path(argument) %></h3>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-
     <% end %>
   </section>
 </div>

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   patch '/notifications/:id', to: 'notifications#update', as: 'update_notification'
 
+  get '/profile/visit/:id', to: 'profiles#visit', as: 'visit_profile'
+
   resources :tags, only: :create
 
   get '/profile', to: 'profiles#show'
