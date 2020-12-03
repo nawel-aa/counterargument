@@ -39,15 +39,37 @@
       <div class="container" id="arg-<%= counterargument.id %>">
         <div class="card">
           <div class="card-body">
-            <h3><%= link_to counterargument.content, argument_path(counterargument) %></h3>
-            <% if /(.com|.org|.gov|.edu|.ca)/.match?(counterargument.source) %>
-              <p><%= link_to counterargument.source, /^https:\/\//.match?(counterargument.source) ? counterargument.source : "https://#{counterargument.source}", class: "text-muted", id: "source-link", target: :_blank %></p>
-            <% else %>
-              <p class="text-muted"><%= counterargument.source %></p>
-            <% end %>
-            <p class="text-muted">
-            Submitted by <%= counterargument.hidden ? "anonymous" : (link_to counterargument.user.nickname, current_user == counterargument.user ? profile_path : visit_profile_path(counterargument.user), class: "text-muted", id: "user-link") %> <%= time_ago_in_words(counterargument.created_at) %> ago
-            </p>
+            <div class="d-flex" id="argument-show-user-info">
+              <% if counterargument.user.profile_picture.attached? && counterargument.hidden != true %>
+                <%= cl_image_tag counterargument.user.profile_picture.key, class: "avatar" %>
+                <div class="user-show-details">
+                  <p><%= link_to counterargument.user.nickname, current_user == counterargument.user ? profile_path : visit_profile_path(counterargument.user), class: "text-muted", id: "user-link" %></p>
+                  <p class="text-muted"><%= time_ago_in_words(counterargument.created_at) %> ago</p>
+                </div>
+              <% elsif counterargument.hidden != true %>
+                <%= image_tag "useravatar.png", class:"avatar" %>
+                <div class="user-show-details">
+                  <p><%= link_to counterargument.user.nickname, current_user == counterargument.user ? profile_path : visit_profile_path(counterargument.user), class: "text-muted", id: "user-link" %></p>
+                  <p class="text-muted"><%= time_ago_in_words(counterargument.created_at) %> ago</p>
+                </div>
+              <% else %>
+                <%= image_tag "useravatar.png", class:"avatar" %>
+                <div class="user-show-details">
+                  <p class="text-muted">Anonymous</p>
+                  <p class="text-muted"><%= time_ago_in_words(counterargument.created_at) %> ago</p>
+                </div>
+              <% end %>
+            </div>
+            <div class="content-show-details">
+              <h3><%= link_to counterargument.content, argument_path(counterargument) %></h3>
+            </div>
+            <div class="source-show-details">
+              <% if /(.com|.org|.gov|.edu|.ca)/.match?(counterargument.source) %>
+                <p><%= link_to counterargument.source, /^https?:\/\//.match?(counterargument.source) ? counterargument.source : "https://#{counterargument.source}", class: "text-muted", id: "source-link", target: :_blank %></p>
+              <% else %>
+                <p class="text-muted"><%= counterargument.source %></p>
+              <% end %>
+            </div>
             <div class="mb-3">
                 <%= render partial: "shared/tag", locals: {tag_name: counterargument.tags} %>
             </div>
