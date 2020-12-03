@@ -18,7 +18,11 @@
   <% if user_signed_in? && current_user.profile_picture.attached? %>
     <%= cl_image_tag current_user.profile_picture.key, height: 42, width: 42, crop: :fill, class:"openav rounded-circle" %>
   <% else %>
-    <%= image_tag "useravatar.png", height: 42, width: 42, class:"openav rounded-circle" %>
+    <div class="openav">
+    <i class="fas fa-user"></i>
+    <%#= image_tag "useravatar.png", height: 42, width: 42, class:"openav rounded-circle" %>
+    </div>
+
   <% end %>
 
 </div>
