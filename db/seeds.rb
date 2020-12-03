@@ -21,90 +21,116 @@ emails.each do |email|
 end
 
 puts "Generating tags..."
-tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment", "Science", "Equality"]
+tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment", "Science", "Equality", "Vegan"]
 tag_names.each do |tag_name|
   Tag.create!(name: tag_name)
 end
 
 puts "Generating arguments..."
 
-# Title 1: Global Warming
+# Title 1: Global Warming/Cars
 
 cars_parent = Argument.create!(
   content: "Private cars should be forbidden in large cities",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "patrick@email.com")
 )
-
 cars_cities = Argument.create!(
   content: "Cars make cities less habitable.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "nawel@email.com")
 )
 cars_only_transport = Argument.create!(
   content: "No other form of transportation is as flexible as cars",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"spud@email.com")
 )
-expensive = Argument.create!(
-  content: "Cars are extremely expensive to run: they only offer flexibility to the well-off.",
+bad_for_environments = Argument.create!(
+  content: "Cars are bad for the environment.",
   source: Faker::Internet.url,
-  user: User.all.sample
-)
-pollution = Argument.create!(
-  content: "The pollution caused by cars make the air less breathable.",
-  source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "tatiana@email.com")
 )
 bad_public_transport = Argument.create!(
   content: "Many public transportation systems are currently inadequate.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "jadam@email.com")
 )
-noise = Argument.create!(
-  content: "Cars make the overall environment of cities less pleasant as they cause a lot of noise.",
+expensive = Argument.create!(
+  content: "Cars are extremely expensive to run: they only offer flexibility to the well-off.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "patrick@email.com")
 )
-space = Argument.create!(
-  content: "Cars take up a lot of space.",
+prefer_cars = Argument.create!(
+  content: "Certain groups of people cannot easily travel by public transport, even if provision is excellent.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "trumane@email.com")
+)
+sydney_insurance = Argument.create!(
+  content: "The average cost of car insurance in Sydney is 1142.55 AUD per year.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "nawel@email.com")
 )
 bikes = Argument.create!(
   content: "Bikes are WAY more flexible than cars.  They don't get stuck in traffic!",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "patrick@email.com")
 )
 no_bikes = Argument.create!(
   content: "Bike are more flexible under defined distances, over long distance the time taken to travel negates the advantage of a bicycle.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "spud@email.com")
 )
 
- prefer_cars = Argument.create!(
-  content: "Certain groups of people cannot easily travel by public transport, even if provision is excellent.",
+demand_for_publictransport = Argument.create!(
+  content: "A higher demand on public transport would incentivise the state to invest in public transport",
   source: Faker::Internet.url,
-  user: User.all.sample
-  )
+  user: User.find_by(email: "patrick@email.com")
+)
+pollution = Argument.create!(
+  content: "The pollution caused by cars make the air less breathable.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+
+noise = Argument.create!(
+  content: "Cars make the overall environment of cities less pleasant as they cause a lot of noise.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+space = Argument.create!(
+  content: "Cars take up a lot of space.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+disable_users = Argument.create!(
+  content: "Some disabled people require cars to transport them.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "spud@email.com")
+)
 
 ArgumentParentChildRelationship.create!(child: cars_cities, parent: cars_parent)
 ArgumentParentChildRelationship.create!(child: cars_only_transport, parent: cars_parent)
-ArgumentParentChildRelationship.create!(child: expensive, parent: cars_parent)
+ArgumentParentChildRelationship.create!(child: bad_for_environments, parent: cars_parent)
 ArgumentParentChildRelationship.create!(child: bad_public_transport, parent: cars_parent)
+ArgumentParentChildRelationship.create!(child: expensive, parent: cars_only_transport)
+ArgumentParentChildRelationship.create!(child: prefer_cars, parent: cars_only_transport)
+ArgumentParentChildRelationship.create!(child:sydney_insurance, parent: expensive)
+ArgumentParentChildRelationship.create!(child: bikes, parent: cars_only_transport)
+ArgumentParentChildRelationship.create!(child: no_bikes, parent: bikes)
+ArgumentParentChildRelationship.create!(child: demand_for_publictransport, parent: bad_public_transport)
 ArgumentParentChildRelationship.create!(child: pollution, parent: cars_cities)
 ArgumentParentChildRelationship.create!(child: noise, parent: cars_cities)
 ArgumentParentChildRelationship.create!(child: space, parent: cars_cities)
-ArgumentParentChildRelationship.create!(child: bikes, parent: cars_only_transport)
-ArgumentParentChildRelationship.create!(child: no_bikes, parent: bikes)
-ArgumentParentChildRelationship.create!(child: prefer_cars, parent: cars_only_transport)
+ArgumentParentChildRelationship.create!(child: disable_users, parent: prefer_cars)
 
-# Title 1: Global Warming Tags
+# Title 1: Global Warming/Cars Tags
 TagsArgument.create!(argument: cars_parent, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: cars_cities, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: bad_for_environments, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: cars_only_transport, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: pollution, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: bikes, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: expensive, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: cars_parent, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: cars_only_transport, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: pollution, tag: Tag.find_by(name: "Global Warming"))
@@ -113,6 +139,9 @@ TagsArgument.create!(argument: noise, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: space, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: no_bikes, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: prefer_cars, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: demand_for_publictransport, tag: Tag.find_by(name: "Global Warming"))
+TagsArgument.create!(argument: demand_for_publictransport, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: disable_users, tag: Tag.find_by(name: "Equality"))
 
 # Title 2: Vaccination
 
@@ -449,4 +478,56 @@ ArgumentParentChildRelationship.create!(child: economic_growth, parent: reducing
 TagsArgument.create!(argument: economic_growth, tag: Tag.find_by(name: "Politics"))
 TagsArgument.create!(argument: lan_cognitive_benefits, tag: Tag.find_by(name: "Science"))
 TagsArgument.create!(argument: reducing_languages, tag: Tag.find_by(name: "Environment"))
+
+# Title 8: vegan
+
+vegan_parent = Argument.create!(
+  content: "All humans should be vegan.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "nooshin@email.com")
+)
+
+yes_vegan = Argument.create!(
+  content: "A vegan society has environmental advantages",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+
+no_vegan = Argument.create!(
+  content: "Veganism is not feasible for lesser privileged societies or individuals",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "nawel@email.com")
+)
+
+vegan_cheaper = Argument.create!(
+  content: "A balanced vegetarian diet is cheaper than a balanced diet that includes meat.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+
+world_hunger_eradicated = Argument.create!(
+  content: "If humanity turned vegan or vegetarian world hunger could be eradicated",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "nooshin@email.com")
+)
+
+
+ArgumentParentChildRelationship.create!(child: yes_vegan, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: no_vegan, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: vegan_cheaper, parent: no_vegan)
+ArgumentParentChildRelationship.create!(child: world_hunger_eradicated, parent: no_vegan)
+
+TagsArgument.create!(argument: vegan_parent, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: yes_vegan, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: yes_vegan, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: vegan_cheaper, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: world_hunger_eradicated, tag: Tag.find_by(name: "Vegan"))
+
+
+
+
+
+
+
+
 
