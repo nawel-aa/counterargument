@@ -1,111 +1,124 @@
-<div class="container">
-  <h1 class="text-center animate__animated animate__fadeInDown">Always have the last word.</h1>
+<div class="home">
+  <div class="container">
+    <div class="home-intro">
+      <h1 class="text-center animate__animated animate__fadeInDown">Always have the last word.</h1>
+      <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
+        <div class="search-bar">
+          <input type="text" class="search-bar-input" name="search" id="search" placeholder="Search for keywords" autocomplete="off"/>
+          <%= f.hidden_field :results_ids, id: 'results', value: '' %>
 
-<div>
- <%= simple_form_for :search_results, url: search_path, method: "GET" do |f| %>
-      <div class="search-bar">
-        <input type="text" class="search-bar-input" name="search" id="search" placeholder="Search for keywords" autocomplete="off"/>
-        <%= f.hidden_field :results_ids, id: 'results', value: '' %>
-
-        <%= button_tag type: 'submit', class: "search-bar-icon cursor-pointer" do %>
-        <i class="fas fa-search" title="Search"></i>
+          <%= button_tag type: 'submit', class: "search-bar-icon cursor-pointer" do %>
+          <i class="fas fa-search" title="Search"></i>
+          <% end %>
+        </div>
       <% end %>
-      </div>
-    <% end %>
-</div>
+    </div>
 
-    <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Trending Arguments</h2>
-  <div class="row justify-content-between">
-    <div class="col-12 col-md-4">
+    <div>
+      <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Trending Arguments</h2>
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-4">
+          <div class="card mb-4">
+            <div class="card-title animate__animated animate__fadeIn mb-0">
+              <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
+            </div>
+
+            <div class="row align-items-center tag-section no-gutters justify-content-between">
+              <div class="col-auto arg-bubble">
+              <p><%= @trending[0][0] %></p>
+              </div>
+
+              <div class="col-auto social-btns d-flex ">
+                <%= social_share_button_tag(@trending[0][1].content, :allow_sites => %w(twitter)) %>
+                <%= social_share_button_tag('Share to Facebook',
+                  :url => argument_path(@trending[0][1]), desc:  @trending[0][1].content, :allow_sites => %w(facebook)) %>
+              </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+          <div class="card mb-4">
+              <div class="card-title animate__animated animate__fadeIn mb-0">
+                <h2><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
+              </div>
+             <div class="row align-items-center tag-section no-gutters justify-content-between">
+              <div class="col-auto arg-bubble">
+              <p><%= @trending[1][0] %></p>
+              </div>
+
+              <div class="col-auto social-btns d-flex ">
+                <%= social_share_button_tag(@trending[1][1].content, :allow_sites => %w(twitter)) %>
+                <%= social_share_button_tag('Share to Facebook',
+                  :url => argument_path(@trending[1][1]), desc:  @trending[1][1].content, :allow_sites => %w(facebook)) %>
+              </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="col-12 col-md-4">
         <div class="card mb-4">
           <div class="card-title animate__animated animate__fadeIn mb-0">
-            <h2><%= link_to @trending[0][1].content, argument_path(@trending[0][1]) %></h2>
+            <h2><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
           </div>
+            <div class="row align-items-center tag-section no-gutters justify-content-between">
+              <div class="col-auto arg-bubble">
+              <p><%= @trending[2][0] %></p>
+              </div>
 
-          <div class="row align-items-center tag-section no-gutters justify-content-between">
-            <div class="col-auto arg-bubble">
-            <p><%= @trending[0][0] %></p>
+              <div class="col-auto social-btns d-flex ">
+                <%= social_share_button_tag(@trending[2][1].content, :allow_sites => %w(twitter)) %>
+                <%= social_share_button_tag('Share to Facebook',
+                  :url => argument_path(@trending[2][1]), desc:  @trending[2][1].content, :allow_sites => %w(facebook)) %>
+              </div>
             </div>
-
-            <div class="col-auto social-btns d-flex ">
-              <%= social_share_button_tag(@trending[0][1].content, :allow_sites => %w(twitter)) %>
-              <%= social_share_button_tag('Share to Facebook',
-                :url => argument_path(@trending[0][1]), desc:  @trending[0][1].content, :allow_sites => %w(facebook)) %>
-            </div>
-          </div>
-
         </div>
-    </div>
-
-    <div class="col-12 col-md-4">
-        <div class="card mb-4">
-            <div class="card-title animate__animated animate__fadeIn mb-0">
-              <h2><%= link_to @trending[1][1].content, argument_path(@trending[1][1]) %></h2>
-            </div>
-           <div class="row align-items-center tag-section no-gutters justify-content-between">
-            <div class="col-auto arg-bubble">
-            <p><%= @trending[1][0] %></p>
-            </div>
-
-            <div class="col-auto social-btns d-flex ">
-              <%= social_share_button_tag(@trending[1][1].content, :allow_sites => %w(twitter)) %>
-              <%= social_share_button_tag('Share to Facebook',
-                :url => argument_path(@trending[1][1]), desc:  @trending[1][1].content, :allow_sites => %w(facebook)) %>
-            </div>
-          </div>
-
-        </div>
-    </div>
-
-    <div class="col-12 col-md-4">
-      <div class="card mb-4">
-        <div class="card-title animate__animated animate__fadeIn mb-0">
-          <h2><%= link_to @trending[2][1].content, argument_path(@trending[2][1]) %></h2>
-        </div>
-          <div class="row align-items-center tag-section no-gutters justify-content-between">
-            <div class="col-auto arg-bubble">
-            <p><%= @trending[2][0] %></p>
-            </div>
-
-            <div class="col-auto social-btns d-flex ">
-              <%= social_share_button_tag(@trending[2][1].content, :allow_sites => %w(twitter)) %>
-              <%= social_share_button_tag('Share to Facebook',
-                :url => argument_path(@trending[2][1]), desc:  @trending[2][1].content, :allow_sites => %w(facebook)) %>
-            </div>
-          </div>
       </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="bg-white pb-5">
+  <div class="container">
+    <hr class="mt-5">
+    <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Hot Topics</h2>
+
+    <div class="cards">
+        <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+          <%= link_to "Politics", root_path + @politics %>
+        </div>
+
+        <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+          <%= link_to "Global Warming", root_path + @global_warming %>
+        </div>
+
+        <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+          <%= link_to "Covid-19", root_path + @covid_19 %>
+        </div>
+
+        <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+          <%= link_to "Religion", root_path + @religion %>
+        </div>
+
+        <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
+          <%= link_to "#BLM", root_path + @blm %>
+        </div>
+
+        <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
+          <%= link_to "Vaccination", root_path + @vaccination %>
+        </div>
     </div>
 
   </div>
 </div>
 
 <div class="container">
-  <hr class="mt-5">
-  <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Hot Topics</h2>
+  <!-- <hr class="mt-5"> -->
+    <h2 class="text-center mt-5 mb-4 animate__animated animate__fadeInUp">Explore Argument Relationships</h2>
+   <div id="arguments-map" class="pl-2 pr-2"></div>
+</div>
 
-  <div class="cards">
-      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/1550337/pexels-photo-1550337.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Politics", root_path + @politics %>
-      </div>
-
-      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/1230157/pexels-photo-1230157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Global Warming", root_path + @global_warming %>
-      </div>
-
-      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/3992933/pexels-photo-3992933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Covid-19", root_path + @covid_19 %>
-      </div>
-
-      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/257037/pexels-photo-257037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Religion", root_path + @religion %>
-      </div>
-
-      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/4561558/pexels-photo-4561558.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)">
-        <%= link_to "#BLM", root_path + @blm %>
-      </div>
-
-      <div class="card-category animate__animated animate__zoomIn" style="background-image: linear-gradient(0deg, rgba(46, 95, 232, 0.4), rgba(46, 95, 232, 0.4)), url(https://images.pexels.com/photos/5863397/pexels-photo-5863397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)">
-        <%= link_to "Vaccination", root_path + @vaccination %>
-      </div>
-  </div>
 </div>

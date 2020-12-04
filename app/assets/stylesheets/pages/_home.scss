@@ -1,3 +1,13 @@
+.home {
+
+  &-intro {
+    margin-bottom: 75px;
+    h1 {
+      margin: 50px 0 32px 0;
+    }
+  }
+}
+
 .card {
   // width: 343px;
   // height: 400px;
@@ -19,8 +29,8 @@ border-radius:5px;
     }
     a {
       text-decoration: none;
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 18px;
+      font-family: 'Archivo', sans-serif;
+      font-size: 1rem;
       color: white;
     }
   border-top-right-radius:5px;
@@ -57,4 +67,7 @@ border-radius:5px;
     text-decoration: none;
     color: white;
   }
+}
+.hot-topics{
+  background: white;
 }

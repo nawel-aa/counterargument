@@ -4,7 +4,7 @@ body {
 
 h1 {
   font-family: 'Archivo Black', sans-serif;
-  font-size: 54px;
+  font-size: 2.5rem;
 }
 
 h2 {
@@ -15,4 +15,12 @@ h2 {
 h3 {
   font-family: 'Archivo Black', sans-serif;
   font-size: 1rem;
+}
+
+ul {
+  padding-left: 20px;
+  list-style: none;
+}
+li {
+  margin-bottom: 10px;
 }

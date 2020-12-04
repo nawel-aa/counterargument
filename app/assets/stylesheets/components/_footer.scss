@@ -2,33 +2,25 @@
   background: #2E5FE8;
   color: #FFFFFF;
   width: 100%;
-
+  
   &-copyright {
     font-family: $btn-font;
     font-size: 0.9rem;
   }
+  
+  &-links a {
+    color: $primary;
+    text-decoration: none;
+    font-size: 16px;
+    height:30px;
+    width:30px;
+    border-radius:40px;
+    background: $secondary;
+    margin: 0 5px;
+    
+    &:hover {
+      opacity: 1;
+      color: $brandlightblue;
+    }
+  }
 }
-
-.footer-links a {
-  color: $brandblue;
-  text-decoration: none;
-  font-size: 16px;
-  height:30px;
-  width:30px;
-  border-radius:40px;
-  background:$brandyellow;
-  padding: 7px 9px;
-}
-
-.footer-links a i.fab.fa-facebook-f {
-    padding: 4px;
-}
-
-
-
-
-.footer-links a:hover {
-  opacity: 1;
-  color:$brandlightblue;
-}
-
