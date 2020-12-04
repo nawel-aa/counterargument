@@ -27,4 +27,8 @@ class Argument < ApplicationRecord
 
 
   validates :content, presence: true
+
+  scope :posts, ->(current_user = -1) { where("user_id = ?", current_user).size }
+  scope :user_upvotes, ->(user_id = -1) { where("user_id = ?", user_id) }
+  scope :trending, ->{ joins(:children).group(:child_id).select(:child_id, "COUNT(*) AS count") }
 end

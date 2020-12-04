@@ -16,10 +16,13 @@ class ProfilesController < ApplicationController
       @arguments_count += 1 if argument.parents.empty?
     end
 
-    posts = Argument.where(user_id: current_user.id)
+    # posts = Argument.where(user_id: current_user.id)
     
-    @posts = posts.count
-    @upvotes = posts.map { |post| post.votes.count }.sum
+    @posts = Argument.posts(current_user.id)
+    @upvotes = 0
+    @user_args = Argument.user_upvotes(current_user.id).each do |arg|
+      @upvotes += arg.votes.size if arg.user_id = current_user.id
+    end
     @points = @posts*2 + @upvotes*5
   end
 
