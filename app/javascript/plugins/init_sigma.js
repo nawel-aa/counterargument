@@ -77,7 +77,7 @@ const initSigma = () => {
         s.refresh();
       });
       
-      s.startForceAtlas2({worker: false, barnesHutOptimize: false, slowDown: 1000, iterationsPerRender: 1000, linLogMode: true});
+      s.startForceAtlas2({worker: false, barnesHutOptimize: true, slowDown: 1000, iterationsPerRender: 10, adjustSizes: true});
       
       //Set time interval to allow layout algorithm to converge on a good state
       var t = 0;

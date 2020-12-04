@@ -11,7 +11,7 @@ Argument.reindex!
 User.destroy_all
 
 
-emails = %w[nawel@email.com patrick@email.com nooshin@email.com tatiana@email.com JasonBigHands@email.com spud@email.com jadam@email.com brick@email.com trumane@email.com jst@email.com]
+emails = %w[nawel@email.com patrick@email.com nooshin@email.com tatiana@email.com stephane@email.com richard@email.com martin@email.com kristyna@email.com tim@email.com JasonBigHands@email.com spud@email.com jadam@email.com brick@email.com trumane@email.com jst@email.com]
 
 puts "Generating users..."
 emails.each do |email|
@@ -19,6 +19,43 @@ emails.each do |email|
   user.nickname = user.email.match(/.+?(?=@)/).to_s
   user.save!
 end
+
+tatiana = User.find_by(email:"tatiana@email.com")
+tatiana.profile_picture.attach(io: File.open("app/assets/images/tatiana.png"), filename: 'picture.png')
+tatiana.save!
+
+
+nawel = User.find_by(email:"nawel@email.com")
+nawel.profile_picture.attach(io: File.open("app/assets/images/nawel.png"), filename: 'picture.png')
+nawel.save!
+
+noosh = User.find_by(email:"nooshin@email.com")
+noosh.profile_picture.attach(io: File.open("app/assets/images/noosh.png"), filename: 'picture.png')
+noosh.save!
+
+patrick = User.find_by(email:"patrick@email.com")
+patrick.profile_picture.attach(io: File.open("app/assets/images/patrick.png"), filename: 'picture.png')
+patrick.save!
+
+stephane = User.find_by(email:"stephane@email.com")
+stephane.profile_picture.attach(io: File.open("app/assets/images/stephane.png"), filename: 'picture.png')
+stephane.save!
+
+richard = User.find_by(email:"richard@email.com")
+richard.profile_picture.attach(io: File.open("app/assets/images/richard.png"), filename: 'picture.png')
+richard.save!
+
+martin = User.find_by(email:"martin@email.com")
+martin.profile_picture.attach(io: File.open("app/assets/images/martin.png"), filename: 'picture.png')
+martin.save!
+
+kristyna = User.find_by(email:"kristyna@email.com")
+kristyna.profile_picture.attach(io: File.open("app/assets/images/kristyna.png"), filename: 'picture.png')
+kristyna.save!
+
+tim = User.find_by(email:"tim@email.com")
+tim.profile_picture.attach(io: File.open("app/assets/images/tim.png"), filename: 'picture.png')
+tim.save!
 
 puts "Generating tags..."
 tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment", "Science", "Equality", "Vegan", "Animal"]
@@ -35,25 +72,36 @@ cars_parent = Argument.create!(
   source: Faker::Internet.url,
   user: User.find_by(email: "patrick@email.com")
 )
-cars_cities = Argument.create!(
-  content: "Cars make cities less habitable.",
+
+local_economy = Argument.create!(
+  content: "Banning of private cars will destroy local economy.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+car_ban = Argument.create!(
+  content: "Expansion of public transportation as a result of the car ban, could harm businesses in the area.",
   source: Faker::Internet.url,
   user: User.find_by(email: "nawel@email.com")
+)
+cars_cities = Argument.create!(
+  content: "Cars make it easy to move around cities.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "stephane@email.com")
 )
 cars_only_transport = Argument.create!(
   content: "No other form of transportation is as flexible as cars",
   source: Faker::Internet.url,
-  user: User.find_by(email:"spud@email.com")
+  user: User.find_by(email:"martin@email.com")
 )
 bad_for_environments = Argument.create!(
-  content: "Cars are bad for the environment.",
+  content: "Cars are not that bad for the environment. Factories are!",
   source: Faker::Internet.url,
-  user: User.find_by(email: "tatiana@email.com")
+  user: User.find_by(email: "kristyna@email.com")
 )
 bad_public_transport = Argument.create!(
   content: "Many public transportation systems are currently inadequate.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "jadam@email.com")
+  user: User.find_by(email: "richard@email.com")
 )
 expensive = Argument.create!(
   content: "Cars are extremely expensive to run: they only offer flexibility to the well-off.",
@@ -63,7 +111,7 @@ expensive = Argument.create!(
 prefer_cars = Argument.create!(
   content: "Certain groups of people cannot easily travel by public transport, even if provision is excellent.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "trumane@email.com")
+  user: User.find_by(email: "kristyna@email.com")
 )
 sydney_insurance = Argument.create!(
   content: "The average cost of car insurance in Sydney is 1142.55 AUD per year.",
@@ -78,7 +126,7 @@ bikes = Argument.create!(
 no_bikes = Argument.create!(
   content: "Bike are more flexible under defined distances, over long distance the time taken to travel negates the advantage of a bicycle.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "spud@email.com")
+  user: User.find_by(email: "nooshin@email.com")
 )
 
 demand_for_publictransport = Argument.create!(
@@ -89,7 +137,7 @@ demand_for_publictransport = Argument.create!(
 pollution = Argument.create!(
   content: "The pollution caused by cars make the air less breathable.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "tatiana@email.com")
+  user: User.find_by(email: "stephane@email.com")
 )
 
 noise = Argument.create!(
@@ -105,13 +153,16 @@ space = Argument.create!(
 disable_users = Argument.create!(
   content: "Some disabled people require cars to transport them.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "spud@email.com")
+  user: User.find_by(email: "stephane@email.com")
 )
 
 ArgumentParentChildRelationship.create!(child: cars_cities, parent: cars_parent)
 ArgumentParentChildRelationship.create!(child: cars_only_transport, parent: cars_parent)
 ArgumentParentChildRelationship.create!(child: bad_for_environments, parent: cars_parent)
 ArgumentParentChildRelationship.create!(child: bad_public_transport, parent: cars_parent)
+ArgumentParentChildRelationship.create!(child: car_ban, parent: cars_parent)
+ArgumentParentChildRelationship.create!(child: local_economy, parent: cars_parent)
+
 ArgumentParentChildRelationship.create!(child: expensive, parent: cars_only_transport)
 ArgumentParentChildRelationship.create!(child: prefer_cars, parent: cars_only_transport)
 ArgumentParentChildRelationship.create!(child:sydney_insurance, parent: expensive)
@@ -142,15 +193,31 @@ TagsArgument.create!(argument: prefer_cars, tag: Tag.find_by(name: "Global Warmi
 TagsArgument.create!(argument: demand_for_publictransport, tag: Tag.find_by(name: "Global Warming"))
 TagsArgument.create!(argument: demand_for_publictransport, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: disable_users, tag: Tag.find_by(name: "Equality"))
+TagsArgument.create!(argument: car_ban, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: local_economy, tag: Tag.find_by(name: "Environment"))
 
 # Title 2: Vaccination
 
 covid_vaccine_parent = Argument.create!(
   content: "COVID-19 Vaccines should be Mandatory",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email: "tatiana@email.com")
 )
-
+citizens = Argument.create!(
+  content: "Citizens can potentially avoid COVID-19 by other measures, so the state should not need to intervene in this way.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "nawel@email.com")
+)
+mandatory_vaccine = Argument.create!(
+  content: "A mandatory vaccine policy would vastly increase already present inequalities in the treatment and prevention of Covid-19.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "patrick@email.com")
+)
+powers  = Argument.create!(
+  content: "Mandatory vaccines would be a huge overreach of state powers.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "richard@email.com")
+)
 herd_immunity = Argument.create!(
   content: "Herd immunity is best developed through a mandatory vaccination policy",
   source: Faker::Internet.url,
@@ -189,6 +256,9 @@ not_every_vaccine = Argument.create!(
 
 ArgumentParentChildRelationship.create!(child: inequalities, parent: covid_vaccine_parent)
 ArgumentParentChildRelationship.create!(child: herd_immunity, parent: covid_vaccine_parent)
+ArgumentParentChildRelationship.create!(child: powers, parent: covid_vaccine_parent)
+ArgumentParentChildRelationship.create!(child: mandatory_vaccine, parent: covid_vaccine_parent)
+ArgumentParentChildRelationship.create!(child: citizens, parent: covid_vaccine_parent)
 ArgumentParentChildRelationship.create!(child: prioritized_distribution, parent: inequalities)
 ArgumentParentChildRelationship.create!(child: unnecessary_deaths, parent: inequalities)
 ArgumentParentChildRelationship.create!(child: community_immunity, parent: herd_immunity)
@@ -208,7 +278,9 @@ TagsArgument.create!(argument: unnecessary_deaths, tag: Tag.find_by(name: "COVID
 TagsArgument.create!(argument: covid_vaccine_parent, tag: Tag.find_by(name: "COVID-19"))
 TagsArgument.create!(argument: inequalities, tag: Tag.find_by(name: "Politics"))
 TagsArgument.create!(argument: unnecessary_deaths, tag: Tag.find_by(name: "Equality"))
-
+TagsArgument.create!(argument: citizens, tag: Tag.find_by(name: "COVID-19"))
+TagsArgument.create!(argument: powers, tag: Tag.find_by(name: "COVID-19"))
+TagsArgument.create!(argument: mandatory_vaccine, tag: Tag.find_by(name: "COVID-19"))
 
 # Title 3: BLM
 
@@ -416,39 +488,58 @@ TagsArgument.create!(argument: feed_the_globe, tag: Tag.find_by(name: "Equality"
 
 zoo_parent = Argument.create!(
   content: "Zoos are a good way to experience wildlife.",
-  source: Faker::Internet.url,
-  user: User.find_by(email: "tatiana@email.com")
+  source: "www.theguardian.com/wildlife",
+  user: User.find_by(email: "tim@email.com")
 )
-
+zoo_educational = Argument.create!(
+  content: "Zoos are not even educational, people visit zoos to enjoy the nature and animals",
+  source: "www.humansandnature.org/zoos",
+  user: User.find_by(email: "richard@email.com")
+)
+zoo_educate = Argument.create!(
+  content: "Zoos actually play a huge role in educating people to habitat preservation",
+  source: "www.tripadvisor.com/zoos/education",
+  user: User.find_by(email: "martin@email.com")
+)
+zoo_tech = Argument.create!(
+  content: "With the technology available to us today, all that needs to be learnt about an animal can be learnt without the need to confine them permanently.",
+  source: "www.medium.com/education",
+  user: User.find_by(email: "richard@email.com")
+)
+eco_parks = Argument.create!(
+  content: "Educational benefits and research can be equally achieved by Eco Parks!",
+  source: "www.sciencedaily.com/eco-parks",
+  user: User.find_by(email: "stephane@email.com")
+)
 zoo_violate_animal = Argument.create!(
   content: "Zoos violate animal rights and cause suffering to animals",
-  source: Faker::Internet.url,
+  source: "www.bbc.com/animals/ethics",
   user: User.find_by(email:"patrick@email.com")
 )
 zoo_black_market = Argument.create!(
   content: "Zoos can be a source of animals' black market",
-  source: Faker::Internet.url,
-  user: User.all.sample
+  source: "www.nytimes.com/black-market",
+  user: User.find_by(email:"kristyna@email.com")
 )
 zoo_conservation = Argument.create!(
   content: "Zoos play a critical role in the conservation of endangered species",
-  source: Faker::Internet.url,
+  source: "www.reddit.com/species",
   user: User.find_by(email:"jadam@email.com")
 )
 brazil_black_market = Argument.create!(
   content: "In Brazil, zoos do “Animal laundering” and provide false certificates, claiming that animals were born in captivity.",
-  source: "https://wildwelfare.org/portfolio/animal-welfare-in-brazilian-zoos/",
-  user: User.all.sample
+  source: "www.wildwelfare.org/portfolio/animal-welfare-in-brazilian-zoos/",
+  user: User.find_by(email:"patrick@email.com")
 )
 pet_trade = Argument.create!(
   content: "The exotic pet trade, which is highly unregulated, is a multi-billion dollar industry, second only to drugs and weapons on the black market",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"tatiana@email.com")
 )
 no_zoo = Argument.create!(
   content: "Conservation can be achieved without keeping animals in artificial captive environments.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"richard@email.com")
 )
 yes_zoo = Argument.create!(
   content: "Zoos contribute financially to conservation, both at their facilities and in wild habitats.",
@@ -458,23 +549,27 @@ yes_zoo = Argument.create!(
 national_parks = Argument.create!(
   content: "For example, national parks play critical roles in conservation.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"nawel@email.com")
 )
 
 animal_suffering = Argument.create!(
   content: "Zoos cause suffering to animals.",
-  source: Faker::Internet.url,
-  user: User.all.sample
+  source: "www.sciencedaily.com/animals",
+  user: User.find_by(email:"stephane@email.com")
 )
 natural_environment = Argument.create!(
   content: "Zoos cannot replicate the natural environment of animals.",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"kristyna@email.com")
 )
 
+ArgumentParentChildRelationship.create!(child: zoo_educational, parent: zoo_parent)
+ArgumentParentChildRelationship.create!(child: zoo_educate, parent: zoo_educational)
 ArgumentParentChildRelationship.create!(child: zoo_violate_animal, parent: zoo_parent)
 ArgumentParentChildRelationship.create!(child: zoo_black_market, parent: zoo_parent)
 ArgumentParentChildRelationship.create!(child: animal_suffering, parent: zoo_parent)
+ArgumentParentChildRelationship.create!(child: eco_parks, parent: zoo_educate)
+ArgumentParentChildRelationship.create!(child: zoo_tech, parent: zoo_educate)
 ArgumentParentChildRelationship.create!(child: zoo_conservation, parent: zoo_black_market)
 ArgumentParentChildRelationship.create!(child: brazil_black_market, parent: zoo_black_market)
 ArgumentParentChildRelationship.create!(child: pet_trade, parent: zoo_black_market)
@@ -501,8 +596,15 @@ TagsArgument.create!(argument: zoo_conservation, tag: Tag.find_by(name: "Environ
 TagsArgument.create!(argument: brazil_black_market, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: pet_trade, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: natural_environment, tag: Tag.find_by(name: "Environment"))
-
-
+TagsArgument.create!(argument: zoo_educate, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: zoo_educate, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: eco_parks, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: eco_parks, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: zoo_educational, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: zoo_educational, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: zoo_tech, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: zoo_tech, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: zoo_tech, tag: Tag.find_by(name: "Science"))
 
 # Title 7: languages
 languages_parent = Argument.create!(
@@ -543,16 +645,44 @@ TagsArgument.create!(argument: reducing_languages, tag: Tag.find_by(name: "Envir
 
 vegan_parent = Argument.create!(
   content: "All humans should be vegan.",
-  source: Faker::Internet.url,
+  source: "www.naturallife.com/vegan",
   user: User.find_by(email: "nooshin@email.com")
 )
-
+individual_choice = Argument.create!(
+  content: "An individual should be free to choose any food they want to eat",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "kristyna@email.com")
+)
+is_hard = Argument.create!(
+  content: "Veganism is too hard for people to follow.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "richard@email.com")
+)
+vegan_culture = Argument.create!(
+  content: "The consumption of animal products forms a fundamental part of many cultures and traditions around the world.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
+sharing  = Argument.create!(
+  content: "Being unable to share or accept food from others prevents the social bonding and cultural enrichment which is based in such sharing and experiences of food culture.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "martin@email.com")
+)
+replacing = Argument.create!(
+  content: "Replacing all non-food animal products is extremely expensive.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "stephane@email.com")
+)
 yes_vegan = Argument.create!(
   content: "A vegan society has environmental advantages",
   source: Faker::Internet.url,
   user: User.find_by(email: "tatiana@email.com")
 )
-
+societies = Argument.create!(
+  content: "Many societies and individuals would struggle economically without animal agriculture.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "patrick@email.com")
+)
 no_vegan = Argument.create!(
   content: "Veganism is not feasible for lesser privileged societies or individuals",
   source: Faker::Internet.url,
@@ -564,30 +694,69 @@ vegan_cheaper = Argument.create!(
   source: Faker::Internet.url,
   user: User.find_by(email: "tatiana@email.com")
 )
-
+limited_choice = Argument.create!(
+  content: "Choices are and will always be limited. Humans can't eat metal or grass, they can't consume certain drugs.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "nawel@email.com")
+)
+vegan_options = Argument.create!(
+  content: "There are still so many vegan options that being vegan should not feel too restrictive.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tatiana@email.com")
+)
 world_hunger_eradicated = Argument.create!(
   content: "If humanity turned vegan or vegetarian world hunger could be eradicated",
   source: Faker::Internet.url,
   user: User.find_by(email: "nooshin@email.com")
 )
+market_forces = Argument.create!(
+  content: "Markets forces could likely cause a limitation of options (to save costs), which could potentially lead to a feeling of restriction greater than with vegan diets now.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "kristyna@email.com")
+)
+being_vegan = Argument.create!(
+  content: "Being vegan is admirable, being virtuous, so people will look to each other in awe and inspiration instead of disgust.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "stephane@email.com")
+)
+religion_vegan = Argument.create!(
+  content: "Eating animals elevates their lives, which is a 'godly deed' in religion.",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "tim@email.com")
+)
 
 
-ArgumentParentChildRelationship.create!(child: yes_vegan, parent: vegan_parent)
+
 ArgumentParentChildRelationship.create!(child: no_vegan, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: individual_choice, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: is_hard, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: vegan_culture, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: sharing, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: replacing, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: societies, parent: vegan_parent)
+ArgumentParentChildRelationship.create!(child: yes_vegan, parent: limited_choice)
 ArgumentParentChildRelationship.create!(child: vegan_cheaper, parent: no_vegan)
 ArgumentParentChildRelationship.create!(child: world_hunger_eradicated, parent: no_vegan)
+ArgumentParentChildRelationship.create!(child: limited_choice, parent: vegan_cheaper)
+ArgumentParentChildRelationship.create!(child: vegan_options, parent: limited_choice)
+ArgumentParentChildRelationship.create!(child: market_forces, parent: vegan_options)
+ArgumentParentChildRelationship.create!(child: being_vegan, parent: market_forces)
+ArgumentParentChildRelationship.create!(child: religion_vegan, parent: being_vegan)
 
 TagsArgument.create!(argument: vegan_parent, tag: Tag.find_by(name: "Vegan"))
 TagsArgument.create!(argument: yes_vegan, tag: Tag.find_by(name: "Vegan"))
 TagsArgument.create!(argument: yes_vegan, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: vegan_cheaper, tag: Tag.find_by(name: "Vegan"))
 TagsArgument.create!(argument: world_hunger_eradicated, tag: Tag.find_by(name: "Vegan"))
-
-
-
-
-
-
-
-
-
+TagsArgument.create!(argument: limited_choice, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: vegan_options, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: market_forces, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: being_vegan, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: religion_vegan, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: vegan_culture, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: is_hard, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: individual_choice, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: no_vegan, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: sharing, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: replacing, tag: Tag.find_by(name: "Vegan"))
+TagsArgument.create!(argument: societies, tag: Tag.find_by(name: "Vegan"))

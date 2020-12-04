@@ -54,6 +54,7 @@
 
   <!-- Badge section -->
 
+
 <div class="row">
   <div class="col-12 col-md-6 col-lg-6">
   <h2>Badges</h2>
@@ -79,6 +80,35 @@
         </div>
         <div class="col-4 text-center">
            <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
+
+
+  <div class="row no-gutter">
+    <div class="col-lg-6">
+      <h2>Badges</h2>
+      <section class="card mb-3">
+        <div class="card-body p-2">
+          <div class="row no-gutters">
+            <div class="col-4 text-center">
+              <%= image_tag "smoothtalker.png", alt: "smooth talker badge", class:"badge-img", id: (@posts >= 10 ? "earned" : "") %>
+            </div>
+            <div class="col-4 text-center">
+              <%= image_tag "thediplomat.png", alt: "diplomat badge", class:"badge-img", id: (@posts >= 25 ? "earned" : "") %>
+            </div>
+            <div class="col-4 text-center">
+              <%= image_tag "greatdebater.png", alt: "great debater badge", class:"badge-img", id: (@posts >= 100 ? "earned" : "") %>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-4 text-center">
+              <%= image_tag "fanclub.png", alt: "fanclub badge", class:"badge-img", id: (@upvotes >= 1 ? "earned" : "") %>
+            </div>
+            <div class="col-4 text-center">
+              <%= image_tag "legitelected.png", alt: "legit elected badge", class:"badge-img", id: (@upvotes >= 3 ? "earned" : "") %>
+            </div>
+            <div class="col-4 text-center">
+              <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
+            </div>
+          </div>
 
         </div>
       </section>
@@ -139,7 +169,6 @@
   <%# Arguments %>
   <section>
     <h2 style="margin-bottom: 14px;">Arguments</h2>
-
     <% if @arguments.empty? %>
       <p class="text-muted">No arguments.</p>
     <% else %>
