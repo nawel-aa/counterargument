@@ -71,10 +71,10 @@
           </div>
           <div class="row no-gutters">
             <div class="col-4 text-center">
-              <%= image_tag "fanclub.png", alt: "fanclub badge", class:"badge-img", id: (@upvotes >= 15 ? "earned" : "") %>
+              <%= image_tag "fanclub.png", alt: "fanclub badge", class:"badge-img", id: (@upvotes >= 1 ? "earned" : "") %>
             </div>
             <div class="col-4 text-center">
-              <%= image_tag "legitelected.png", alt: "legit elected badge", class:"badge-img", id: (@upvotes >= 50 ? "earned" : "") %>
+              <%= image_tag "legitelected.png", alt: "legit elected badge", class:"badge-img", id: (@upvotes >= 3 ? "earned" : "") %>
             </div>
             <div class="col-4 text-center">
               <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
