@@ -1,19 +1,9 @@
 .guidelines {
-  margin: 32px 0;
-  margin: auto;
-  text-align: center;
+  margin: 50px auto 0 auto;
+
+  &-instructions {
+    .fas{
+      color: $primary;
+    }    
+  }
 }
-
-ul { padding-left:20px; list-style:none; }
-li { margin-bottom:10px; }
-
-.new-guidelines li:before {
-  // content: '✔ ';
-  // margin-left: -20px;
-}
-
-.new-guidelines .fas{
-  color:$brandblue;
-}
-
-

@@ -44,20 +44,19 @@
 
   <body>
     <div class="site-container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <% if current_page?(root_path) %>
-      <%= render 'shared/home_header' %>
-    <% else %>
-      <%= render 'shared/header' %>
-    <% end %>
-    <%= render 'shared/flashes' %>
-    <div class="site-content">
-
-    <%= yield %>
-    </div>
-    <%= render 'shared/footer' %>
+      <% if current_page?(root_path) %>
+        <%= render 'shared/home_header' %>
+      <% else %>
+        <%= render 'shared/header' %>
+      <% end %>
+      <%= render 'shared/flashes' %>
+      <main class="site-content">
+        <%= yield %>
+      </main>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>
