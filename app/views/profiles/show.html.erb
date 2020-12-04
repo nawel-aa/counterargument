@@ -1,6 +1,4 @@
-
 <div class="container profile">
-
   <%# Hi card %>
   <section class="card mb-3">
     <div class="card-body p-2">
@@ -12,7 +10,6 @@
             <% else %>
                 <%= image_tag "useravatar.png", class: "w-100"%>
             <% end %>
-  
             <%= link_to user_path, class: "btn-edit" do %>
               <i class="fas fa-pen" title="Edit" aria-label="Edit"></i>
             <% end %>
@@ -51,37 +48,7 @@
       </div>
     </div>
   </section>
-
   <!-- Badge section -->
-
-
-<div class="row">
-  <div class="col-12 col-md-6 col-lg-6">
-  <h2>Badges</h2>
-  <section class="card mb-3">
-    <div class="card-body p-2">
-      <div class="row no-gutters">
-        <div class="col-4 text-center">
-          <%= image_tag "smoothtalker.png", alt: "smooth talker badge", class:"badge-img", id: (@posts >= 10 ? "earned" : "") %>
-        </div>
-        <div class="col-4 text-center">
-          <%= image_tag "thediplomat.png", alt: "diplomat badge", class:"badge-img", id: (@posts >= 25 ? "earned" : "") %>
-        </div>
-        <div class="col-4 text-center">
-          <%= image_tag "greatdebater.png", alt: "great debater badge", class:"badge-img", id: (@posts >= 100 ? "earned" : "") %>
-        </div>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-4 text-center">
-          <%= image_tag "fanclub.png", alt: "fanclub badge", class:"badge-img", id: (@upvotes >= 15 ? "earned" : "") %>
-        </div>
-        <div class="col-4 text-center">
-           <%= image_tag "legitelected.png", alt: "legit elected badge", class:"badge-img", id: (@upvotes >= 50 ? "earned" : "") %>
-        </div>
-        <div class="col-4 text-center">
-           <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
-
-
   <div class="row no-gutter">
     <div class="col-lg-6">
       <h2>Badges</h2>
@@ -109,47 +76,40 @@
               <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
             </div>
           </div>
-
         </div>
       </section>
     </div>
-
-
-  <!-- Points section -->
-<div class="col-12 col-md-6 col-lg-6">
-<h2>Points</h2>
-  <section class="card">
-    <div class="card-body p-0">
-      <div class="row no-gutters">
-        <div class="col-4 text-center d-flex flex-column mt-3">
-          <%= image_tag "yellow-bubble.svg", alt: "Counter Arguments", class:"points-img"%>
-          <h3><%= @posts %></h3>
-          <p>Counters</p>
-        </div>
-        <div class="col-4 text-center d-flex flex-column mt-3">
-          <%= image_tag "upvote-icon.svg", alt: "upvotes", class:"points-img" %>
-          <h3><%= @upvotes %></h3>
-          <p>Upvotes</p>
-        </div>
-        <div class="col-4 text-center points-total d-flex flex-column">
-          <p class="mt-3">Total Points</p>
-          <h2><%= @points %></h2>
-
+    <!-- Points section -->
+    <div class="col-lg-6">
+      <h2>Points</h2>
+      <section class="card mb-3">
+        <div class="card-body p-0">
+          <div class="row no-gutters">
+            <div class="col-4 mt-2 text-center">
+              <%= image_tag "yellow-bubble.svg", alt: "counter arguments bubble", class:"points-img" %>
+              <h3><%= @posts %></h3>
+              <p>Counters</p>
+            </div>
+            <div class="col-4 mt-2 text-center">
+              <%= image_tag "upvote-icon.svg", alt: "upvotes", class:"points-img" %>
+              <h3><%= @upvotes %></h3>
+              <p>Upvotes</p>
+            </div>
+            <div class="col-4 text-center points-total">
+              <p>Total Points</p>
+              <h2><%= @points %></h2>
+            </div>
+          </div>
         </div>
       </section>
     </div>
-
   </div>
-
-
   <%# Notifications %>
   <section class="notifications mb-3">
     <h2>Notifications <span class="text-muted"><%= "(#{@notifications.count})" if @notifications.count > 0 %></span></h2>
-
     <% if @notifications.empty? %>
       <p class="text-muted">No notifications.</p>
     <% else %>
-
       <% @notifications.each do |notification| %>
         <div class="notification">
           <%= image_tag "useravatar.png", class: "avatar" %>
@@ -161,20 +121,16 @@
           </div>
         </div>
       <% end %>
-
     <% end %>
-
   </section>
-
   <%# Arguments %>
   <section>
     <h2 style="margin-bottom: 14px;">Arguments</h2>
     <% if @arguments.empty? %>
       <p class="text-muted">No arguments.</p>
     <% else %>
-
       <% @arguments.each do |argument| %>
-        <div class="card mb-2" id=<%="anchor-#{argument.id}"%> >
+        <div class="card mb-2" id=<%="anchor-#{argument.id}"%>>
           <div class="card-body switch">
             <h3><%= link_to argument.content, argument_path(argument) %></h3>
             <%= simple_form_for argument, html: { id: "anon-switch-#{argument.id}" } do |f| %>
@@ -185,5 +141,4 @@
       <% end %>
     <% end %>
   </section>
-
 </div>
