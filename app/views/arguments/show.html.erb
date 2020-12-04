@@ -8,7 +8,11 @@
   <div class="col-12 col-md-12 show-argument-header">
     <div class="container">
       <h1 class="show-argument-title"><%= @argument_show.content %></h1>
-      <p class="show-argument-source"><%= @argument_show.source %></p>
+      <% if /(.com|.org|.gov|.edu|.ca)/.match?(@argument_show.source) %>
+        <p><%= link_to @argument_show.source, /^https?:\/\//.match?(@argument_show.source) ? @argument_show.source : "https://#{@argument_show.source}", class: "show-argument-source", id: "parent-link", target: :_blank %></p>
+      <% else %>
+        <p class=show-argument-source><%= @argument_show.source %></p>
+      <% end %>
       <div class="row no-gutters justify-content-between align-items-center">
 
         <% if @argument_show.user.profile_picture.attached? && @argument_show.hidden != true %>
@@ -76,13 +80,13 @@
             </div>
             <div class="votes">
               <%= link_to argument_votes_path(counterargument, title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-source.svg" %> <%= Vote.where(argument_id: counterargument.id, category: "source").size %></p></div>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-source.svg" %> <%= Vote.source(counterargument.id) %></p></div>
               <% end %>
               <%= link_to argument_votes_path(counterargument, title: "Funny Vote", category: "funny", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-funny.svg" %> <%= Vote.where(argument_id: counterargument.id, category: "funny").size %></p></div>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-funny.svg" %> <%= Vote.funny(counterargument.id) %></p></div>
               <% end %>
               <%= link_to argument_votes_path(counterargument, title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-clear.svg" %> <%= Vote.where(argument_id: counterargument.id, category: "concise").size %></p></div>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-clear.svg" %> <%= Vote.concise(counterargument.id) %></p></div>
               <% end %>
             </div>
           </div>

@@ -52,6 +52,8 @@ class ArgumentsController < ApplicationController
     @argument_show = Argument.find(params[:id])
     authorize @argument_show
 
+    # @source_count = Vote.source
+
     @tag = Tag.new
     @tags = Tag.all.map { |tag| tag.name }.sort
     # @results = index.search(params[:query])[0]
