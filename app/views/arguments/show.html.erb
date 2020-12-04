@@ -40,53 +40,53 @@
   <!-- Child Arguments  -->
   <div class="show-argument-counterarguments">
   <h2 class="d-none">Counterarguments</h2>
-    <% @argument_show.children.each do |counterargument| %>
-      <div class="container" id="arg-<%= counterargument.id %>">
+    <% @child.each do |child_arr| %>
+      <div class="container" id="arg-<%= child_arr[0].id %>">
         <div class="card">
           <div class="card-body">
             <div class="d-flex" id="argument-show-user-info">
-              <% if counterargument.user.profile_picture.attached? && counterargument.hidden != true %>
-                <%= cl_image_tag counterargument.user.profile_picture.key, class: "avatar" %>
+              <% if child_arr[0].user.profile_picture.attached? && child_arr[0].hidden != true %>
+                <%= cl_image_tag child_arr[0].user.profile_picture.key, class: "avatar" %>
                 <div class="user-show-details">
-                  <p><%= link_to counterargument.user.nickname, current_user == counterargument.user ? profile_path : visit_profile_path(counterargument.user), class: "text-muted", id: "user-link" %></p>
-                  <p class="text-muted"><%= time_ago_in_words(counterargument.created_at) %> ago</p>
+                  <p><%= link_to child_arr[0].user.nickname, current_user == child_arr[0].user ? profile_path : visit_profile_path(child_arr[0].user), class: "text-muted", id: "user-link" %></p>
+                  <p class="text-muted"><%= time_ago_in_words(child_arr[0].created_at) %> ago</p>
                 </div>
-              <% elsif counterargument.hidden != true %>
+              <% elsif child_arr[0].hidden != true %>
                 <%= image_tag "useravatar.png", class:"avatar" %>
                 <div class="user-show-details">
-                  <p><%= link_to counterargument.user.nickname, current_user == counterargument.user ? profile_path : visit_profile_path(counterargument.user), class: "text-muted", id: "user-link" %></p>
-                  <p class="text-muted"><%= time_ago_in_words(counterargument.created_at) %> ago</p>
+                  <p><%= link_to child_arr[0].user.nickname, current_user == child_arr[0].user ? profile_path : visit_profile_path(child_arr[0].user), class: "text-muted", id: "user-link" %></p>
+                  <p class="text-muted"><%= time_ago_in_words(child_arr[0].created_at) %> ago</p>
                 </div>
               <% else %>
                 <%= image_tag "useravatar.png", class:"avatar" %>
                 <div class="user-show-details">
                   <p class="text-muted">Anonymous</p>
-                  <p class="text-muted"><%= time_ago_in_words(counterargument.created_at) %> ago</p>
+                  <p class="text-muted"><%= time_ago_in_words(child_arr[0].created_at) %> ago</p>
                 </div>
               <% end %>
             </div>
             <div class="content-show-details">
-              <h3><%= link_to counterargument.content, argument_path(counterargument) %></h3>
+              <h3><%= link_to child_arr[0].content, argument_path(child_arr[0]) %></h3>
             </div>
             <div class="source-show-details">
-              <% if /(.com|.org|.gov|.edu|.ca)/.match?(counterargument.source) %>
-                <p><%= link_to counterargument.source, /^https?:\/\//.match?(counterargument.source) ? counterargument.source : "https://#{counterargument.source}", class: "text-muted", id: "source-link", target: :_blank %></p>
+              <% if /(.com|.org|.gov|.edu|.ca)/.match?(child_arr[0].source) %>
+                <p><%= link_to child_arr[0].source, /^https?:\/\//.match?(child_arr[0].source) ? child_arr[0].source : "https://#{child_arr[0].source}", class: "text-muted", id: "source-link", target: :_blank %></p>
               <% else %>
-                <p class="text-muted"><%= counterargument.source %></p>
+                <p class="text-muted"><%= child_arr[0].source %></p>
               <% end %>
             </div>
             <div class="mb-3">
-                <%= render partial: "shared/tag", locals: {tag_name: counterargument.tags} %>
+                <%= render partial: "shared/tag", locals: {tag_name: child_arr[0].tags} %>
             </div>
             <div class="votes">
-              <%= link_to argument_votes_path(counterargument, title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-source.svg" %> <%= Vote.source(counterargument.id) %></p></div>
+              <%= link_to argument_votes_path(child_arr[0], title: "Good source!", category: "source", origin: @argument_show), method: :post do %>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-source.svg" %> <%= child_arr[1] %></p></div>
               <% end %>
-              <%= link_to argument_votes_path(counterargument, title: "Funny Vote", category: "funny", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-funny.svg" %> <%= Vote.funny(counterargument.id) %></p></div>
+              <%= link_to argument_votes_path(child_arr[0], title: "Funny Vote", category: "funny", origin: @argument_show), method: :post do %>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-funny.svg" %> <%= child_arr[2] %></p></div>
               <% end %>
-              <%= link_to argument_votes_path(counterargument, title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
-                <div class = 'vote-btn'><p><%= image_tag "upvote-clear.svg" %> <%= Vote.concise(counterargument.id) %></p></div>
+              <%= link_to argument_votes_path(child_arr[0], title: "Very clear!", category: "concise", origin: @argument_show), method: :post do %>
+                <div class = 'vote-btn'><p><%= image_tag "upvote-clear.svg" %> <%= child_arr[3] %></p></div>
               <% end %>
             </div>
           </div>

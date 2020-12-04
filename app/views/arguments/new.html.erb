@@ -1,20 +1,34 @@
-<div class="col-12 col-md mt guidelines">
-  <h1>Guidelines</h1>
-  <ul class="new-guidelines">
-    <li><i class="fas fa-check"></i> Search for your argument before entering a new statement. There may already be a perfect answer!</li>
-    <li><i class="fas fa-check"></i> Keep your statement short and direct</li>
-  </ul>
-</div>
-<div class="col-12 col-md- d-flex justify-content-center">
-
-  <%= simple_form_for [@argument] do |f| %>
-    <%= f.input :content, placeholder: "Maximum 180 characters" %>
-    <%= f.input :source, placeholder: "https//example.com" %>
-    <%= f.association :tags, collection: Tag.order('name ASC'), as: :check_boxes, input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item', include_hidden:false %>
-    <%= f.input :hidden, label: "Hide your username from this argument?", input_html: { class: "toggle" } %>
-    <%= f.button :submit, value: "Add Argument", class: "btn btn-lg w-50" %>
-  <% end %>
-
-
+<div class="guidelines container">
+  <div class="row">
+    <div class="col-lg-5 col-12">
+      <h1>Guidelines</h1>
+      <ul class="guidelines-instructions pl-1 mb-5 mt-4">
+        <li class="row no-gutters">
+          <div class="col-auto">
+            <i class="fas fa-check pr-2"></i>
+          </div>
+          <span class="col">Search for your argument before entering a new statement. There may already be a perfect answer!</span>
+        </li>
+        <li class="row no-gutters">
+        <div class="col-auto">
+          <i class="fas fa-check pr-2"></i>
+        </div>
+        <div class="col">
+          Keep your statement short and direct
+        </div>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="col-12 col-lg-7">
+      <%= simple_form_for [@argument] do |f| %>
+        <%= f.input :content, placeholder: "Maximum 180 characters", label: "Argument" %>
+        <%= f.input :source, placeholder: "https//example.com" %>
+        <%= f.association :tags, collection: Tag.order('name ASC'), as: :check_boxes, input_html: { class: "tag-selector" },
+                      item_wrapper_class: 'tag-item', include_hidden:false %>
+        <%= f.input :hidden, label: "Hide your username from this argument", input_html: { class: "toggle" } %>
+        <%= f.button :submit, value: "Add Argument", class: "btn" %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,24 +1,26 @@
 
-<div class="container">
+<div class="container profile">
 
   <%# Hi card %>
   <section class="card mb-3">
     <div class="card-body p-2">
       <div class="row no-gutters">
         <div class="col-4 col-md-3">
-          <% if user_signed_in? && current_user.profile_picture.attached? %>
-            <%= cl_image_tag current_user.profile_picture.key, class: "w-100" %>
-          <% else %>
-              <%= image_tag "useravatar.png", class: "w-100"%>
-          <% end %>
-
-          <%= link_to user_path, class: "btn-edit" do %>
-            <i class="fas fa-pen" title="Edit" aria-label="Edit"></i>
-          <% end %>
+          <div class="position-relative">
+            <% if user_signed_in? && current_user.profile_picture.attached? %>
+              <%= cl_image_tag current_user.profile_picture.key, class: "w-100" %>
+            <% else %>
+                <%= image_tag "useravatar.png", class: "w-100"%>
+            <% end %>
+  
+            <%= link_to user_path, class: "btn-edit" do %>
+              <i class="fas fa-pen" title="Edit" aria-label="Edit"></i>
+            <% end %>
+          </div>
         </div>
         <div class="col">
           <div class="pl-3">
-            <h3>Hi, <%= @user.nickname %></h3>
+            <h1>Hi, <%= @user.nickname %></h1>
             <p class="text-muted"><%= @user.email %></p>
             <div class="row">
               <div class="col-auto">
@@ -51,6 +53,7 @@
   </section>
 
   <!-- Badge section -->
+
 <div class="row">
   <div class="col-12 col-md-6 col-lg-6">
   <h2>Badges</h2>
@@ -76,11 +79,11 @@
         </div>
         <div class="col-4 text-center">
            <%= image_tag "famous.png", alt: "famous badge", class:"badge-img", id: (@upvotes >= 125 ? "earned" : "") %>
+
         </div>
-      </div>
+      </section>
     </div>
-  </section>
-</div>
+
 
   <!-- Points section -->
 <div class="col-12 col-md-6 col-lg-6">
@@ -101,18 +104,17 @@
         <div class="col-4 text-center points-total d-flex flex-column">
           <p class="mt-3">Total Points</p>
           <h2><%= @points %></h2>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
 
-</div>
+        </div>
+      </section>
+    </div>
+
+  </div>
 
 
   <%# Notifications %>
   <section class="notifications mb-3">
-    <h2>Notifications <span class="text-muted">(<%= @notifications.count %>)</span></h2>
+    <h2>Notifications <span class="text-muted"><%= "(#{@notifications.count})" if @notifications.count > 0 %></span></h2>
 
     <% if @notifications.empty? %>
       <p class="text-muted">No notifications.</p>
@@ -136,7 +138,7 @@
 
   <%# Arguments %>
   <section>
-    <h2 style="margin-bottom: 14px;">Arguments <span class="text-muted">(<%= @arguments.count %>)</h2>
+    <h2 style="margin-bottom: 14px;">Arguments</h2>
 
     <% if @arguments.empty? %>
       <p class="text-muted">No arguments.</p>

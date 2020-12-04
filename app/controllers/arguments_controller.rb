@@ -51,8 +51,11 @@ class ArgumentsController < ApplicationController
     @argument = Argument.new
     @argument_show = Argument.find(params[:id])
     authorize @argument_show
+    @child = @argument_show.children.map do |counterargument|
+      [counterargument, Vote.source(counterargument.id), Vote.funny(counterargument.id), Vote.concise(counterargument.id)]
+    end
 
-    # @source_count = Vote.source
+    @source_count = Vote.source
 
     @tag = Tag.new
     @tags = Tag.all.map { |tag| tag.name }.sort
