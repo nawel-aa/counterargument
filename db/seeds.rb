@@ -11,7 +11,7 @@ Argument.reindex!
 User.destroy_all
 
 
-emails = %w[nawel@email.com patrick@email.com nooshin@email.com tatiana@email.com JasonBigHands@email.com spud@email.com jadam@email.com brick@email.com trumane@email.com jst@email.com]
+emails = %w[nawel@email.com patrick@email.com nooshin@email.com tatiana@email.com stephane@email.com richard@email.com martin@email.com kristyna@email.com tim@email.com JasonBigHands@email.com spud@email.com jadam@email.com brick@email.com trumane@email.com jst@email.com]
 
 puts "Generating users..."
 emails.each do |email|
@@ -19,6 +19,43 @@ emails.each do |email|
   user.nickname = user.email.match(/.+?(?=@)/).to_s
   user.save!
 end
+
+tatiana = User.find_by(email:"tatiana@email.com")
+tatiana.profile_picture.attach(io: File.open("app/assets/images/tatiana.png"), filename: 'picture.png')
+tatiana.save!
+
+
+nawel = User.find_by(email:"nawel@email.com")
+nawel.profile_picture.attach(io: File.open("app/assets/images/nawel.png"), filename: 'picture.png')
+nawel.save!
+
+noosh = User.find_by(email:"nooshin@email.com")
+noosh.profile_picture.attach(io: File.open("app/assets/images/noosh.png"), filename: 'picture.png')
+noosh.save!
+
+patrick = User.find_by(email:"patrick@email.com")
+patrick.profile_picture.attach(io: File.open("app/assets/images/patrick.png"), filename: 'picture.png')
+patrick.save!
+
+stephane = User.find_by(email:"stephane@email.com")
+stephane.profile_picture.attach(io: File.open("app/assets/images/stephane.png"), filename: 'picture.png')
+stephane.save!
+
+richard = User.find_by(email:"richard@email.com")
+richard.profile_picture.attach(io: File.open("app/assets/images/richard.png"), filename: 'picture.png')
+richard.save!
+
+martin = User.find_by(email:"martin@email.com")
+martin.profile_picture.attach(io: File.open("app/assets/images/martin.png"), filename: 'picture.png')
+martin.save!
+
+kristyna = User.find_by(email:"kristyna@email.com")
+kristyna.profile_picture.attach(io: File.open("app/assets/images/kristyna.png"), filename: 'picture.png')
+kristyna.save!
+
+tim = User.find_by(email:"tim@email.com")
+tim.profile_picture.attach(io: File.open("app/assets/images/tim.png"), filename: 'picture.png')
+tim.save!
 
 puts "Generating tags..."
 tag_names = ["Politics", "Global Warming", "Religion", "Vaccination", "BLM", "COVID-19", "Environment", "Science", "Equality", "Vegan", "Animal"]
@@ -43,7 +80,7 @@ cars_cities = Argument.create!(
 cars_only_transport = Argument.create!(
   content: "No other form of transportation is as flexible as cars",
   source: Faker::Internet.url,
-  user: User.find_by(email:"spud@email.com")
+  user: User.find_by(email:"martin@email.com")
 )
 bad_for_environments = Argument.create!(
   content: "Cars are bad for the environment.",
@@ -53,7 +90,7 @@ bad_for_environments = Argument.create!(
 bad_public_transport = Argument.create!(
   content: "Many public transportation systems are currently inadequate.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "jadam@email.com")
+  user: User.find_by(email: "richard@email.com")
 )
 expensive = Argument.create!(
   content: "Cars are extremely expensive to run: they only offer flexibility to the well-off.",
@@ -63,7 +100,7 @@ expensive = Argument.create!(
 prefer_cars = Argument.create!(
   content: "Certain groups of people cannot easily travel by public transport, even if provision is excellent.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "trumane@email.com")
+  user: User.find_by(email: "kristyna@email.com")
 )
 sydney_insurance = Argument.create!(
   content: "The average cost of car insurance in Sydney is 1142.55 AUD per year.",
@@ -78,7 +115,7 @@ bikes = Argument.create!(
 no_bikes = Argument.create!(
   content: "Bike are more flexible under defined distances, over long distance the time taken to travel negates the advantage of a bicycle.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "spud@email.com")
+  user: User.find_by(email: "nooshin@email.com")
 )
 
 demand_for_publictransport = Argument.create!(
@@ -105,7 +142,7 @@ space = Argument.create!(
 disable_users = Argument.create!(
   content: "Some disabled people require cars to transport them.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "spud@email.com")
+  user: User.find_by(email: "stephane@email.com")
 )
 
 ArgumentParentChildRelationship.create!(child: cars_cities, parent: cars_parent)
@@ -417,7 +454,22 @@ TagsArgument.create!(argument: feed_the_globe, tag: Tag.find_by(name: "Equality"
 zoo_parent = Argument.create!(
   content: "Zoos are a good way to experience wildlife.",
   source: Faker::Internet.url,
-  user: User.find_by(email: "tatiana@email.com")
+  user: User.find_by(email: "tim@email.com")
+)
+zoo_educational = Argument.create!(
+  content: "Zoos are not even educational, people visit zoos to enjoy the nature and animals",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "martin@email.com")
+)
+zoo_educate = Argument.create!(
+  content: "Zoos actually play a huge role in educating people to habitat preservation",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "richard@email.com")
+)
+eco_parks = Argument.create!(
+  content: "Educational benefits and research can be equally achieved by Eco Parks!",
+  source: Faker::Internet.url,
+  user: User.find_by(email: "stephane@email.com")
 )
 
 zoo_violate_animal = Argument.create!(
@@ -428,7 +480,7 @@ zoo_violate_animal = Argument.create!(
 zoo_black_market = Argument.create!(
   content: "Zoos can be a source of animals' black market",
   source: Faker::Internet.url,
-  user: User.all.sample
+  user: User.find_by(email:"kristyna@email.com")
 )
 zoo_conservation = Argument.create!(
   content: "Zoos play a critical role in the conservation of endangered species",
@@ -472,9 +524,12 @@ natural_environment = Argument.create!(
   user: User.all.sample
 )
 
+ArgumentParentChildRelationship.create!(child: zoo_educational, parent: zoo_parent)
+ArgumentParentChildRelationship.create!(child: zoo_educate, parent: zoo_educational)
 ArgumentParentChildRelationship.create!(child: zoo_violate_animal, parent: zoo_parent)
 ArgumentParentChildRelationship.create!(child: zoo_black_market, parent: zoo_parent)
 ArgumentParentChildRelationship.create!(child: animal_suffering, parent: zoo_parent)
+ArgumentParentChildRelationship.create!(child: eco_parks, parent: zoo_educate)
 ArgumentParentChildRelationship.create!(child: zoo_conservation, parent: zoo_black_market)
 ArgumentParentChildRelationship.create!(child: brazil_black_market, parent: zoo_black_market)
 ArgumentParentChildRelationship.create!(child: pet_trade, parent: zoo_black_market)
@@ -501,8 +556,12 @@ TagsArgument.create!(argument: zoo_conservation, tag: Tag.find_by(name: "Environ
 TagsArgument.create!(argument: brazil_black_market, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: pet_trade, tag: Tag.find_by(name: "Environment"))
 TagsArgument.create!(argument: natural_environment, tag: Tag.find_by(name: "Environment"))
-
-
+TagsArgument.create!(argument: zoo_educate, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: zoo_educate, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: eco_parks, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: eco_parks, tag: Tag.find_by(name: "Environment"))
+TagsArgument.create!(argument: zoo_educational, tag: Tag.find_by(name: "Animal"))
+TagsArgument.create!(argument: zoo_educational, tag: Tag.find_by(name: "Environment"))
 
 # Title 7: languages
 languages_parent = Argument.create!(
