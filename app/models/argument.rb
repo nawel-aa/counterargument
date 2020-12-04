@@ -1,5 +1,5 @@
 class Argument < ApplicationRecord
-   
+
   # this will create an Argument index and add search capabilities to the Argument model:
   include AlgoliaSearch
 

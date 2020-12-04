@@ -13,7 +13,7 @@
 </div>
 <div class="avatar-btn">
   <% if @notifications %>
-    <div id="notifications-counter" class="<%= "d-none" if @notifications.count <= 0 %> rounded-circle"><%= @notifications.count %></div>
+    <div id="notifications-counter" class="<%= "d-none" if @notifications.size <= 0 %> rounded-circle"><%= @notifications.size %></div>
   <% end %>
   <% if user_signed_in? && current_user.profile_picture.attached? %>
     <%= cl_image_tag current_user.profile_picture.key, height: 42, width: 42, crop: :fill, class:"openav rounded-circle" %>

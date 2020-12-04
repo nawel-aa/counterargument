@@ -9,13 +9,11 @@ class VotesController < ApplicationController
 
     argument = Argument.find(params[:argument_id])
     vote_user_category = {}
-    x = 0
     argument.votes.each do |vote|
-      x += 1
-      vote_user_category[x] = vote.category
+      vote_user_category[vote.category] = vote.user
     end
     authorize vote
-    if vote_user_category.has_value?(vote_params[:category])
+    if vote_user_category[vote_params[:category]] == current_user
       alert = "You cannont upvote a post multiple times in the same category"
       flash[:alert] = alert
       redirect_to(request.referrer || root_path)
