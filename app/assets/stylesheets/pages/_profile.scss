@@ -55,17 +55,18 @@
   }
   
   .points-total{
-    width: 40%;
-    padding: 20px;
-    position: relative;
-    background-color:$brandblue;
-    // // background-image: asset-url('shape-bg.svg');
-    // background-repeat: no-repeat;
-    // background-size: 100% 100%;
-    // background-position: center;
-    color:$brandlightblue;
+  background-color:$brandblue;
+  // // background-image: asset-url('shape-bg.svg');
+  // background-repeat: no-repeat;
+  background-size: 100% 100%;
+  // background-position: center;
+  color:$brandlightblue;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
   }
-}
+
+
+
 
 
 
