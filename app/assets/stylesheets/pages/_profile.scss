@@ -1,65 +1,70 @@
-.count-icon {
-  transform: scaleX(-1);
-  font-size: 1.125rem;
-  padding-left: 6px;
-  color: $primary;
-
-  &-counterargument {
-    @extend .count-icon;
-    color: $secondary;
+.profile {
+  h1 {
+    word-wrap: break-word;
+    @media screen and (max-width: 576px) {
+      font-size: 1rem;
+    }
   }
-}
-
-.card-body.switch a {
-  text-decoration: none;
-  color: $brandblack;
-}
-
-.card-body.switch a:hover {
-  color: $brandyellow;
-}
-
-.card-body.switch {
-  padding-bottom: 0px;
-}
-
-#point-score {
-  color: $brandblue;
-}
-
-.card-body.visit a {
-  text-decoration: none;
-  color: $brandblack;
-}
-
-.card-body.visit a:hover {
-  color: $brandyellow;
-}
-
-.badge-img{
-  width: 50%;
-  height: auto;
-  opacity: 0.3;
-}
-
-#earned{
-  opacity: 1;
-}
-
-.points-img{
-  // padding-top:20px;
-}
-
-.points-total{
-  width: 40%;
-  padding: 20px;
-  position: relative;
-  background-color:$brandblue;
-  // // background-image: asset-url('shape-bg.svg');
-  // background-repeat: no-repeat;
-  // background-size: 100% 100%;
-  // background-position: center;
-  color:$brandlightblue;
+  
+  .count-icon {
+    transform: scaleX(-1);
+    font-size: 1.125rem;
+    padding-left: 6px;
+    color: $primary;
+    
+    &-counterargument {
+      @extend .count-icon;
+      color: $secondary;
+    }
+  }
+  
+  .card-body.switch a {
+    text-decoration: none;
+    color: $brandblack;
+  }
+  
+  .card-body.switch a:hover {
+    color: $brandyellow;
+  }
+  
+  .card-body.switch {
+    padding-bottom: 0px;
+  }
+  
+  #point-score {
+    color: $brandblue;
+  }
+  
+  .card-body.visit a {
+    text-decoration: none;
+    color: $brandblack;
+  }
+  
+  .card-body.visit a:hover {
+    color: $brandyellow;
+  }
+  
+  .badge-img{
+    width: 50%;
+    height: auto;
+    opacity: 0.3;
+  }
+  
+  #earned{
+    opacity: 1;
+  }
+  
+  .points-total{
+    width: 40%;
+    padding: 20px;
+    position: relative;
+    background-color:$brandblue;
+    // // background-image: asset-url('shape-bg.svg');
+    // background-repeat: no-repeat;
+    // background-size: 100% 100%;
+    // background-position: center;
+    color:$brandlightblue;
+  }
 }
 
 
